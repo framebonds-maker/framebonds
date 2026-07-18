@@ -6,7 +6,22 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(ls -la \"/c/Users/DESKTOP/.claude/projects/C--Users-DESKTOP-OneDrive-Desktop-sessions/memory/\")",
-      "Bash(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1 \"/c/Users/DESKTOP/Downloads/framebonds propoasl video.mp4\")"
+      "Bash(ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1 \"/c/Users/DESKTOP/Downloads/framebonds propoasl video.mp4\")",
+      "Bash(npm --version)",
+      "Bash(npm create *)",
+      "Bash(rm -rf .vite-scaffold-tmp)",
+      "Bash(mv .vite-scaffold-tmp/.gitignore .)",
+      "Bash(mv .vite-scaffold-tmp/.oxlintrc.json .)",
+      "Bash(mv .vite-scaffold-tmp/index.html .)",
+      "Bash(mv .vite-scaffold-tmp/package.json .)",
+      "Bash(mv .vite-scaffold-tmp/public .)",
+      "Bash(npm install *)",
+      "Bash(rm -f src/App.css src/App.tsx src/index.css)",
+      "Bash(rm -rf src/assets)",
+      "Bash(mkdir -p src/components/ui src/components/layout src/components/navigation src/components/sections src/components/forms src/components/feedback src/components/media src/components/portfolio)",
+      "Bash(mkdir -p src/pages src/hooks src/lib src/services src/constants src/types src/utils src/assets src/styles src/animations src/providers src/routes src/config)",
+      "Bash(npx tsc *)",
+      "Bash(npm run *)"
     ]
   }
 }
