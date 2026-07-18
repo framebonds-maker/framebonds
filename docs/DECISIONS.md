@@ -140,9 +140,65 @@ This file logs all non-trivial decisions made during the project, including the 
 **Reasoning:** Footer is final impression; should feel composed, not desperate; only meaningful destinations reduce navigation fatigue; heavy footer damages premium perception  
 **Trade-offs:** Fewer navigation options; no newsletter or third-party embeds; but footer remains elegant  
 
+### Portfolio Page: Curation First (3–4 Flagships)
+**Date:** 2026-07-18  
+**Context:** Portfolio Page sets visitor confidence that FrameBonds consistently delivers; weak projects undermine brand  
+**Decision:** Feature only 3–4 flagship projects prominently; editorial grid with varying sizes; strongest work gets largest canvas  
+**Reasoning:** Premium perception comes from consistency, not volume; smaller curated portfolio focuses attention on excellence; signals quality standards  
+**Trade-offs:** May exclude legitimate work; requires tough editorial decisions; but perceived quality increases significantly  
+
+### Case Study Page: Documentary Storytelling (Why → How → What → Changed)
+**Date:** 2026-07-18  
+**Context:** Case studies convert curiosity into confidence; must prove FrameBonds solves business problems (not just creates beautiful content)  
+**Decision:** Structure every case study as narrative (Challenge → Strategy → Production → Results); documentary tone; measurable outcomes only  
+**Reasoning:** Storytelling connects emotionally; measurable outcomes prove business impact; documentary tone is more credible than marketing speak  
+**Trade-offs:** Requires finding authentic outcomes for every project; cannot fabricate metrics; but trust foundation is honest  
+
+### Services Page: Pillar-Based, Outcome-Focused Architecture
+**Date:** 2026-07-18  
+**Context:** Services page educates + converts; standard feature lists don't drive business value  
+**Decision:** Organize by 4 pillars (Brand Films, Commercial Content, Social Media, White-Label); present as outcomes (not tasks); industry-specific sections  
+**Reasoning:** Pillar structure reduces cognitive load; outcome framing connects to client goals; industry fit helps visitors see themselves  
+**Trade-offs:** Requires thoughtful grouping; cannot simply list all capabilities; but relevance and clarity increase conversion  
+
+### About Page: Founder Visible But Not Dominant
+**Date:** 2026-07-18  
+**Context:** About page builds personal connection but must remain client-focused (not autobiography)  
+**Decision:** Feature founder with professional imagery + philosophy statement; emphasize standards + principles (not biography); behind-the-scenes focus  
+**Reasoning:** People trust people but don't care about origin stories; founder as symbol of standards is more powerful than biography; behind-the-scenes proves craftsmanship  
+**Trade-offs:** Limits founder storytelling; may not satisfy curiosity about company history; but visitor trust increases through demonstrated values  
+
+### Agency Partnership Page: Confidentiality as Primary Promise
+**Date:** 2026-07-18  
+**Context:** White-label agencies need reassurance that client relationships will be protected; without this, partnership will not happen  
+**Decision:** Confidentiality Promise given dedicated section; workflow clearly shows client remains agency's; never competes for clients; explicit NDA policy  
+**Reasoning:** Trust is prerequisite for agency partnerships; explicit confidentiality policies remove friction; clear workflow shows how relationships are protected  
+**Trade-offs:** Limits FrameBonds' ability to market agency work; client invisibility; but partnership relationships are protected long-term  
+
+### Contact Page: Calendly as Primary Action
+**Date:** 2026-07-18  
+**Context:** Visitors who reach contact page have already decided to engage; minimize friction between decision + action  
+**Decision:** Calendly embedded directly (no redirect); three meeting types (Discovery, Agency Partnership, Existing Client); minimal inquiry form (backup option)  
+**Reasoning:** Calendar integration is frictionless; meeting type self-selection improves prep; embedded experience keeps visitor on site  
+**Trade-offs:** Requires Calendly integration; no email-only fallback for users uncomfortable with calendars; but conversion rate improves significantly  
+
+### Navigation: Flat Architecture, No Dropdowns
+**Date:** 2026-07-18  
+**Context:** Flat navigation reduces complexity; dropdowns often hide important information or overwhelm users  
+**Decision:** Primary navigation: Home, Portfolio, Services, Agency Partnership, About, Contact; no dropdowns; CTA (Book a Call) always visible  
+**Reasoning:** Flat structure is easier to scan; CTA visibility increases discoverability; complex dropdowns reduce premium perception  
+**Trade-offs:** Limited navigation options; may require more pages for detailed content; but simplicity wins  
+
+### Utility Pages: Same Premium Standard (Including 404)
+**Date:** 2026-07-18  
+**Context:** Most agencies ignore utility pages; treating them as secondary signals inattention to detail  
+**Decision:** 404, Thank You, Privacy, Terms all receive intentional design; no generic templates; 404 headline: "Looks Like This Story Hasn't Been Written Yet"  
+**Reasoning:** Consistency builds trust; even error states should reinforce professionalism; visitors notice attention to detail  
+**Trade-offs:** Requires designing more pages; cannot use generic templates; but brand consistency and perceived quality improve  
+
 ---
 
-### Upcoming Decisions (Awaiting Volumes IV–IX)
+### Upcoming Decisions (Awaiting Volumes V–IX)
 - Page architecture and content flow (expected in Volume III—Chapter 8)
 - Specific pages needed and their purpose
 - Content strategy and messaging tone

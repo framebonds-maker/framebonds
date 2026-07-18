@@ -1,7 +1,7 @@
 # Current State & Next Steps
 
 **Last Updated:** 2026-07-18  
-**Session Status:** Volumes I, II & III received and integrated — awaiting Volumes IV–IX and PDFs
+**Session Status:** Volumes I–IV received and integrated — awaiting Volumes V–IX and PDFs
 
 ---
 
@@ -10,9 +10,10 @@
 - ✅ Persistence system (CLAUDE.md, /docs folder) created
 - ✅ Volume I (14 chapters) received and integrated — Brand DNA
 - ✅ Volume II (7 chapters) received and integrated — Visual Language
-- ✅ Volume III (10 chapters) received and integrated — Page Architecture
-- ✅ Complete brand philosophy, design system, and homepage blueprint documented
-- ⏳ **Awaiting:** Volumes IV–IX and 2 PDF context documents from user
+- ✅ Volume III (10 chapters) received and integrated — Page Architecture / Homepage Blueprint
+- ✅ Volume IV (7 chapters) received and integrated — Individual Page Blueprints
+- ✅ Complete brand philosophy, design system, page architecture, and all major page specifications documented
+- ⏳ **Awaiting:** Volumes V–IX and 2 PDF context documents from user
 
 ---
 
@@ -54,17 +55,16 @@
 
 ## Next Immediate Action
 **BLOCKED** until user provides:
-1. Volumes IV–IX (expected content):
-   - **Volume IV:** Individual Page Blueprints (Portfolio, Case Studies, Services, About, Agency Partnership, Contact, 404s)
-   - **Volume V:** Interaction & Animation Specifications (specific animation timings, easing, page transitions)
-   - **Volume VI:** Content Strategy & Copywriting Guidelines (messaging framework, tone, headlines)
-   - **Volume VII:** Technical Stack & Implementation (tech choices, backend, CMS, data structure)
-   - **Volume VIII:** Analytics, Tracking & Deployment (metrics, GA4 setup, deployment process)
-   - **Volume IX:** Maintenance & Evolution (updates, content management, long-term roadmap)
-2. Two PDF context documents (business details, visual references, case studies, inspiration, etc.)
+1. Volumes V–IX (expected content):
+   - **Volume V:** Component Library & Design System (buttons, cards, forms, modals, testimonials, FAQ, CTA blocks, loaders, skeletons, icons, responsive rules)
+   - **Volume VI:** Interaction & Animation Specifications (specific animation timings, easing, scroll triggers, page transitions, microinteractions)
+   - **Volume VII:** Content Strategy & Copywriting Guidelines (messaging framework, tone voice, headline templates, copy examples, CMS content structure)
+   - **Volume VIII:** Technical Stack & Implementation (tech choices, backend/CMS, database, APIs, third-party services, deployment)
+   - **Volume IX:** Analytics, Tracking & Deployment (GA4 setup, conversion tracking, performance monitoring, CI/CD, hosting strategy)
+2. Two PDF context documents (business details, visual references, case studies, inspiration, branding assets, etc.)
 3. Any specific requests or additional brand guidelines
 
-**Expected Next Volume:** Volume IV — Individual Page Blueprints
+**Expected Next Volume:** Volume V — Component Library & Design System
 
 ---
 
@@ -90,18 +90,22 @@ When resuming:
 
 ---
 
-## Open Questions (To Be Answered by Remaining Volumes IV–IX)
+## Open Questions (To Be Answered by Remaining Volumes V–IX)
 
-**Volume IV Expected (Individual Page Blueprints):**
-- Portfolio Page: Layout, filtering, search, case study linking
-- Case Study Page: Hero, narrative structure, results showcase
-- Full Services Page: Expanded service descriptions, packages, pricing strategy
-- Full About Page: Team bios, studio tour, values deep dive
-- Agency Partnership Page: White-label benefits, process, contact
-- Contact/Booking Page: Form strategy, booking system, response workflow
-- Utility Pages: 404, thank you, redirect strategy
+**Volume V Expected (Component Library & Design System):**
+- Button component states and variants
+- Card component family (portfolio, service, testimonial, etc.)
+- Form components and validation patterns
+- Modal/dialog behavior and animations
+- Testimonial card presentations
+- FAQ accordion expand/collapse behavior
+- CTA section variations
+- Loading states and skeleton loaders
+- Icon usage and sizing rules
+- Empty state presentations
+- Responsive breakpoint behaviors
 
-**Volume V Expected (Interactions & Animations):**
+**Volume VI Expected (Interactions & Animations):**
 - Specific animation timing (durations, easing curves)
 - Scroll-triggered animations and parallax rules
 - Page transition effects

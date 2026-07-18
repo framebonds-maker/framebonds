@@ -101,6 +101,42 @@
 
 ---
 
+## [2026-07-18] Volume IV — Individual Page Blueprints Complete
+- **Received:**
+  - 7 comprehensive chapters detailing every major page blueprint
+  - Chapter 1: Portfolio Page (curation strategy, editorial grid, hover interactions, performance)
+  - Chapter 2: Case Study Page (narrative structure, storytelling, media sequencing, outcomes)
+  - Chapter 3: Services Page (outcome-focused, pillar structure, industry solutions, white-label)
+  - Chapter 4: About Page (founder perspective, creative principles, behind-the-scenes, authenticity)
+  - Chapter 5: Agency Partnership (White-Label) Page (audience-specific, partnership models, confidentiality)
+  - Chapter 6: Book a Call / Contact Page (Calendly integration, minimal forms, confirmation flows)
+  - Chapter 7: Navigation & Utility System (primary nav, mobile menu, 404 page, footer, microcopy)
+
+- **Key Specifications Captured:**
+  - Portfolio: 3–4 flagship projects + editorial grid; hover previews; quality-based ordering
+  - Case Study: Documentary storytelling (Why → How → What → Changed); authentic outcomes
+  - Services: Pillar-based architecture (Brand Films, Commercial, Social, White-Label); problem → solution → outcome
+  - About: Founder visibility (not autobiography); four creative principles; authentic visuals
+  - Agency: Confidentiality-first; partnership models; never competes for client relationships
+  - Contact: Calendly primary; minimal form (Name, Company, Email, Project Type, Description); reassuring confirmation
+  - Navigation: Flat structure; sticky with blur on scroll; full-screen mobile menu; hero CTA always visible
+
+- **CLAUDE.md Updated:** Individual Page Blueprints section now comprehensive with all page specifications
+
+- **Total Progress:** 4 of ~10 volumes complete (38 chapters integrated)
+  - Volume I: Brand DNA (14 chapters)
+  - Volume II: Visual Language (7 chapters)
+  - Volume III: Page Architecture (10 chapters)
+  - Volume IV: Individual Page Blueprints (7 chapters)
+
+- **Next:** 
+  - Receive Volumes V–IX from user
+  - Volume V likely covers: Component Library & Design System
+  - Receive 2 PDF context documents
+  - Begin full-site wireframing and development planning
+
+---
+
 ## Entry Template
 When adding new entries, use this format:
 

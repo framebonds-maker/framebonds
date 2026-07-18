@@ -202,20 +202,99 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 
 ---
 
+## Individual Page Blueprints (Volume IV: Individual Page Blueprints)
+
+### Portfolio Page
+**Key Specifications:**
+- Hero: Quiet introduction (single exceptional still or slow-motion shot, not showreel)
+- Featured projects: 3–4 flagship projects receiving largest visual space
+- Filters: Simple (All, Retail, Fitness, Hospitality, Real Estate, Commercial, White-Label)
+- Grid: Editorial layout (varying sizes; strongest work = largest canvas)
+- Portfolio cards: Thumbnail/looping preview, title, industry, year only
+- Hover: Video plays silently, subtle zoom, soft elevation, cursor changes
+- Ordering: By quality + strategic industries (NOT alphabetical)
+- White-Label projects: Labeled transparently (confidentiality respected)
+- Performance: Aggressive optimization (lazy loading, responsive images, efficient video)
+
+### Case Study Page
+**Key Specifications:**
+- Structure: Hero → Overview → Client → Challenge → Strategy → Production → Post → Deliverables → Gallery → Results → Testimonial → Related Projects → CTA
+- Storytelling: Why? → How? → What? → What changed?
+- Visual rhythm: Alternate large visuals, short explanations, media, whitespace
+- Copy style: Documentary tone (not marketing); specific observations over adjectives
+- Media gallery: Editorial layout (landscape, portrait, full-width, split layouts)
+- Results: Measurable outcomes only (not fabricated metrics)
+- Navigation: Previous/Next project, Back to Portfolio (no dead ends)
+
+### Services Page
+**Key Specifications:**
+- Structure: Hero → Philosophy → Service Categories (Pillar-based) → Industry Solutions → White-Label → Process → FAQ → Case Studies → CTA
+- Pillar approach: Brand Films, Commercial Content, Social Media Content, White-Label Production
+- Copy framework: Problem → Solution → Outcome (not technical specs)
+- Industry fit: Fashion & Retail, Hospitality, Fitness, Real Estate, Marketing Agencies
+- White-Label section: Dedicated, detailed, positioned as strategic service
+- Deliverables: Shown visually (not long lists)
+- Pricing: Value-focused (not detailed price lists; encourage conversations)
+
+### About Page
+**Key Specifications:**
+- Structure: Hero → Why FrameBonds Exists → Founder's Perspective → Creative Principles → How We Work → Behind the Scenes → Partners & Collaborators → Looking Ahead → CTA
+- Tone: Calm, reflective, confident (not boastful or corporate)
+- Founder focus: Philosophy + standards (not autobiography)
+- Creative principles: Four key principles (Purpose Before Production, Details Build Perception, Consistency Creates Trust, Relationships Over Transactions)
+- Behind-the-scenes: Authentic production photos (real setups, real people, real moments)
+- Visuals: Editorial layout, large photography, generous whitespace
+- Timeline: Only meaningful milestones (not exhaustive company history)
+
+### Agency Partnership (White-Label) Page
+**Key Specifications:**
+- Audience: Marketing agencies, branding agencies, freelancers (NOT direct clients)
+- Core message: "Your Production Team—Without Expanding Your Payroll"
+- Sections: Hero → Who This Is For → Why Agencies Partner → Partnership Models → How It Works → Confidentiality Promise → Communication → Deliverables → Capacity → FAQ → Agency Testimonials → CTA
+- Partnership models: Production Only, Editing Only, End-to-End Production, Monthly Partnership
+- Workflow: Agency Brief → Planning → Production → Editing → Agency Review → Client Delivery (clear, simple)
+- Confidentiality: Heavily emphasized (no client stealing, NDAs respected)
+- Tone: Collaborative, not competitive; partnership proposal, not vendor pitch
+
+### Book a Call / Contact Page
+**Key Specifications:**
+- Hero: Simple, welcoming headline ("Let's Create Something Exceptional")
+- Meeting expectations: Clear explanation of what happens during discovery call
+- Primary action: Calendly integration (Discovery Call, Agency Partnership Call, Existing Client Meeting)
+- Inquiry form: Minimal fields (Name, Company, Email, Phone optional, Business Type, Project Type, Message)
+- Alternative contact: Email, Phone, WhatsApp, Instagram, LinkedIn (with response expectations)
+- FAQ: Common concerns (timeline, travel, agencies, recurring shoots, pricing)
+- Confirmation: Reassuring message explaining next steps
+- Mobile: Large fields, sticky CTA, easy calendar interaction
+
+### Navigation & Utility System
+**Primary Navigation:** Home, Portfolio, Services, Agency Partnership, About, Contact
+- **CTA Always Visible:** Book a Call button
+- **Sticky Behavior:** Transparent initially; background + blur on scroll; logo + CTA always accessible
+- **Mobile:** Full-screen menu, large typography, generous spacing
+- **Breadcrumbs:** Only where hierarchy exists (Portfolio → Case Study)
+- **404 Page:** Intentional (not generic); Headline: "Looks Like This Story Hasn't Been Written Yet"
+- **Thank You Page:** Timeline of next steps (Today → Review → Within 1 Business Day → Reply → Call → Planning)
+- **Footer Navigation:** Company, Portfolio, Services, Agency Partnership, Resources, Legal, Contact
+- **Link Strategy:** Internal = smooth transitions; External = new tabs; Indicate external links subtly
+- **Microcopy:** Human, not robotic; all system messages should reinforce professionalism
+
+---
+
 ## Coding Conventions
-[To be defined in Volumes IV–V]
+[To be defined in Volume V]
 
 ### File Structure
-[Expected in Volume IV]
+[Expected in Volume V]
 
 ### Naming Conventions
-[Expected in Volume IV]
+[Expected in Volume V]
 
 ### Component Patterns
-[Expected in Volume IV]
+[Expected in Volume V]
 
 ### Folder Organization
-[Expected in Volume IV]
+[Expected in Volume V]
 
 ---
 
@@ -223,3 +302,6 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 - All context and business details are in the PDFs provided by the user
 - Model upgrade requested when final website building begins
 - Minimal, focused implementation — no over-engineering
+- 4 of ~10 volumes received; Volumes V–IX to follow
+- Complete homepage + individual page blueprints documented
+- Next: Component library, interactions, content strategy, technical stack
