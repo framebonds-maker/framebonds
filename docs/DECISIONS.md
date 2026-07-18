@@ -259,9 +259,51 @@ This file logs all non-trivial decisions made during the project, including the 
 **Reasoning:** Perceived performance improves; users see progress; anxiety reduces; premium experience feels faster  
 **Trade-offs:** Requires matching layout in skeleton form; additional CSS for shimmer animation; but perceived quality improves significantly  
 
+### Motion: Restraint-First Density (70/20/10)
+**Date:** 2026-07-18  
+**Context:** Most websites over-animate; FrameBonds must differentiate through restraint, matching brand philosophy of "less, but better"  
+**Decision:** Motion density target: 70% static content, 20% micro-interactions, 10% cinematic reveals; animations play once per session (not on every scroll re-entry)  
+**Reasoning:** Silence creates impact; overuse of animation cheapens premium feel; matches [[framebonds-laws-of-taste]] restraint principles from Volume I  
+**Trade-offs:** Less "wow factor" per section; requires discipline to not add animation everywhere; but overall experience feels more premium and less fatiguing  
+
+### Motion Tokens: Centralized System (Never Hardcode)
+**Date:** 2026-07-18  
+**Context:** Inconsistent animation timing across components makes a site feel unpolished even if each animation individually looks fine  
+**Decision:** 9 duration tokens (80ms–1200ms) + 4 easing curves define every animation; identical interactions (dropdown/accordion/FAQ) must share identical timing  
+**Reasoning:** Consistency is imperceptible individually but felt collectively; centralized tokens make future maintenance and design changes trivial  
+**Trade-offs:** Requires upfront token system setup before any component work; less flexibility for one-off "special" animations; but long-term consistency wins  
+
+### Page Transitions: Scene-Based Navigation (Not Page Reloads)
+**Date:** 2026-07-18  
+**Context:** Traditional page loads feel disconnected; FrameBonds wants the site to feel like one continuous cinematic experience  
+**Decision:** Every route change treated as a scene transition (700–800ms total); scroll position preserved on back navigation; hero never replays on repeat visits  
+**Reasoning:** Reinforces cinematic brand identity from Volume I; respects returning visitors' time (no forced re-watching intro animations)  
+**Trade-offs:** Requires more complex routing/transition engineering (likely Next.js App Router + Framer Motion or similar); slower to build than plain page loads; but reinforces core brand differentiation  
+
+### Signature Motion Patterns: 10 Reusable Cinematic Signatures
+**Date:** 2026-07-18  
+**Context:** Premium visual design (color/typography) can be copied; a consistent, restrained motion language is harder to replicate and becomes a brand asset  
+**Decision:** Define exactly 10 signature motion patterns (Cinematic Hero Reveal, Editorial Mask Reveal, Layered Depth Motion, etc.) and reuse them everywhere; no page gets one-off custom animations  
+**Reasoning:** Motion becomes recognizable brand identity even without logo/color; discipline of "only these 10 patterns" prevents motion sprawl as the site grows  
+**Trade-offs:** Constrains creative flexibility per page; requires all future work (including client portals/decks per Volume VI) to reuse this same motion vocabulary; but identity payoff is significant  
+
+### Video: Muted Autoplay + Poster-First (Never Forced Fullscreen)
+**Date:** 2026-07-18  
+**Context:** FrameBonds' product IS video; the player must disappear so the work is the star, and must respect browser autoplay policies  
+**Decision:** Hero/portfolio videos autoplay muted with instant poster image; hover preview only on desktop (~250ms delay, max 5–8s loop); mobile uses tap-to-play; fullscreen only on explicit user request  
+**Reasoning:** Matches "video is the product, not decoration" principle; avoids jarring forced-fullscreen UX; respects mobile bandwidth/battery  
+**Trade-offs:** Slightly less "impressive" than autoplay-with-sound or forced fullscreen; but far more professional, accessible, and performant  
+
+### Motion Governance: Newest Action Always Wins (No Animation Queuing)
+**Date:** 2026-07-18  
+**Context:** Real users interrupt animations constantly (rapid clicks, fast scrolling, quick navigation); queued animations feel laggy and unresponsive  
+**Decision:** Any new user action immediately interrupts and overrides in-progress animation; never queue multiple UI animations; every animation must be safely interruptible and resolve to a valid complete state  
+**Reasoning:** Responsiveness > choreography; a website that feels laggy under real usage undermines the entire premium motion investment  
+**Trade-offs:** More complex animation state management (must handle interruption at every step); but this is a hard requirement for the site to feel truly premium under real-world use, not just in demos  
+
 ---
 
-### Upcoming Decisions (Awaiting Volumes VI–IX)
+### Upcoming Decisions (Awaiting Volumes VII–IX)
 - Page architecture and content flow (expected in Volume III—Chapter 8)
 - Specific pages needed and their purpose
 - Content strategy and messaging tone

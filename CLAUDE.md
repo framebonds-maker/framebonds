@@ -389,20 +389,89 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 
 ---
 
+## Motion, Interactions & Cinematic Experience (Volume VI)
+
+### Motion Philosophy
+- Motion communicates (hierarchy, spatial relationships, interaction confirmation) — never decoration
+- Personality: Calm, intentional, confident, elegant, controlled (never energetic/playful/hyperactive)
+- Three-level hierarchy: Micro Motion (100–180ms: hover, focus) → Interface Motion (200–350ms: cards, modals) → Cinematic Motion (500–1000ms: hero, page transitions, reserved/rare)
+- Motion density: 70% static content, 20% micro-interactions, 10% cinematic — silence creates impact
+- Movement distance: 8–32px only (small = refined; large = theatrical)
+- Rotation: Almost never (only chevrons/tiny loaders)
+- Animations play once (not every viewport re-entry); `prefers-reduced-motion` always respected
+
+### Timing, Easing & Motion Tokens
+**Duration tokens:** Instant (80ms) → Very Fast (120ms) → Fast (180ms) → Normal (250ms) → Medium (350ms) → Slow (500ms) → Cinematic (700ms) → Feature (900ms) → Immersive (1200ms)
+**Easing:** Standard UI = `cubic-bezier(0.22,1,0.36,1)`; Entrance = `cubic-bezier(0.16,1,0.3,1)`; Exit = `cubic-bezier(0.4,0,1,1)`; Linear only for loaders
+**Stagger:** 40–80ms between items; max 100ms; entire grid completes within 600ms
+**Rule:** Never hardcode durations — always reference motion tokens; identical actions (dropdown/accordion/FAQ) share identical timing
+
+### Page Transitions & Route Navigation
+- Every route change = scene change (not page reload); preserve spatial continuity and scroll orientation
+- Sequence: Click → Feedback → Exit (300–350ms) → New Route → Entry (450–500ms) → Scroll Restoration → Interactive
+- Total transition: 700–800ms max (never exceed 1 second)
+- Shared element transitions only when meaningful (Portfolio thumbnail → Case Study hero)
+- Scroll position restored on browser back; scroll-to-top on new page navigation
+- Hero never replays on repeat visits/refresh — returning visitors get speed, not spectacle
+
+### Scroll Behavior & Reveal Animations
+- Scroll = storytelling mechanism; content reveals exactly when relevant (trigger ~15–25% into viewport)
+- Section reveal: 500–700ms total; heading → paragraph → CTA → media in sequence
+- Animate once per session (not on scroll-back) except small interactive/live components
+- Parallax: subtle only (0.8×–1.1× speed differential), backgrounds/decoration only — never primary text/buttons/nav
+- Sticky sections: max 1–2 viewport heights; never trap visitors
+- Horizontal scroll: extremely rare (major showcase only); always provide escape to vertical scroll
+
+### Micro Interactions & Hover States
+- Every interaction gets feedback; feedback is immediate but understated
+- Button hover: scale 100%→101–102%, 120–180ms; Button press: 100%→99%→100%, 120ms
+- Card hover: 4–8px lift + subtle shadow + slight image scale (unified motion, not sequential)
+- Portfolio card hover is richest: image scale to 102%, overlay, title emphasis, CTA appears
+- Links: animated underline (left origin, 150ms) preferred over color-only change
+- No custom/oversized cursors unless flawlessly implemented; mobile = touch feedback (no hover simulation)
+- No interface sounds — ever
+
+### Media Playback & Video Interactions
+- Video is the product, not supporting content — player should disappear behind the film
+- Hero video: muted autoplay, poster image instant, no visible controls initially, inline only (never forced fullscreen)
+- Portfolio hover preview (desktop only): begins ~250ms after hover, muted loop, max 5–8 seconds, resets on hover-end
+- Mobile: poster → tap → playback (no hover simulation)
+- Fullscreen: smooth fade, maintains playback position, returns to prior scroll on exit
+- Lazy load videos (viewport-triggered only); never preload entire portfolio simultaneously
+- Every video requires high-quality poster frame (never black/loading frames)
+
+### Signature Cinematic Motion Patterns
+**10 Reusable Signature Patterns:** Cinematic Hero Reveal, Editorial Mask Reveal, Layered Depth Motion, Ambient Background Motion, Signature Image Transition, Premium Text Reveal, Sequential Storytelling, Scene Transition, Filmstrip Motion, Signature Exit
+- Hero reveal sequence: Background(0ms) → Nav(40ms) → Headline(120ms) → Text(200ms) → CTA(260ms) → Media(320ms), total 900–1000ms
+- Editorial mask reveal: text slides up from behind mask, 16–24px movement — reserved for major headings only (not body text)
+- Layered depth: Foreground 1.00× / Content 0.98× / Background 0.94× / Texture 0.90× — felt, not seen
+- These patterns must become brand identity: recognizable even without logo/color/typography
+
+### Motion Governance & Edge Cases
+- Newest user action always interrupts/overrides in-progress animation (never queue)
+- Duplicate-click prevention on all submit/booking actions ("Processing..." state)
+- State priority hierarchy: Disabled > Loading > Active > Focused > Hovered > Default
+- Tab-inactive: pause ambient motion/video; resume naturally on return (no replay of entrance sequences)
+- Reduced motion removes: mask reveals, parallax, layered depth, large translation — replaced with simple opacity/instant transitions
+- Every animation interruptible; must resolve to valid complete state (never left half-transitioned)
+- QA required across: mouse, keyboard, touch, slow CPU/network, reduced motion, all screen sizes
+
+---
+
 ## Coding Conventions
-[To be defined in Volumes VI-IX]
+[To be defined in Volumes VII-IX]
 
 ### File Structure
-[Expected in Volume VI]
+[Expected in Volume VIII — Technical Stack]
 
 ### Naming Conventions
-[Expected in Volume VI]
+[Expected in Volume VIII — Technical Stack]
 
 ### Component Patterns
-[Expected in Volume VI]
+[Expected in Volume VIII — Technical Stack]
 
 ### Folder Organization
-[Expected in Volume VI]
+[Expected in Volume VIII — Technical Stack]
 
 ---
 
@@ -410,6 +479,6 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 - All context and business details are in the PDFs provided by the user
 - Model upgrade requested when final website building begins
 - Minimal, focused implementation — no over-engineering
-- 4 of ~10 volumes received; Volumes V–IX to follow
-- Complete homepage + individual page blueprints documented
-- Next: Component library, interactions, content strategy, technical stack
+- 6 of ~10 volumes received; Volumes VII–IX to follow (Content Strategy, Technical Stack, Analytics/Deployment)
+- Complete brand, design system, page architecture, component library, and motion system documented
+- Next: Content strategy/copywriting, technical stack, analytics/deployment
