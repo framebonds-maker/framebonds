@@ -6,6 +6,8 @@ import { Section } from '@/components/layout/Section'
 
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
 const Home = lazy(() => import('@/pages/Home'))
+const Portfolio = lazy(() => import('@/pages/Portfolio'))
+const CaseStudy = lazy(() => import('@/pages/CaseStudy'))
 
 /** Temporary stand-in while remaining pages are built out phase by phase. */
 function ComingSoon({ name }: { name: string }) {
@@ -26,8 +28,8 @@ function App() {
         <Route path="/styleguide" element={<Styleguide />} />
         <Route element={<PageLayout />}>
           <Route index element={<Home />} />
-          <Route path="work" element={<ComingSoon name="Selected Work" />} />
-          <Route path="work/:slug" element={<ComingSoon name="Case Study" />} />
+          <Route path="work" element={<Portfolio />} />
+          <Route path="work/:slug" element={<CaseStudy />} />
           <Route path="services" element={<ComingSoon name="Services" />} />
           <Route path="agency-partners" element={<ComingSoon name="Agency Partners" />} />
           <Route path="about" element={<ComingSoon name="About" />} />
