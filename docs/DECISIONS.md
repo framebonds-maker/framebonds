@@ -406,9 +406,49 @@ This file logs all non-trivial decisions made during the project, including the 
 **Reasoning:** Keeps analytics swappable/maintainable long-term; "if no decision exists, don't track it" prevents analytics bloat; aligns with Volume I's trust-first brand philosophy — visitors shouldn't feel surveilled  
 **Trade-offs:** Requires upfront architecture investment in the analytics service layer before any tracking code is written; team must resist the temptation to "just track everything" for later analysis  
 
+### Implementation Order: Homepage First, Systems Before Pages
+**Date:** 2026-07-18  
+**Context:** Naive implementation approaches build page-by-page; FrameBonds explicitly rejects this in favor of system-first development  
+**Decision:** Build order locked as: Project Foundation → Design System (every component) → Core Layout → **Homepage first** (establishes typography/spacing/motion/content patterns as the reference) → Services → Portfolio → About → Agency Partners → Contact → Book Call → 404 → then dedicated Portfolio System engineering → Forms/Integrations → Optimization → Testing → Launch  
+**Reasoning:** "Build foundations before features" — homepage-first isn't arbitrary, it's because homepage exercises every component/pattern the rest of the site reuses, making it the design reference; building pages before the design system creates one-off inconsistent styling that has to be retrofitted later  
+**Trade-offs:** Slower to show visible page-by-page progress early on (stakeholders may want to see "pages" faster); requires discipline to resist skipping ahead to a page before its underlying components/systems are ready  
+
+### CMS: Headless Architecture (Provider Not Yet Chosen)
+**Date:** 2026-07-18  
+**Context:** Volume VIII left server-state/CMS as an open question ("TanStack Query only if server state exists"); Volume IX resolves the architectural approach but not the specific product  
+**Decision:** Headless CMS confirmed as the architecture (Editor → CMS → Content API → React App); 15 content models defined (Homepage, Services, Portfolio Projects, Case Studies, Testimonials, Clients, Team, FAQs, Blog, Agency Partners, Global Settings, Navigation, Footer, SEO Metadata, Media Library) — but no specific CMS product (Sanity/Contentful/Payload/etc.) has been named  
+**Reasoning:** Headless keeps frontend/CMS independently deployable and matches the "API-first, vendor-independent" governance principle from Chapter 5; content relationships (not duplication) keep the model maintainable as portfolio grows  
+**Trade-offs:** This is a genuine open decision still needed before Phase 1 can fully start — the specific CMS choice affects hosting, API design, and even some component data-fetching patterns; flagged as an outstanding question for the user  
+
+### AI Integration: Assistant, Never Replacement for Creative Judgment
+**Date:** 2026-07-18  
+**Context:** Given Claude itself is building this platform, it's notable that the spec explicitly constrains future AI usage within the product  
+**Decision:** AI features (auto-captions, project summaries, SEO suggestions, proposal drafting) are architected behind an AI Service Layer with versioned/documented prompts and replaceable providers — but AI must always assist human creative judgment, never replace or dictate it  
+**Reasoning:** Directly extends Volume I's brand philosophy ("judgment cannot be downloaded," "we are paid to think") into the technical architecture — even future AI-powered features must reinforce, not undermine, FrameBonds' core value proposition of human creative expertise  
+**Trade-offs:** Limits how aggressively AI automation can be marketed as a differentiator internally; any future AI feature proposal must pass this philosophical test before implementation, which may slow adoption of otherwise-useful automation  
+
+### Governance: Architecture Decision Records (ADRs) Required Going Forward
+**Date:** 2026-07-18  
+**Context:** Long-lived platforms lose institutional knowledge when decisions aren't documented at the time they're made  
+**Decision:** Every major architectural decision from this point forward must be recorded as an ADR (Problem → Context → Decision → Alternatives → Consequences → Date)  
+**Reasoning:** Prevents the common failure mode where "why did we do it this way?" becomes unanswerable after team/developer turnover; matches the "documentation is part of the product" manifesto principle  
+**Trade-offs:** Adds process overhead to architectural decisions; requires discipline to actually write ADRs rather than skipping them under time pressure — worth revisiting whether this project's scale genuinely warrants formal ADRs vs. lighter-weight decision logging (arguably this DECISIONS.md file is already serving that purpose)  
+
+### The Engineering Manifesto: 15 Principles Override Future Spec Conflicts
+**Date:** 2026-07-18  
+**Context:** The user explicitly designed the Epilogue to outlive the specific technical specification — frameworks and tools will change, but the manifesto should not  
+**Decision:** Adopt the 15-principle Engineering Manifesto (see [[framebonds-technical-architecture]] CLAUDE.md section) as the permanent tiebreaker for any future ambiguous or conflicting decision — explicitly including "simplicity is luxury," "motion must have meaning," "content is the product," and "launch is the beginning, not success"  
+**Reasoning:** This is the user's own explicit design — the manifesto is meant to be the constitution that survives technology changes (React could be replaced someday; "build for humans first" should not)  
+**Trade-offs:** None significant — this is a philosophy-alignment tool, not a technical constraint; the main risk is simply forgetting to consult it during future feature debates, so it's worth resurfacing this in memory for future sessions  
+
 ---
 
-### Upcoming Decisions (Awaiting Volume IX — confirmed final volume)
+### SPECIFICATION STATUS: 100% COMPLETE (all 9 volumes received and integrated)
+
+### Outstanding Items Before Implementation Can Begin
+1. **The 2 PDF business/context documents** — mentioned in the original Day 1 brief, never received. No volume has provided real FrameBonds-specific business details (actual founder name/bio, real client names, actual logo/exact brand hex codes, real portfolio video examples) — these are presumably in the PDFs.
+2. **The model-upgrade conversation** — the user explicitly asked to be prompted for this before real implementation begins; the spec being complete means this moment has arrived.
+3. **Concrete CMS provider + hosting platform choice** — Volume IX confirmed "headless CMS" as the architecture but did not name a specific product (Sanity, Contentful, Payload CMS, etc.) or hosting platform (Vercel, Netlify, etc.).
 - Page architecture and content flow (expected in Volume III—Chapter 8)
 - Specific pages needed and their purpose
 - Content strategy and messaging tone

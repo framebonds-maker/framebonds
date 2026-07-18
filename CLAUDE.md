@@ -639,6 +639,80 @@ Local State (useState, default choice — modals/accordions/tabs/hover) → Shar
 
 ---
 
+## Implementation Roadmap, Future Scalability & Product Evolution (Volume IX — FINAL VOLUME)
+
+### Implementation Roadmap & Execution Strategy
+**10-Phase build order (foundations before features, systems before pages):**
+1. Project Foundation (repo, TS, Tailwind, Framer Motion, routing, CI, env setup — no UI work begins before this is done)
+2. Design System (every reusable component built + documented before any page-specific styling)
+3. Core Layout (header, footer, page shell, responsive containers, error boundaries, SEO provider)
+4. Core Pages — build order: **Homepage → Services → Portfolio → About → Agency Partners → Contact → Book Discovery Call → 404** (homepage first — it establishes typography/spacing/motion/content patterns as the reference for everything else)
+5. Portfolio System (dedicated engineering attention — the strongest conversion asset)
+6. Forms & Integrations (contact, booking, validation, email, uploads, analytics)
+7. Optimization (performance, a11y, SEO, animation polish — quality not functionality)
+8. Testing (unit, integration, a11y audit, cross-browser, regression, manual review)
+9. Launch (production build, analytics/monitoring live, SEO verified, security headers, final QA)
+10. Continuous Improvement (Observe → Measure → Improve → Ship → Repeat, ongoing post-launch)
+
+- Per-page build sequence: Structure → Layout → Typography → Components → Responsive → Accessibility → Motion → SEO → Optimization → Testing (never animate unfinished layouts)
+- Git workflow: `main` → `develop` → feature branches → PR → review → merge (never develop directly on main)
+- "Definition of Done": Implemented → Responsive → Accessible → Tested → Reviewed → Documented → Performance verified → Merged (coding alone ≠ completion)
+- 8 Development Milestones: Architecture → Design System → Homepage → Core Pages → Portfolio → Interactions → Production-Ready → Launch
+
+### CMS, Admin Architecture & Content Operations
+- **Headless CMS architecture**: Editor → CMS → Content API → React App → Rendered Website (CMS never dictates design/layout, only structured content)
+- **Primary content models**: Homepage, Services, Portfolio Projects, Case Studies, Testimonials, Clients, Team Members, FAQs, Blog Articles, Agency Partners, Global Settings, Navigation, Footer, SEO Metadata, Media Library
+- Content relationships replace duplication (Project → Related Service → Related Client → Related Case Study → Related Testimonials)
+- Publishing workflow: Draft → Review → Approved → Published → Archived; role-based permissions (Administrator/Content Manager/Editor/Writer/Media Manager/Reviewer/Viewer)
+- Version history + rollback capability required; autosave to prevent data loss
+- Localization-ready from day one even though initially English-only
+- SEO validation blocks publishing without: title, meta description, canonical URL, featured image, alt text
+
+### Scalability, Future Features & Product Evolution
+- **Evolution layers**: Portfolio Website → Lead Generation Platform → Agency Operations Platform → Client Portal → Automation Platform → Creative Management System → Digital Product Ecosystem
+- Modular architecture: every major feature (Portfolio, Service, Blog, CMS, Booking, Client, Analytics, Media) independently developable/deployable/replaceable/testable
+- Future business models to architect for (not build now): white-label production, subscription content, course platform, digital products/marketplace, creative community, SaaS tools
+- CRM integration via abstraction layer (Application → CRM Service → CRM Provider) so switching CRM providers never requires business logic rewrites
+- AI philosophy: "AI should assist humans, not replace creative judgment" — AI Service Layer with versioned/documented prompts, replaceable providers
+- Future: client dashboards, multi-brand/white-label platform support, internationalization (currency/timezone/locale), payment integration, plugin architecture
+
+### Operational Workflows & Business Systems
+- Full client lifecycle: Lead → Qualified → Discovery → Proposal → Closed → Onboarding → Production → Delivery → Retention → Referral
+- Sales pipeline: New Lead → Contacted → Meeting Scheduled → Discovery Complete → Proposal Sent → Negotiation → Won/Lost (every lead has exactly ONE owner)
+- Production workflow: Planning → Shot List → Scheduling → Production → Media Backup → Editing → Quality Review → Client Review → Final Delivery
+- Backup discipline: Primary storage → Secondary backup → Cloud backup (three copies minimum)
+- Internal vs. client-visible notes always kept separate (internal discussion should never leak to clients)
+- SOP library required for: Sales, Onboarding, Production, Editing, QA, Delivery — every recurring process documented, not memory-dependent
+
+### Long-Term Governance & 10-Year Vision
+- **10-year evolution**: Premium Portfolio → Creative Agency Platform → Production Operations System → Creative Technology Platform → Global Creative Ecosystem
+- Review cadence: Component quality (monthly) → Architecture (quarterly) → Complete platform audit (annually)
+- Dependency updates: security patches immediately, minor updates monthly, major upgrades quarterly/strategic
+- Architecture Decision Records (ADRs) required for major decisions: Problem → Context → Decision → Alternatives → Consequences → Date
+- Vendor independence prioritized (avoid lock-in to any single hosting/CMS/analytics/email provider)
+- Platform must always remain: Simple, Fast, Elegant, Reliable, Accessible, Premium — no future feature may violate these regardless of business growth
+
+### The FrameBonds Engineering Manifesto (Timeless Principles — Override Any Future Spec Conflict)
+1. Build experiences, not pages (cinematic storytelling, not browsing)
+2. Simplicity is luxury (restraint over excess — everything must justify its existence)
+3. Motion must have meaning (communication, not decoration)
+4. Performance is part of design (not an afterthought engineering task)
+5. Accessibility is premium (craftsmanship, not compliance)
+6. Components are products (predictable, documented, tested, future-proof)
+7. Systems over shortcuts (temporary hacks become permanent architecture)
+8. Content is the product (design supports content, never competes with it)
+9. Consistency creates trust (predictable interactions → confidence → business)
+10. Every pixel has a job (nothing exists purely for decoration)
+11. Every millisecond matters (speed = perceived competence)
+12. Build for humans first (before algorithms/SEO/AI/analytics)
+13. Documentation is part of the product (knowledge must outlive any one developer)
+14. Quality compounds (small consistent improvements > occasional big redesigns)
+15. Launch is the beginning, not success (learning is success — the site never becomes "finished")
+
+**Engineering Commandments (priority order when in doubt):** Clarity > cleverness | Maintainability > speed of implementation | Performance > unnecessary effects | Accessibility > visual shortcuts | Systems > one-off solutions | Reusability > duplication | Documentation > assumptions | Measurement > intuition | Consistency > novelty | Long-term value > short-term convenience
+
+---
+
 ## Coding Conventions
 
 ### File Structure
@@ -656,10 +730,11 @@ Self-contained component folders (component + types + test + stories + index per
 ---
 
 ## Important Notes
-- All context and business details are in the PDFs provided by the user
-- Model upgrade requested when final website building begins
+- **THE FULL 9-VOLUME SPECIFICATION IS NOW COMPLETE** (72 → 78 chapters + Epilogue, confirmed complete by the user's own closing statement)
+- All context and business details are in the PDFs provided by the user — **still not yet received**
+- **Model upgrade requested when final website building begins — this moment has now arrived per the spec being complete; still need to have this conversation with the user before writing implementation code**
 - Minimal, focused implementation — no over-engineering
-- 8 of ~10 volumes received; Volume IX confirmed next and final (Implementation Roadmap, Future Scalability & Product Evolution)
-- Complete brand, design system, page architecture, component library, motion system, content strategy, and full engineering/technical specification documented
-- Tech stack now locked: React + TypeScript + Vite + Tailwind + Framer Motion + React Router + React Hook Form + Zod + TanStack Query
-- Next: Phased implementation plan, launch checklist, CMS evolution, future roadmap — likely the final volume before actual build begins
+- Tech stack locked: React + TypeScript + Vite + Tailwind + Framer Motion + React Router + React Hook Form + Zod + TanStack Query + React Helmet Async
+- CMS approach confirmed: headless CMS (specific provider not yet named — still an open question)
+- Build order confirmed: Foundation → Design System → Core Layout → Homepage first, then Services/Portfolio/About/Agency/Contact/Book Call/404 → Portfolio System → Forms → Optimization → Testing → Launch
+- Next: receive the 2 PDFs, resolve the model-upgrade conversation, confirm concrete CMS/hosting provider choice, then begin Phase 1 (Project Foundation)
