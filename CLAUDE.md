@@ -458,20 +458,98 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 
 ---
 
+## Content Strategy, Copywriting & Brand Voice (Volume VII)
+
+### Brand Voice & Tone
+- Personality: Calm, observant, professional, creative, reliable, curious, precise — never arrogant, desperate, or overly casual
+- Core principle: Write to build confidence, not excitement (confidence lasts longer)
+- Speak to the reader: "You/Your/Let's" over "We/Our/Us" — the client's business is the subject, not FrameBonds
+- Active voice preferred; contractions acceptable (warmth without losing professionalism)
+- Reading level: Grade 8–10 — sophisticated ideas, accessible language
+- Preferred vocabulary: craft, thoughtful, purposeful, story, production, editorial, partnership, intentional
+- Avoid overused words: innovative, disruptive, revolutionary, game-changing, world-class, best-in-class, elite, luxury/premium (if everything is "premium," nothing is)
+- Never promise: guaranteed growth, viral content, instant success — only promise what can actually be kept
+
+### Messaging Framework & Positioning
+- Positioning: "Creative production partner" — NOT a freelancer, gig marketplace, traditional agency, or content mill
+- Positioning ladder: FrameBonds → Creative Production Partner → Commercial Films & Branded Content → For Brands & Agencies → White-Label → Long-Term Partnership
+- Three pillars (every message reinforces at least one): Craft, Partnership, Consistency
+- Two audiences require different messaging:
+  - **Brands** care about: recognition, trust, professional image, business growth
+  - **Agencies** care about: capacity, reliability, scalability, deadlines, confidentiality, white-label execution
+- Messaging hierarchy (never reverse): Problem → Understanding → Solution → Benefits → Evidence → CTA
+- Sell outcomes, never equipment/features (e.g., "professional editing" → "content that reinforces your brand")
+- Compete on reliability/craft/partnership — never compete on price or become "the cheapest option"
+
+### Homepage Copy Architecture
+- Narrative structure: Attention → Understanding → Credibility → Proof → Process → Trust → Action
+- Hero headline states the outcome, not the service (avoid "Welcome to FrameBonds")
+- Hero supporting copy: ~35–60 words, answers "How?"
+- Section order fixed: Hero → Value Prop → Social Proof → Portfolio → Services → Process → Why FrameBonds → Testimonials → FAQ → Final CTA
+- Each section must answer the question the previous section created (creates natural progression)
+- Copy density: Headline → Paragraph → Visual → Whitespace → repeat (never walls of text)
+
+### Service Page Copywriting
+- Structure: Hero → Problem → Solution → Benefits → Portfolio → Process → Why FrameBonds → FAQ → CTA
+- Benefits framework: Title → Explanation → Business Outcome (never just feature lists)
+- Include "Who this is for" (self-qualification) and optionally "Who this isn't for" (increases trust)
+- White-label messaging: "Your Production Team. Invisible to Your Clients." — frame as partnership/extension of team, never "outsourcing"
+- Target length: 800–1,500 words; every paragraph must serve a purpose
+- Objection-handling built into copy (revisions, deadlines, confidentiality, "what if I don't know what I need")
+
+### Portfolio & Case Study Storytelling
+- Core principle: "Don't showcase projects. Showcase decisions." — the thinking matters as much as the result
+- Case study structure: Hero → Overview → Challenge → Creative Approach → Production → Final Film → Gallery → Results → Client Quote → Related Projects → CTA
+- Storytelling formula: Challenge → Strategy → Production → Delivery → Reflection
+- Project naming: editorial names (e.g., "Ethnix by Raymond"), never internal filenames ("Client Final V3")
+- Visual balance: ~40% visuals, 60% narrative in case studies
+- Agency/white-label case studies: anonymized when confidentiality requires ("National Marketing Agency — Confidential White-Label Production")
+- Never invent metrics; if no quantitative data exists, focus on production outcomes instead
+
+### About Page & Trust Building
+- Core principle: "Build trust before asking for trust" — page is a credibility story, not a biography
+- Structure: Hero → Our Purpose → Our Story → Philosophy → How We Work → Values (max 5) → Team → Why Clients Trust Us → CTA
+- Purpose comes before history (why FrameBonds exists, not when it was founded)
+- Story structure: Observation → Problem → Decision → Today (~250–400 words)
+- Values demonstrated through actions/examples, never just listed as adjectives
+- Team bios: who they are → what they specialize in → how they think creatively (short, human, not corporate)
+- Founder present but never the hero — client remains the hero throughout
+
+### Microcopy & Conversion Writing
+- Every micro-interaction answers: What's happening? What should I do? What happens next?
+- CTA style: action + outcome language ("Book a Discovery Call," "Send Inquiry") — never "Click Here," "Submit," "Learn More"
+- Form philosophy: conversational, not administrative; labels always clear; placeholders show examples, not repeat labels
+- Validation/errors: explain, never blame ("Please enter a valid email" not "Invalid Input"); no technical error codes shown to users
+- Tone matrix by situation: Hero CTA=Confident, Form=Helpful, Error=Calm, Success=Reassuring, Loading=Neutral, Empty State=Encouraging, 404=Respectful, Contact=Welcoming
+- 404 page: professional, never jokes ("This page couldn't be found" + Return Home / View Portfolio)
+
+### SEO Content Strategy & Editorial Governance
+- Philosophy: "Write for people. Structure for search engines." — best SEO strategy is an excellent content strategy
+- Three pillars: Authority, Relevance, Consistency (not volume — fewer excellent pages > many average ones)
+- Each page targets ONE primary search intent/keyword; never target everything on one page
+- Recommended structure: industry landing pages (e.g., "Video Production for Restaurants"), dedicated White-Label SEO pages
+- Blog exists to educate (not generate random traffic); categories: Production Insights, Behind the Scenes, Creative Strategy, Agency Growth
+- Metadata required on every page: unique title (50–60 chars), meta description (140–160 chars), OG tags, canonical URL
+- Image/video SEO: descriptive filenames + alt text (never "IMG_3847.jpg")
+- AI-assisted writing allowed for research/drafting/editing — but human review mandatory before publishing; AI never replaces original thinking or real project experience
+- Content governance: every new page defines purpose, audience, primary/secondary keywords, internal links, CTA, owner, review date
+
+---
+
 ## Coding Conventions
-[To be defined in Volumes VII-IX]
+[To be defined in Volumes VIII-IX]
 
 ### File Structure
-[Expected in Volume VIII — Technical Stack]
+[Expected in Volume VIII — Technical Architecture]
 
 ### Naming Conventions
-[Expected in Volume VIII — Technical Stack]
+[Expected in Volume VIII — Technical Architecture]
 
 ### Component Patterns
-[Expected in Volume VIII — Technical Stack]
+[Expected in Volume VIII — Technical Architecture]
 
 ### Folder Organization
-[Expected in Volume VIII — Technical Stack]
+[Expected in Volume VIII — Technical Architecture]
 
 ---
 
@@ -479,6 +557,7 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 - All context and business details are in the PDFs provided by the user
 - Model upgrade requested when final website building begins
 - Minimal, focused implementation — no over-engineering
-- 6 of ~10 volumes received; Volumes VII–IX to follow (Content Strategy, Technical Stack, Analytics/Deployment)
-- Complete brand, design system, page architecture, component library, and motion system documented
+- 7 of ~10 volumes received; Volume VIII confirmed next (Technical Architecture, Performance & Engineering Standards)
+- Complete brand, design system, page architecture, component library, motion system, and content strategy/copywriting documented
+- Next: React architecture, TypeScript conventions, folder structure, state management, API design, performance budgets, security, deployment, testing, analytics, CI/CD
 - Next: Content strategy/copywriting, technical stack, analytics/deployment

@@ -214,6 +214,43 @@
 
 ---
 
+## [2026-07-18] Volume VII — Content Strategy, Copywriting & Brand Voice Complete
+- **Received:**
+  - 8 comprehensive chapters defining the complete verbal identity of FrameBonds
+  - Chapter 1: Brand Voice, Tone & Communication Principles (calm/confident personality, vocabulary rules)
+  - Chapter 2: Messaging Framework, Positioning & Value Proposition (positioning ladder, audience segmentation)
+  - Chapter 3: Homepage Copy Architecture & Storytelling Framework (narrative structure, section-by-section copy)
+  - Chapter 4: Service Pages, White-Label Messaging & Conversion Copy (problem/solution/benefit framework)
+  - Chapter 5: Portfolio, Case Studies & Project Storytelling ("showcase decisions, not just projects")
+  - Chapter 6: About Page, Company Story & Trust Building (purpose before history, values through action)
+  - Chapter 7: Calls-to-Action, Microcopy & Conversion Writing (full microcopy system, tone matrix)
+  - Chapter 8: SEO Content Strategy, Editorial Standards & Long-Term Content Governance
+
+- **Key Content Specifications Captured:**
+  - Voice: Calm/confident/human personality; "You/Your" over "We/Our"; grade 8–10 readability
+  - Positioning: "Creative production partner" (not agency/freelancer); two distinct audiences (brands vs. agencies)
+  - Homepage: Fixed narrative structure where each section answers the question the prior section created
+  - Service pages: Problem → Solution → Benefits framework; 800–1,500 words; white-label framed as partnership
+  - Portfolio: "Showcase decisions, not projects"; editorial project naming; 40/60 visual/narrative balance
+  - About page: Credibility story (not biography); purpose before history; max 5 values, demonstrated not listed
+  - Microcopy: Full tone matrix by situation (confident/helpful/calm/reassuring/encouraging/respectful)
+  - SEO: "Write for people, structure for search engines"; authority/relevance/consistency over volume; AI-assisted drafting requires human review
+
+- **CLAUDE.md Updated:** New "Content Strategy, Copywriting & Brand Voice" section added with complete specifications
+
+- **Total Progress:** 7 of ~10 volumes complete (64 chapters integrated)
+  - 70% Complete!
+  - Volume I: Brand DNA (14 ch) | Volume II: Visual Language (7 ch) | Volume III: Page Architecture (10 ch)
+  - Volume IV: Individual Pages (7 ch) | Volume V: Component Library (10 ch) | Volume VI: Motion & Interactions (8 ch)
+  - Volume VII: Content Strategy & Copywriting (8 ch)
+
+- **Next:** 
+  - Receive Volume VIII from user — confirmed next: Technical Architecture, Performance & Engineering Standards (React, TypeScript, folder structure, state management, API design, accessibility engineering, performance budgets, security, deployment, testing, analytics, CI/CD)
+  - Receive 2 PDF context documents (still outstanding)
+  - This is likely the last volume before implementation can begin — watch for user's model-upgrade request per original brief
+
+---
+
 ## Entry Template
 When adding new entries, use this format:
 

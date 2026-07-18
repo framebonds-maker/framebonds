@@ -301,9 +301,58 @@ This file logs all non-trivial decisions made during the project, including the 
 **Reasoning:** Responsiveness > choreography; a website that feels laggy under real usage undermines the entire premium motion investment  
 **Trade-offs:** More complex animation state management (must handle interruption at every step); but this is a hard requirement for the site to feel truly premium under real-world use, not just in demos  
 
+### Brand Voice: "You/Your" Over "We/Our"
+**Date:** 2026-07-18  
+**Context:** Most agency copy centers itself ("We create amazing content"); FrameBonds wants the client to be the subject of every story  
+**Decision:** Prioritize second-person language ("You/Your/Let's") over first-person company language ("We/Our/Us") throughout all copy  
+**Reasoning:** Matches [[framebonds-brand-dna]] principle that the client's business — not FrameBonds — is the hero; keeps every page focused on visitor outcomes rather than company self-promotion  
+**Trade-offs:** Requires more disciplined copywriting (easy to slip into "we" habit); some sections (About page) need to balance humanizing the company while still centering the client  
+
+### Positioning: "Creative Production Partner" (Not Agency/Freelancer)
+**Date:** 2026-07-18  
+**Context:** Category positioning shapes every downstream messaging decision; being lumped in with generic "video agencies" or freelancers undercuts premium positioning  
+**Decision:** FrameBonds positions itself explicitly as a "creative production partner" — distinct from freelancers, gig marketplaces, traditional marketing agencies, and content mills  
+**Reasoning:** This is a defensible middle position between commodity freelance work and full-service agencies; supports both direct-brand and white-label/agency audiences simultaneously  
+**Trade-offs:** Requires consistent reinforcement across every page (easy for "agency" language to creep back in); may need explicit differentiation copy on the About/Services pages to clarify the distinction  
+
+### Two-Audience Messaging Split (Brands vs. Agencies)
+**Date:** 2026-07-18  
+**Context:** Brands and marketing agencies have fundamentally different priorities and language needs when evaluating a production partner  
+**Decision:** Maintain two parallel messaging tracks — Brands (recognition, trust, business growth) and Agencies (capacity, reliability, confidentiality, scalability) — reflected in distinct page sections and dedicated White-Label pages  
+**Reasoning:** A single generic message dilutes relevance for both audiences; segmentation lets each visitor immediately self-identify and see language that speaks directly to their concerns  
+**Trade-offs:** More copy to write and maintain (effectively two parallel narratives); risk of inconsistent voice between tracks if not carefully governed  
+
+### Portfolio Storytelling: "Showcase Decisions, Not Projects"
+**Date:** 2026-07-18  
+**Context:** A gallery of finished videos alone doesn't differentiate from any other production company's portfolio  
+**Decision:** Every case study must explain the creative thinking/decisions behind the work (Challenge → Strategy → Production → Delivery → Reflection), not just present the finished film  
+**Reasoning:** The reasoning behind the work is often more persuasive than the work itself — demonstrates judgment and process, which is what agencies/brands are actually buying (per Volume I: "judgment cannot be downloaded")  
+**Trade-offs:** Significantly more copywriting effort per case study (documentary-style narrative writing, not just a video embed); requires real production insight to write authentically — can't be faked or templated  
+
+### About Page: Credibility Story, Not Biography
+**Date:** 2026-07-18  
+**Context:** Most About pages are company histories that visitors don't care about; the real question visitors have is "can I trust these people?"  
+**Decision:** Structure About page around purpose/philosophy/trust-building rather than chronological company history; founder present but never positioned as the hero — client remains the hero  
+**Reasoning:** Directly extends Volume IV's About page decision ([[framebonds-page-blueprints]]) with concrete copy structure; purpose-before-history approach builds emotional connection faster than dates/milestones  
+**Trade-offs:** Requires more thoughtful, harder-to-write copy than a simple timeline; values must be demonstrated through concrete examples/actions rather than simply listed, which takes more space and editorial discipline  
+
+### Microcopy: Tone Matrix by Situation
+**Date:** 2026-07-18  
+**Context:** Small interface text (errors, loading states, confirmations) is easy to neglect but collectively shapes perceived quality  
+**Decision:** Define explicit tone-per-situation matrix (Hero CTA=Confident, Form=Helpful, Error=Calm, Success=Reassuring, 404=Respectful, etc.) that all microcopy must follow; never show technical error codes to users; never blame the user in validation messages  
+**Reasoning:** Consistency in even the smallest text reinforces the premium brand experience just as much as visual polish (mirrors Volume V/VI's "invisible governance" philosophy applied to language instead of motion)  
+**Trade-offs:** Requires a documented microcopy style guide that all future writers/developers must follow rather than writing ad-hoc error/success messages  
+
+### SEO: Content Strategy First, Keywords Second
+**Date:** 2026-07-18  
+**Context:** Keyword-first SEO writing tends to produce thin, repetitive, or awkward content that undermines the premium editorial voice established in Chapter 1  
+**Decision:** Every page/article answers a real client question first; SEO structure (metadata, headings, internal links) applied on top of genuinely useful content — never keyword-stuffed; AI-assisted drafts require mandatory human review before publishing  
+**Reasoning:** "Write for people, structure for search engines" — protects brand voice integrity while still capturing organic search value through Authority/Relevance/Consistency rather than volume  
+**Trade-offs:** Slower content production (fewer, higher-quality pages vs. mass-produced SEO pages); requires ongoing editorial governance/review cadence rather than one-time setup  
+
 ---
 
-### Upcoming Decisions (Awaiting Volumes VII–IX)
+### Upcoming Decisions (Awaiting Volume VIII–IX)
 - Page architecture and content flow (expected in Volume III—Chapter 8)
 - Specific pages needed and their purpose
 - Content strategy and messaging tone
