@@ -196,9 +196,72 @@ This file logs all non-trivial decisions made during the project, including the 
 **Reasoning:** Consistency builds trust; even error states should reinforce professionalism; visitors notice attention to detail  
 **Trade-offs:** Requires designing more pages; cannot use generic templates; but brand consistency and perceived quality improve  
 
+### Navigation: Flat Structure Over Dropdowns
+**Date:** 2026-07-18  
+**Context:** Flat navigation reduces complexity; dropdowns often hide content or overwhelm  
+**Decision:** Primary nav only (Home, Portfolio, Services, Agency, About, Contact); no dropdown menus; CTA always visible  
+**Reasoning:** Flat structure easier to scan; reduces decision fatigue; maintains premium minimalism  
+**Trade-offs:** Limited navigation options per page; may need additional pages for detailed content; but simplicity increases usability  
+
+### Buttons: Four-Level Hierarchy
+**Date:** 2026-07-18  
+**Context:** Not all actions deserve equal visual emphasis; clarity comes from hierarchy  
+**Decision:** Level 1 (Primary, filled), Level 2 (Secondary, outlined), Level 3 (Text, no styling), Level 4 (Icon, utility)  
+**Reasoning:** One dominant action per section; visitors never confused about what matters most; hierarchy prevents decision paralysis  
+**Trade-offs:** More structured than flexible; some sections may struggle with hierarchy; but clarity always wins  
+
+### Cards: Seven Reusable Types
+**Date:** 2026-07-18  
+**Context:** Consistency requires limiting card variations; unlimited customization creates chaos  
+**Decision:** Define 7 card types (Portfolio, Service, Testimonial, Case Study, Process, Statistic, Feature); reuse only these  
+**Reasoning:** Visitors instantly recognize interactions; development faster; maintenance easier; brand consistency automatic  
+**Trade-offs:** Less creative flexibility; some sections may feel constrained; but unified system is worth the trade  
+
+### Forms: Labels Always Visible
+**Date:** 2026-07-18  
+**Context:** Placeholder-only labels confuse users and harm accessibility  
+**Decision:** Labels always visible (never hide inside placeholders); minimal required fields (only genuinely necessary)  
+**Reasoning:** Improves accessibility and usability simultaneously; users understand what each field is for; form completion rates increase  
+**Trade-offs:** More vertical space required; cannot use creative floating label animations; but clarity matters more than aesthetics  
+
+### Modals: Focus Trapped + Returned
+**Date:** 2026-07-18  
+**Context:** Keyboard users need protection; focus should never become lost  
+**Decision:** Focus trapped inside modal while open; returned to triggering element on dismiss; Escape always closes  
+**Reasoning:** Keyboard accessibility improved; user orientation preserved; predictable behavior builds trust  
+**Trade-offs:** Requires focus-management JavaScript; complex modals need careful implementation; but accessibility is non-negotiable  
+
+### Social Proof: Authentic Only (No Fabrication)
+**Date:** 2026-07-18  
+**Context:** Fake testimonials destroy credibility if discovered; trust built on honesty  
+**Decision:** Only display authentic testimonials; facts-based statistics only; never invent reviews or metrics  
+**Reasoning:** Long-term trust more valuable than short-term impressive numbers; early-stage FrameBonds can start small  
+**Trade-offs:** Social proof section may be minimal initially; cannot compete with exaggerated competitors; but foundation is honest  
+
+### FAQ: Multiple Expansion Default
+**Date:** 2026-07-18  
+**Context:** Users often compare FAQ answers; forcing one-open-at-a-time creates friction  
+**Decision:** Allow multiple FAQ items to remain open simultaneously (not one-open-at-a-time)  
+**Reasoning:** Users compare information naturally; one-open feels restrictive; no space constraint on FrameBonds pages  
+**Trade-offs:** Slightly longer FAQ sections; requires more careful writing to avoid redundancy; but user experience improves  
+
+### CTA Copywriting: Describe Outcomes
+**Date:** 2026-07-18  
+**Context:** Generic button labels (Submit, Continue, Learn More) confuse users about what happens next  
+**Decision:** Every button describes the outcome (Book a Discovery Call, View Portfolio, Become a Production Partner)  
+**Reasoning:** Users know exactly what to expect; reduces hesitation; increases conversion  
+**Trade-offs:** Longer button labels; some creative brevity sacrificed; but clarity dramatically improves trust  
+
+### System Feedback: Skeleton Screens First
+**Date:** 2026-07-18  
+**Context:** Users perceive skeletons as faster than spinners (even if identical wait time)  
+**Decision:** Use skeleton screens wherever possible (showing structure before content); spinners only when structure unknown  
+**Reasoning:** Perceived performance improves; users see progress; anxiety reduces; premium experience feels faster  
+**Trade-offs:** Requires matching layout in skeleton form; additional CSS for shimmer animation; but perceived quality improves significantly  
+
 ---
 
-### Upcoming Decisions (Awaiting Volumes V–IX)
+### Upcoming Decisions (Awaiting Volumes VI–IX)
 - Page architecture and content flow (expected in Volume III—Chapter 8)
 - Specific pages needed and their purpose
 - Content strategy and messaging tone

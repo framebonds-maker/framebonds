@@ -281,20 +281,128 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 
 ---
 
+## Component Library & Design System (Volume V: Component Library & Design System)
+
+### Navigation Component
+**Specifications:**
+- Fixed positioning (transparent → soft blur on scroll)
+- Height: Desktop 72–80px, Mobile 64–72px
+- Three zones: Brand (logo) | Navigation (links) | CTA (Book a Call)
+- Primary nav: Home, Portfolio, Services, Agency Partnership, About, Contact
+- Active state: Subtle brightness + thin underline (no loud colors)
+- Mobile: Full-screen overlay menu (not hamburger dropdowns)
+- Sticky behavior: Logo + CTA always accessible
+- Keyboard: Tab navigation, Escape closes mobile menu
+
+### Button & CTA System
+**Hierarchy:**
+- Level 1 (Primary): One per section (Book a Call, Start a Project)
+- Level 2 (Secondary): Supporting actions (View Portfolio, Learn More)
+- Level 3 (Text): Simple navigation (Read More, Back)
+- Level 4 (Icon): Utility actions (play, close, etc.) — 44×44px minimum
+
+**Sizes:** Large (56px), Medium (48px default), Small (40px)
+**Styling:** No gradients; medium/semi-bold weight; sentence case; icon support
+**States:** Default, Hover (slight brightness/lift), Pressed (compress), Focus, Disabled, Loading
+**Copywriting:** Describe outcomes (not vague labels); every button answers "What happens next?"
+
+### Cards & Content Containers
+**Seven Card Types:**
+1. Portfolio Card: Media + Title + Industry (hover plays video)
+2. Service Card: Icon + Title + Problem → Solution → CTA
+3. Testimonial Card: Quote + Name + Role + Company
+4. Case Study Preview: Hero + Challenge + Solution + CTA
+5. Process Card: Number + Title + Description
+6. Statistic Card: Large number + Label + Context
+7. Feature Card: Icon + Title + Supporting paragraph
+
+**Universal Structure:** Media → Heading → Supporting Info → Action
+**Spacing:** Generous padding (24–32px); no crowding
+**Hover:** Subtle elevation + border brightening + scale (98–99% press only)
+**Responsive:** Desktop (natural width), Tablet (2-col), Mobile (stack)
+
+### Forms & Input Components
+**Components:** Text Input, Textarea, Dropdown, Radio, Checkbox, File Upload, Phone, Date Picker
+**Rules:**
+- Labels always visible (never hidden in placeholders)
+- Minimal required fields (only genuinely necessary data)
+- Validation: Early not aggressive; helpful error messages
+- Height: 48–52px for text inputs; textareas 5–6 lines visible
+- Keyboard support enabled; autocomplete enabled
+- Touch targets: 44px minimum; full-width on mobile
+
+### Modals, Drawers & Overlay Components
+**Nine Types:** Image Lightbox, Video Modal, Gallery Viewer, Confirmation Dialog, Mobile Menu, Booking Modal, Success Modal, Drawer, Full-Screen
+**Behavior:**
+- Dark translucent background (70–80% opacity)
+- Prevent background scrolling; restore on close
+- Support dismissal: Close button + Escape + Click outside
+- Focus trapped inside; returned on dismiss
+- Animation: 250–350ms fade + subtle scale
+
+### Testimonials & Social Proof Components
+**Components:** Testimonial Card, Featured Testimonial, Logo Grid, Partner Showcase, Statistics, Quote Block, Success Story, Industry Trust, Badge, Repeat Indicator
+**Rules:**
+- Only authentic testimonials (no fabrication)
+- Specific outcomes (not generic praise)
+- Logo grid: Monochrome, consistent sizing, generous spacing
+- Statistics: Factual only (no vanity metrics)
+- Placement: After proof (not before)
+
+### FAQ & Expandable Content Components
+**Eight Types:** Standard Accordion, Rich Accordion, Multi-Level, Expandable Text, Inline Expand, Timeline, Comparison, Media
+**Rules:**
+- Questions sound natural (not categories)
+- Answers conversational (not corporate)
+- Support multiple expansion (not one-at-a-time)
+- Icon: Simple chevron (180° rotation only)
+- Animation: 220–280ms smooth
+- Keyboard: Tab, Enter, Escape support
+
+### CTA & Conversion Components
+**Ten Types:** Primary Section, Secondary Block, Split Layout, Sticky, Inline, Case Study, Agency, Banner, Footer, Exit
+**Philosophy:**
+- One primary action per section
+- CTA after trust established (not before)
+- Copy describes outcomes
+- No artificial urgency (unless authentic)
+- Never trap visitors with pressure
+
+### Footer, Badges & Micro Components
+**Components:**
+- Footer: Logo + Brand statement + Navigation groups + Social + Copyright
+- Badges: Status indicators (Available, New, Featured, etc.)
+- Tags: Category organization (Retail, Fitness, etc.) — max 4 per item
+- Breadcrumbs: Only where hierarchy exists (Portfolio → Project)
+- Dividers: Whitespace first; visible lines only when clarity needs them
+- Icons: One consistent family; SVG optimized
+
+### Loaders, Skeletons & System Feedback
+**Ten Types:** Skeleton Screens, Spinner, Progress Indicators, Toast, Success, Error, Warning, Empty State, Offline, Retry
+**Philosophy:**
+- Show structure (skeleton) before content
+- Explain what's happening (not just "Loading...")
+- Guide recovery (not just "Error")
+- Every state communicates current status + next action
+- Motion: Subtle (no harsh flashes)
+- Accessibility: ARIA live regions + screen reader support
+
+---
+
 ## Coding Conventions
-[To be defined in Volume V]
+[To be defined in Volumes VI-IX]
 
 ### File Structure
-[Expected in Volume V]
+[Expected in Volume VI]
 
 ### Naming Conventions
-[Expected in Volume V]
+[Expected in Volume VI]
 
 ### Component Patterns
-[Expected in Volume V]
+[Expected in Volume VI]
 
 ### Folder Organization
-[Expected in Volume V]
+[Expected in Volume VI]
 
 ---
 
