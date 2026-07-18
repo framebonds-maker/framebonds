@@ -8,6 +8,9 @@ const Styleguide = lazy(() => import('@/pages/Styleguide'))
 const Home = lazy(() => import('@/pages/Home'))
 const Portfolio = lazy(() => import('@/pages/Portfolio'))
 const CaseStudy = lazy(() => import('@/pages/CaseStudy'))
+const Services = lazy(() => import('@/pages/Services'))
+const About = lazy(() => import('@/pages/About'))
+const AgencyPartners = lazy(() => import('@/pages/AgencyPartners'))
 
 /** Temporary stand-in while remaining pages are built out phase by phase. */
 function ComingSoon({ name }: { name: string }) {
@@ -30,9 +33,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path="work" element={<Portfolio />} />
           <Route path="work/:slug" element={<CaseStudy />} />
-          <Route path="services" element={<ComingSoon name="Services" />} />
-          <Route path="agency-partners" element={<ComingSoon name="Agency Partners" />} />
-          <Route path="about" element={<ComingSoon name="About" />} />
+          <Route path="services" element={<Services />} />
+          <Route path="agency-partners" element={<AgencyPartners />} />
+          <Route path="about" element={<About />} />
           <Route path="contact" element={<ComingSoon name="Contact" />} />
           <Route path="*" element={<ComingSoon name="Not Found" />} />
         </Route>

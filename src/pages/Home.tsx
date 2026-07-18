@@ -6,7 +6,7 @@ import { ServicesSection } from '@/components/sections/home/ServicesSection'
 import { ProcessSection } from '@/components/sections/home/ProcessSection'
 import { WhyFrameBonds } from '@/components/sections/home/WhyFrameBonds'
 import { QuoteSection } from '@/components/sections/home/QuoteSection'
-import { FinalCta } from '@/components/sections/home/FinalCta'
+import { FinalCta } from '@/components/sections/shared/FinalCta'
 
 /**
  * Homepage — Volume III. Nine-section continuous narrative:
