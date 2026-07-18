@@ -446,9 +446,23 @@ This file logs all non-trivial decisions made during the project, including the 
 ### SPECIFICATION STATUS: 100% COMPLETE (all 9 volumes received and integrated)
 
 ### Outstanding Items Before Implementation Can Begin
-1. **The 2 PDF business/context documents** — mentioned in the original Day 1 brief, never received. Clarified 2026-07-18: these are a "Message" doc and a "Sales OS" doc, both made in a separate Claude session/Project (not this one). User also wants to add a FrameBonds proposal MP4 video. None of these are accessible from this session — Claude has no cross-session file memory; user needs to re-paste/re-upload them here.
+1. ~~The 2 PDF business/context documents~~ — **RESOLVED 2026-07-18.** User uploaded FRAMEBONDS_MESSAGES_v1.2.pdf and FRAMEBONDS_SALES_OS_v1.4.pdf directly from local disk. Read and philosophy extracted (see CLAUDE.md "Real Business Context" section). Full operational sales content (scripts, CRM workflow, KPIs, objection handling) deliberately NOT imported — user flagged it as salesperson-only material irrelevant to the website. Still outstanding: the **FrameBonds proposal MP4 video** ("framebonds propoasl video.mp4") was referenced in the same message but not yet actually read/processed this turn.
 2. **The model-upgrade conversation** — the user explicitly asked to be prompted for this before real implementation begins; the spec being complete means this moment has arrived. Prompted 2026-07-18, awaiting response.
 3. **Concrete CMS provider + hosting platform choice** — Volume IX confirmed "headless CMS" as the architecture but did not name a specific product (Sanity, Contentful, Payload CMS, etc.) or hosting platform (Vercel, Netlify, etc.).
+
+### Real Business Context Confirmed from Internal Sales Documents
+**Date:** 2026-07-18  
+**Context:** User provided two real internal documents (Sales Operating System v1.4, Message Playbook v1.2) with an explicit instruction: extract only the philosophy of what FrameBonds sells, nothing else — these are salesperson-only operational tools.  
+**Decision:** Extracted and filed only the sales philosophy (the "what they think they're buying vs. what they're actually buying" reframe, positioning language, "understand before selling" philosophy, what FrameBonds explicitly is NOT). Deliberately excluded all operational content: CRM stage names, KPI targets, objection-handling scripts, message templates, follow-up cadences, daily SOPs.  
+**Reasoning:** Respects the user's explicit scope instruction; this operational content has zero bearing on website design/copy and would only bloat CLAUDE.md with irrelevant internal process detail.  
+**Trade-offs:** Some genuinely useful real business facts surfaced incidentally in the FAQ section (founder name "Surya," team size, Jaipur location, pricing structure, excluded industries) — these were noted separately in CLAUDE.md as "not yet fully integrated" rather than either fully ignored or fully imported, since they sit between "sales philosophy" (in scope) and "sales script" (out of scope). May need explicit user confirmation before using these facts directly in website copy (e.g., About page, Contact page).
+
+### Audience Scope: Dual Brands+Agencies Messaging Confirmed Despite Agency-Only Current ICP
+**Date:** 2026-07-18  
+**Context:** The real Sales OS's Ideal Customer Profile section is 100% marketing-agencies-only, with no direct-to-brand sales process described anywhere. This appeared to conflict with Volume VII's website spec, which built a deliberate dual-audience messaging split (Brands AND Agencies).  
+**Decision:** User confirmed keeping Volume VII's dual-audience website spec unchanged — agencies are simply where current sales efforts started first; brands remain a real, intentional future audience for the website to address.  
+**Reasoning:** The website is a forward-looking asset, not just a mirror of today's sales motion; user explicitly wants both audiences represented even though real-world sales activity is currently agency-only.  
+**Trade-offs:** None significant — this simply confirms the existing spec rather than requiring rework.
 
 ### Implementation Quality Bar: User's Final Directives (2026-07-18)
 **Context:** After the 9-volume spec was complete, user gave 10 meta-instructions on *how* to execute the spec, plus one "master instruction" — these are process/quality standards, not new spec content.

@@ -1,7 +1,7 @@
 # Current State & Next Steps
 
 **Last Updated:** 2026-07-18  
-**Session Status:** 🎉 SPECIFICATION 100% COMPLETE — all 9 volumes received and integrated. Now blocked on pre-implementation items, not on more spec content.
+**Session Status:** 🎉 SPECIFICATION 100% COMPLETE + real sales philosophy confirmed from internal docs. Down to 3 pre-implementation items: proposal video, model upgrade, CMS/hosting choice.
 
 ---
 
@@ -58,22 +58,24 @@ Before ANY implementation code is written, three things need resolution:
 
 **Status: PROMPTED, awaiting user response (2026-07-18).** The full specification is complete. Asked the user to confirm/upgrade model choice for actual implementation work.
 
-### 2. The 2 PDF Business Context Documents + Video (Clarified, Still Not Received)
-**Status: Clarified but not yet received (2026-07-18).** User confirmed these are:
-- A "Message" doc (PDF)
-- A "Sales OS" doc (PDF)
-- A FrameBonds proposal video (MP4) — newly added to the request
+### 2. The 2 PDFs — ✅ RECEIVED AND PROCESSED (2026-07-18). Video Still Outstanding.
+User uploaded both PDFs directly from local disk:
+- ✅ FRAMEBONDS_MESSAGES_v1.2.pdf — read, philosophy noted (message-playbook operational content excluded per user instruction)
+- ✅ FRAMEBONDS_SALES_OS_v1.4.pdf — read, sales philosophy extracted into CLAUDE.md "Real Business Context" section
+- ⏳ **"framebonds propoasl video.mp4" — referenced but NOT yet read/processed.** Path was given (`C:\Users\DESKTOP\Downloads\framebonds propoasl video.mp4`) but no Read call was made against it this turn. Needs follow-up: either read it directly, or ask user for a transcript/description since video content extraction differs from PDF text extraction.
 
-All were originally created in a **different Claude session/Project**, not this one. User initially asked me to "get them from memory" — clarified to the user that Claude has no cross-session file access; these need to be re-pasted/re-uploaded into THIS session. User chose "re-paste/re-upload them here" as the path forward (via AskUserQuestion). **Waiting on the actual re-upload.**
+**What we now know from the PDFs (philosophy only, per user's explicit scope limit):**
+- Real reframe: clients think they buy editing/videography/reels; they're actually buying reliable production, less management, one point of contact, scalability, long-term partnership
+- Explicit positioning: white-label production partner for marketing agencies — NOT a freelancer marketplace, NOT a one-time editing service, NOT a replacement for an agency's internal team
+- Sales philosophy: understand before selling, never force a fit, never compete on price
+- **Resolved audience question:** Real ICP is agency-only today, but user confirmed keeping the website's dual Brands+Agencies messaging as-is (agencies = where sales started, brands = real future audience)
+- Some real business facts surfaced incidentally (founder name "Surya," Jaipur-based, small dedicated team of 3 editors + 1 videographer, monthly recurring packages with 30% advance, 7-day delivery, absolute white-label confidentiality, excluded industries list) — noted in CLAUDE.md but **not yet confirmed as ready to use directly in website copy** since the user's instruction was scoped to "philosophy only"
 
-None of the 9 volumes have provided real business specifics:
-- Real founder name/bio/photo
+**Still missing for full real business context:**
 - Actual logo and exact brand hex codes (Volume II gave philosophy — "deep charcoal," "off-white" — but not exact values)
 - Real client names/testimonials/portfolio video examples
-- Actual business registration details, address, contact info
-- Any concrete numbers (pricing, project counts, years in business)
-
-**Implementation cannot produce a real, launchable website without this — right now we'd be building with placeholder/fictional content.**
+- Business registration details, exact address
+- The proposal video content (once processed)
 
 ### 3. Concrete CMS + Hosting Provider Choice
 Volume IX confirmed "headless CMS" as the *architecture* but did not name an actual product. Needs a decision between (e.g.) Sanity, Contentful, Payload CMS, Strapi, or a simpler git-based/static approach — and a hosting platform (Vercel, Netlify, etc.).

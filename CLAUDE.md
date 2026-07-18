@@ -1,12 +1,31 @@
 # Project: FrameBonds Creative System
 
-**Status:** ✅ Full 9-volume specification complete. Awaiting: 2 PDFs (Message doc, Sales OS doc) + FrameBonds proposal video for real business context; model-upgrade confirmation; CMS/hosting choice. See docs/NEXT_STEPS.md.
+**Status:** ✅ Full 9-volume specification complete + real sales philosophy confirmed from internal docs. Awaiting: FrameBonds proposal video; model-upgrade confirmation; CMS/hosting choice. See docs/NEXT_STEPS.md.
 
 ## Project Description
 FrameBonds is a creative production studio that shapes perception and builds trust through intentional, premium-quality video and visual content. The company exists to transform how brands are perceived—moving beyond content creation to perception engineering. Every deliverable must demonstrate obsessive refinement, authentic craftsmanship, and unwavering commitment to client success. The website is the first project visitors experience and must silently prove FrameBonds' difference before any words are read.
 
 ## Tech Stack
 React + TypeScript + Vite + Tailwind CSS + Framer Motion + React Router + React Hook Form + Zod + TanStack Query + React Helmet Async. Headless CMS (specific provider TBD). See "Technical Architecture" section below for full detail.
+
+---
+
+## Real Business Context: What FrameBonds Actually Sells (Confirmed from Internal Sales Docs)
+
+Extracted from the founder's internal Sales Operating System and Message Playbook — **philosophy only**. The scripts, CRM workflows, KPI targets, and call/message templates in those documents are salesperson-only tools and are deliberately excluded from this file; they have no bearing on the website.
+
+**The core reframe — what clients think they're buying vs. what they're actually buying:**
+| They think they want | They're actually buying |
+|---|---|
+| Editing, videography, reels, camera equipment, software skills | Reliable production, less management, one point of contact, ability to scale, a long-term partnership |
+
+**Positioning (verbatim from source):** "FrameBonds is a white-label production partner that helps marketing agencies take on more client work without building or managing a larger production team." Explicitly **NOT**: a freelancer marketplace, a one-time video editing service, a social media marketing agency, or a replacement for an agency's internal team.
+
+**Sales philosophy (confirms and grounds Volume I/VII):** Understand the agency's situation before ever pitching. Never force a fit — a respectful "No" today may become a partnership later. Never compete on price — compete on reliability, consistency, and partnership. The promise is "we work *alongside* your existing team, not instead of it."
+
+**Audience resolution (user-confirmed 2026-07-18):** The real, current ICP in the Sales OS is marketing-agencies-only — there's no direct-to-brand sales process in the internal docs. User has confirmed to **keep Volume VII's dual "Brands + Agencies" website messaging as-is** — agencies are simply where sales efforts started first; brands remain a real, intentional future audience. No spec change needed.
+
+**Real business facts surfaced (for later use, not yet fully integrated into page copy):** Founder is Surya. Small dedicated production team (three editors including the founder + one videographer — not a rotating freelancer pool). Based in Jaipur; travel outside Jaipur billed separately. Packages are monthly recurring with a 30% advance payment; standard delivery is 7 days post-shoot. White-label confidentiality is absolute — the agency's own clients never see the FrameBonds name. Excluded industries: adult/sexual content, gambling, weapons, tobacco/drugs, hate speech, MLM, unlicensed financial/crypto schemes.
 
 ---
 
