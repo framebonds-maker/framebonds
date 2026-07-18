@@ -1,8 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { PageLayout } from '@/components/layout/PageLayout'
-import { Container } from '@/components/layout/Container'
-import { Section } from '@/components/layout/Section'
 
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
 const Home = lazy(() => import('@/pages/Home'))
@@ -11,18 +9,8 @@ const CaseStudy = lazy(() => import('@/pages/CaseStudy'))
 const Services = lazy(() => import('@/pages/Services'))
 const About = lazy(() => import('@/pages/About'))
 const AgencyPartners = lazy(() => import('@/pages/AgencyPartners'))
-
-/** Temporary stand-in while remaining pages are built out phase by phase. */
-function ComingSoon({ name }: { name: string }) {
-  return (
-    <Section spacing="hero">
-      <Container>
-        <h1 className="font-display text-display-l font-medium text-ink">{name}</h1>
-        <p className="mt-6 text-body-l text-ink-secondary">This page is being crafted.</p>
-      </Container>
-    </Section>
-  )
-}
+const Contact = lazy(() => import('@/pages/Contact'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
 
 function App() {
   return (
@@ -36,8 +24,8 @@ function App() {
           <Route path="services" element={<Services />} />
           <Route path="agency-partners" element={<AgencyPartners />} />
           <Route path="about" element={<About />} />
-          <Route path="contact" element={<ComingSoon name="Contact" />} />
-          <Route path="*" element={<ComingSoon name="Not Found" />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>

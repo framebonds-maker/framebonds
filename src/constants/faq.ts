@@ -36,6 +36,28 @@ export const servicesFaq = [
   },
 ] as const
 
+export const contactFaq = [
+  {
+    question: 'What happens after I submit an inquiry?',
+    answer:
+      "We review it, reply within one business day, and if it looks like a fit, book a short discovery call to talk through your goals.",
+  },
+  {
+    question: 'Do you take on projects outside Jaipur?',
+    answer: 'Yes — travel is simply scoped into the project plan and quoted upfront.',
+  },
+  {
+    question: 'Do you work with agencies as well as direct brands?',
+    answer:
+      'Both. Agencies typically explore a white-label partnership; brands typically start with a single project.',
+  },
+  {
+    question: "What if I'm not sure what kind of project I need yet?",
+    answer:
+      "That's normal — the discovery call exists to help translate a rough idea into a clear plan together.",
+  },
+] as const
+
 export const agencyFaq = [
   {
     question: 'Will our client know FrameBonds is involved?',
