@@ -77,24 +77,145 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 - **Component States:** Every interactive component defines all possible states (Default/Hover/Active/Focus/Disabled/Loading/Success/Error)
 
 ### Tone & Voice
-[Defined by Volumes I & III—wait for Volume III]
+[To be defined in Volume III onwards]
+
+---
+
+## Page Architecture (Volume III: Page Architecture)
+
+### Homepage Structure
+**10-Section Blueprint:**
+1. Hero (Capture attention, showreel, one headline, two CTAs)
+2. Featured Portfolio (6–8 projects, editorial grid, hover previews)
+3. About FrameBonds (Philosophy, founder presence, three core principles)
+4. Services (Outcome-focused, grouped by category, portfolio links)
+5. Process (Five-step flow: Discovery → Planning → Production → Post → Delivery)
+6. Why FrameBonds (Differentiators, comparison, trust signals)
+7. Results & Testimonials (Featured testimonials, client logos, outcomes)
+8. Final CTA (Simple call-to-action, alternative contact methods)
+9. Footer (Brand statement, navigation, legal, social)
+10. All connected as one continuous narrative
+
+### Storytelling & Content Flow
+**6-Stage Visitor Journey:**
+1. Capture Attention (First 3–5 seconds in Hero)
+2. Create Curiosity (Portfolio preview, teaser)
+3. Demonstrate Capability (Full portfolio, case studies)
+4. Remove Doubt (Services, Process, FAQ)
+5. Build Trust (Testimonials, results, social proof)
+6. Invite Action (Final CTA feels earned, not forced)
+
+**Key Principles:**
+- Progressive disclosure (reveal information in layers)
+- Emotional rhythm (alternate between impact and calm)
+- Visual rhythm (vary layouts; avoid repetition)
+- CTA progression (Early: low commitment → Middle: medium → Final: high commitment)
+- Three-click rule (Understand FrameBonds, see quality, know how to contact within 3 interactions)
+- No dead ends (every page suggests next logical step)
+
+### Homepage Hero Section
+**Specifications:**
+- 100% viewport height; full immersion
+- Background: Cinematic montage showreel (no dialogue, premium pacing)
+- Overlay: Subtle dark layer for readability
+- Headline: One large statement (under 2 lines), answers "What FrameBonds does"
+- Supporting Text: 2–3 lines max; explains who it helps + outcomes
+- CTAs: One primary (Book a Call), one secondary (View Portfolio)
+- Motion: Progressive reveal (video → logo → nav → headline → text → buttons)
+- Mobile: Adapted (increased text width, proportional scaling, optimized video)
+- Performance: Fast first paint; progressive video loading
+
+### Featured Portfolio Section
+**Specifications:**
+- 6–8 curated projects (quality > quantity)
+- Editorial grid (varying sizes; strongest work gets largest canvas)
+- Hover behavior: Video plays, slight zoom, subtle elevation, cursor changes
+- Click: Opens dedicated case study page (not modal)
+- Case studies include: Hero media, challenge, approach, deliverables, gallery, related work, CTA
+- Filtering: Simple (All / Commercials / Retail / etc.; hide if too few projects)
+- Portfolio ordering: By quality + strategic industries (not alphabetical)
+- Mobile: Vertical stack, larger cards, optimized videos, tap interactions
+
+### About FrameBonds Section
+**Specifications:**
+- Opening statement explains purpose (why FrameBonds exists, not company history)
+- Philosophy paragraph (belief that drives every project)
+- Founder presence (professional imagery, personal statement about standards)
+- Three core principles (Story Before Style, Craft Without Compromise, Business Before Vanity)
+- Behind-the-scenes imagery (process, production, collaboration)
+- Tone: Specific + authentic (no corporate jargon; no empty buzzwords)
+- Transition: Naturally leads into Services section
+
+### Services Section
+**Specifications:**
+- Outcome-focused (not task-focused; "Content That Holds Attention" not "Video Editing")
+- Grouped by category (Production, Post Production, Content Systems)
+- Each service: Name → One-line outcome → 2–3 sentence description → Related portfolio → Learn More
+- White-Label Production clearly explained (simple, direct)
+- Monthly Content Packages positioned as partnerships (consistency, efficiency, value)
+- Industry fit shown (Fashion, Hospitality, Fitness, Real Estate, Luxury, Food)
+- Cross-linking: Every service connects to relevant portfolio work
+- Visual layout: Large spacing, service images, breathing room
+
+### Process Section
+**Specifications:**
+- Five-step timeline: Discovery → Planning → Production → Post → Delivery
+- Each step: Clear title, explanation of focus, client benefit
+- Communication section: Response expectations, approval process
+- Revision policy: Transparent (not hidden; discussed confidently)
+- "What You Can Expect" subsection (clear communication, transparent timelines, etc.)
+- FAQ section: Answers common concerns before Contact
+- White-Label workflow explained: Agency Brief → FrameBonds Production → Agency Review → Delivery
+- Timeline philosophy: Quality never sacrificed for speed
+
+### Why FrameBonds Section
+**Specifications:**
+- Opening statement: Shifts focus from production volume to business impact
+- 4–6 differentiators: Quality Over Quantity, Business-First Creativity, White-Label Partnerships, Detail is Part of Product, Professional Communication, Long-Term Partnerships
+- Comparison table: Subtle (not aggressive); educates without attacking competitors
+- Supporting visuals: Authentic behind-the-scenes (director, collaboration, production, etc.)
+- Tone: Calm confidence; no superlatives; specific practices over generic claims
+- Cross-linking: Each differentiator connects to relevant website section
+
+### Results, Testimonials & Social Proof
+**Specifications:**
+- Featured testimonial: Large space, includes name/company/role/logo/authentic quote
+- Client logos: Monochrome, consistent size, evenly spaced (if permission granted)
+- Industry diversity: Show work across multiple sectors
+- Measurable outcomes: Real results (improved brand perception, increased engagement, etc.)
+- Case study highlight: Challenge → Approach → Outcome → Link to full case study
+- Video testimonials: 30–60 seconds, authentic (not over-polished)
+- Before & after: Show genuine transformations (not exaggerated)
+- Trust without clients (early-stage): Portfolio evidence, process clarity, quality philosophy
+
+### Final CTA & Footer
+**Specifications:**
+- Closing statement: Emotional conclusion (timeless, not dramatic marketing language)
+- Supporting copy: 2–3 lines; emphasis on understanding, not selling
+- Primary CTA: Single dominant action (Book a Discovery Call)
+- Secondary contact methods: Email, WhatsApp, Instagram, LinkedIn (alternatives)
+- Response expectation: "We typically respond within one business day"
+- Contact form: Minimal fields (Name, Company, Email, Project Type, Description only)
+- Success message: Personal, conversational (not generic confirmation)
+- Footer: Logo, brand statement, navigation, social links, business info, legal links
+- Mobile: Vertically stacked, large tap targets, CTA prominent before footer
 
 ---
 
 ## Coding Conventions
-[To be defined in subsequent volumes]
+[To be defined in Volumes IV–V]
 
 ### File Structure
-[Volume III or IV expected]
+[Expected in Volume IV]
 
 ### Naming Conventions
-[Volume III or IV expected]
+[Expected in Volume IV]
 
 ### Component Patterns
-[Volume III or IV expected]
+[Expected in Volume IV]
 
 ### Folder Organization
-[Volume III or IV expected]
+[Expected in Volume IV]
 
 ---
 
