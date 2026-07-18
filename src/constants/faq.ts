@@ -17,7 +17,7 @@ export const servicesFaq = [
   {
     question: 'Can we book recurring, monthly content?',
     answer:
-      'Absolutely — monthly content partnerships are one of our core offerings, built around a single planned shoot day that covers a full month of assets.',
+      'Absolutely — monthly content partnerships are one of our core offerings. The number of shoot days is scoped to your plan, and each plan carries a matching number of revision rounds.',
   },
   {
     question: 'What if we already have some raw footage?',

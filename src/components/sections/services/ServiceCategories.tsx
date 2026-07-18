@@ -38,7 +38,7 @@ const pillars: Pillar[] = [
     name: 'Social Content Systems',
     problem: 'Consistent, premium social content is hard to sustain without a full-time hire.',
     solution:
-      'One planned shoot day generates a month of on-brand content — reels, cutdowns and stills — so your feed never goes quiet.',
+      'A planned shoot — scoped to the days your monthly plan includes — generates a full month of on-brand content: reels, cutdowns and stills, so your feed never goes quiet.',
     hue: 'terracotta',
   },
   {

@@ -1,5 +1,8 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
+const MotionLink = motion.create(Link)
 import { cva, type VariantProps } from 'class-variance-authority'
 import { ArrowRight, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -14,15 +17,15 @@ export const buttonStyles = cva(
   [
     'group/btn relative inline-flex items-center justify-center gap-2.5',
     'font-body font-semibold tracking-[-0.01em] whitespace-nowrap select-none',
-    'transition-all duration-[180ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
-    'active:scale-[0.99] disabled:pointer-events-none disabled:opacity-45',
+    'transition-colors duration-[180ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+    'disabled:pointer-events-none disabled:opacity-45',
   ],
   {
     variants: {
       variant: {
         primary: [
           'bg-ink text-canvas rounded-[0.75rem]',
-          'hover:bg-white hover:shadow-medium hover:-translate-y-px',
+          'hover:bg-white hover:shadow-medium',
         ],
         secondary: [
           'bg-transparent text-ink rounded-[0.75rem]',
@@ -78,20 +81,29 @@ function TrailingArrow() {
   )
 }
 
-type ButtonProps = ButtonBaseProps & ButtonHTMLAttributes<HTMLButtonElement>
+/** Shared hover/press feel — a confident lift, never a bounce. */
+const tapHover = {
+  whileHover: { scale: 1.025, y: -2 },
+  whileTap: { scale: 0.975, y: 0 },
+  transition: { type: 'spring', stiffness: 420, damping: 28 },
+} as const
+
+type ButtonProps = ButtonBaseProps &
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onAnimationEnd' | 'onDrag' | 'onDragStart' | 'onDragEnd'>
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ variant, size, withArrow, loading, className, children, disabled, ...props }, ref) => (
-    <button
+    <motion.button
       ref={ref}
       className={cn(buttonStyles({ variant, size }), className)}
       disabled={disabled || loading}
+      {...(!disabled && !loading ? tapHover : {})}
       {...props}
     >
       {loading && <Loader2 aria-hidden className="h-4 w-4 animate-spin" />}
       {children}
       {withArrow && !loading && <TrailingArrow />}
-    </button>
+    </motion.button>
   ),
 )
 Button.displayName = 'Button'
@@ -114,16 +126,22 @@ export function ButtonLink({
   const classes = cn(buttonStyles({ variant, size }), className)
   if (external) {
     return (
-      <a href={to} target="_blank" rel="noopener noreferrer" className={classes}>
+      <motion.a
+        href={to}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes}
+        {...tapHover}
+      >
         {children}
         {withArrow && <TrailingArrow />}
-      </a>
+      </motion.a>
     )
   }
   return (
-    <Link to={to} className={classes}>
+    <MotionLink to={to} className={classes} {...tapHover}>
       {children}
       {withArrow && <TrailingArrow />}
-    </Link>
+    </MotionLink>
   )
 }
