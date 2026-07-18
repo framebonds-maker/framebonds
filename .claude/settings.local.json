@@ -21,7 +21,9 @@
       "Bash(mkdir -p src/components/ui src/components/layout src/components/navigation src/components/sections src/components/forms src/components/feedback src/components/media src/components/portfolio)",
       "Bash(mkdir -p src/pages src/hooks src/lib src/services src/constants src/types src/utils src/assets src/styles src/animations src/providers src/routes src/config)",
       "Bash(npx tsc *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); const names = Object.keys\\(l\\); console.log\\(names.filter\\(n => /insta|linked|you|social|globe|at-?sign|atsign/i.test\\(n\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(node --input-type=module -e \"import * as l from 'lucide-react'; const names = Object.keys\\(l\\); console.log\\(names.filter\\(n => /insta|linked|you|globe|atsign/i.test\\(n\\)\\).join\\('\\\\n'\\)\\)\")"
     ]
   }
 }

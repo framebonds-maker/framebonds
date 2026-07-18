@@ -1,28 +1,38 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import { PageLayout } from '@/components/layout/PageLayout'
+import { Container } from '@/components/layout/Container'
+import { Section } from '@/components/layout/Section'
 
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
 
-/**
- * Root route table. Public pages get wired in as they're built (Phase 4+).
- * /styleguide is an internal design-system reference, not public navigation.
- */
+/** Temporary stand-in while real pages are built out phase by phase. */
+function ComingSoon({ name }: { name: string }) {
+  return (
+    <Section spacing="hero">
+      <Container>
+        <h1 className="font-display text-display-l font-medium text-ink">{name}</h1>
+        <p className="mt-6 text-body-l text-ink-secondary">This page is being crafted.</p>
+      </Container>
+    </Section>
+  )
+}
+
 function App() {
   return (
     <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
       <Routes>
         <Route path="/styleguide" element={<Styleguide />} />
-        <Route
-          path="*"
-          element={
-            <main className="flex min-h-screen items-center justify-center bg-canvas px-6 text-center">
-              <div>
-                <h1 className="font-display text-heading-xl font-medium text-ink">FrameBonds</h1>
-                <p className="mt-4 text-body text-ink-secondary">Foundation is wired. Pages come next.</p>
-              </div>
-            </main>
-          }
-        />
+        <Route element={<PageLayout />}>
+          <Route index element={<ComingSoon name="Home" />} />
+          <Route path="work" element={<ComingSoon name="Selected Work" />} />
+          <Route path="work/:slug" element={<ComingSoon name="Case Study" />} />
+          <Route path="services" element={<ComingSoon name="Services" />} />
+          <Route path="agency-partners" element={<ComingSoon name="Agency Partners" />} />
+          <Route path="about" element={<ComingSoon name="About" />} />
+          <Route path="contact" element={<ComingSoon name="Contact" />} />
+          <Route path="*" element={<ComingSoon name="Not Found" />} />
+        </Route>
       </Routes>
     </Suspense>
   )
