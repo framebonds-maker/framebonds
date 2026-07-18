@@ -446,9 +446,15 @@ This file logs all non-trivial decisions made during the project, including the 
 ### SPECIFICATION STATUS: 100% COMPLETE (all 9 volumes received and integrated)
 
 ### Outstanding Items Before Implementation Can Begin
-1. **The 2 PDF business/context documents** — mentioned in the original Day 1 brief, never received. No volume has provided real FrameBonds-specific business details (actual founder name/bio, real client names, actual logo/exact brand hex codes, real portfolio video examples) — these are presumably in the PDFs.
-2. **The model-upgrade conversation** — the user explicitly asked to be prompted for this before real implementation begins; the spec being complete means this moment has arrived.
+1. **The 2 PDF business/context documents** — mentioned in the original Day 1 brief, never received. Clarified 2026-07-18: these are a "Message" doc and a "Sales OS" doc, both made in a separate Claude session/Project (not this one). User also wants to add a FrameBonds proposal MP4 video. None of these are accessible from this session — Claude has no cross-session file memory; user needs to re-paste/re-upload them here.
+2. **The model-upgrade conversation** — the user explicitly asked to be prompted for this before real implementation begins; the spec being complete means this moment has arrived. Prompted 2026-07-18, awaiting response.
 3. **Concrete CMS provider + hosting platform choice** — Volume IX confirmed "headless CMS" as the architecture but did not name a specific product (Sanity, Contentful, Payload CMS, etc.) or hosting platform (Vercel, Netlify, etc.).
+
+### Implementation Quality Bar: User's Final Directives (2026-07-18)
+**Context:** After the 9-volume spec was complete, user gave 10 meta-instructions on *how* to execute the spec, plus one "master instruction" — these are process/quality standards, not new spec content.
+**Decision:** Adopted as a permanent "Implementation Standards" section at the top of CLAUDE.md (before all spec content), also saved to cross-session memory. Core mandate: never ship generic UI, obsess over spacing/motion/handcrafted components, and continuously self-critique against an "Awwwards-worthy" bar rather than "spec-compliant."
+**Reasoning:** The user explicitly said the master instruction (keep refining until Awwwards-worthy) pre-authorizes spending more time on visual/UX polish than would normally be justified — this overrides the default "don't over-engineer" instinct, but only for front-end craft, not backend architecture (Volume VIII's simplicity/YAGNI principles still apply there).
+**Trade-offs:** This raises the bar for "done" significantly — pages can't be marked complete just because they match the spec technically; they need to pass a subjective craft/self-critique test. Could extend implementation timeline vs. a purely spec-compliant build, but the user has explicitly chosen this trade-off.
 - Page architecture and content flow (expected in Volume III—Chapter 8)
 - Specific pages needed and their purpose
 - Content strategy and messaging tone

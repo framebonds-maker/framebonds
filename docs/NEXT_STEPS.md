@@ -56,10 +56,17 @@ Before ANY implementation code is written, three things need resolution:
 ### 1. The Model-Upgrade Conversation (User's Own Day 1 Instruction)
 > The user's original brief stated: *"when the final website building begins I want that you ask me to change model and ask for approval so that i can use my best model for making my website"*
 
-**This moment has arrived.** The full specification is complete. Before Phase 1 (Project Foundation) begins, the user should be asked to confirm/upgrade their model choice for the actual implementation work.
+**Status: PROMPTED, awaiting user response (2026-07-18).** The full specification is complete. Asked the user to confirm/upgrade model choice for actual implementation work.
 
-### 2. The 2 PDF Business Context Documents (Still Never Received)
-The Day 1 brief mentioned 2 PDFs containing business context. None of the 9 volumes have provided:
+### 2. The 2 PDF Business Context Documents + Video (Clarified, Still Not Received)
+**Status: Clarified but not yet received (2026-07-18).** User confirmed these are:
+- A "Message" doc (PDF)
+- A "Sales OS" doc (PDF)
+- A FrameBonds proposal video (MP4) — newly added to the request
+
+All were originally created in a **different Claude session/Project**, not this one. User initially asked me to "get them from memory" — clarified to the user that Claude has no cross-session file access; these need to be re-pasted/re-uploaded into THIS session. User chose "re-paste/re-upload them here" as the path forward (via AskUserQuestion). **Waiting on the actual re-upload.**
+
+None of the 9 volumes have provided real business specifics:
 - Real founder name/bio/photo
 - Actual logo and exact brand hex codes (Volume II gave philosophy — "deep charcoal," "off-white" — but not exact values)
 - Real client names/testimonials/portfolio video examples
@@ -70,6 +77,11 @@ The Day 1 brief mentioned 2 PDFs containing business context. None of the 9 volu
 
 ### 3. Concrete CMS + Hosting Provider Choice
 Volume IX confirmed "headless CMS" as the *architecture* but did not name an actual product. Needs a decision between (e.g.) Sanity, Contentful, Payload CMS, Strapi, or a simpler git-based/static approach — and a hosting platform (Vercel, Netlify, etc.).
+
+---
+
+## ✅ NEW: Implementation Quality Standards Locked (2026-07-18)
+User provided 10 final "how to build it" directives + one master instruction, now saved permanently in **CLAUDE.md** (top section, before all spec content) and in cross-session memory (`framebonds-implementation-philosophy.md`). Core mandate: never generic UI, obsess over spacing/motion/handcrafted components, continuously self-critique, and keep refining until "Awwwards-worthy" — not just spec-compliant. **Read this section of CLAUDE.md before writing any implementation code.**
 
 ---
 

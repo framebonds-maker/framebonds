@@ -1,12 +1,34 @@
 # Project: FrameBonds Creative System
 
-**Status:** Brand documentation received (Volume I complete) — awaiting Volumes II–X and PDF context
+**Status:** ✅ Full 9-volume specification complete. Awaiting: 2 PDFs (Message doc, Sales OS doc) + FrameBonds proposal video for real business context; model-upgrade confirmation; CMS/hosting choice. See docs/NEXT_STEPS.md.
 
 ## Project Description
 FrameBonds is a creative production studio that shapes perception and builds trust through intentional, premium-quality video and visual content. The company exists to transform how brands are perceived—moving beyond content creation to perception engineering. Every deliverable must demonstrate obsessive refinement, authentic craftsmanship, and unwavering commitment to client success. The website is the first project visitors experience and must silently prove FrameBonds' difference before any words are read.
 
 ## Tech Stack
-[To be defined once all volumes received]
+React + TypeScript + Vite + Tailwind CSS + Framer Motion + React Router + React Hook Form + Zod + TanStack Query + React Helmet Async. Headless CMS (specific provider TBD). See "Technical Architecture" section below for full detail.
+
+---
+
+## Implementation Standards (User's Final Directives — Read Before Writing Any Code)
+
+These govern **how** to execute the spec below, not what to build. The user cares more about final craft quality than literal compliance — treat every other section of this file as "the what," and this section as "the bar for good enough."
+
+1. **Think like a creative director, not just a developer.** Make judgment calls that elevate the brand; don't implement literally without taste.
+2. **Never generate generic UI.** If a section could pass for a generic SaaS/Tailwind template example, it has failed — redesign it.
+3. **Emotion before information.** First impression = curiosity + confidence, ahead of information hierarchy.
+4. **Every section is its own hero section.** No stacked, generic content blocks — each section needs its own identity, rhythm, purpose.
+5. **Obsess over spacing.** Premium feel comes from whitespace/rhythm more than decoration.
+6. **Components must feel handcrafted.** No cookie-cutter cards/buttons/forms — everything intentionally designed for FrameBonds specifically.
+7. **Motion must feel cinematic.** Smooth, subtle, story-driven — never flashy or distracting.
+8. **Code stays production-ready.** Clean, modular, reusable, documented — no hacks or shortcuts, even under time pressure.
+9. **Mobile is first-class, not adapted.** Design mobile interactions intentionally, not as a shrink of desktop.
+10. **Continuously self-critique after each page/component:** Does this feel premium? Unique? On-brand? Would I be proud to show this publicly? What needs improvement before moving on?
+
+**The one master instruction, if only one could be given:**
+> "Do not stop at a correct implementation. Continue refining every layout, animation, interaction, spacing, typography, and visual detail until the website feels like something worthy of being featured on Awwwards—not because it is flashy, but because it demonstrates exceptional craftsmanship, storytelling, usability, performance, and attention to detail."
+
+When in doubt between shipping something merely correct vs. spending more time refining visual/UX polish, the user has explicitly pre-authorized choosing refinement. (Note: this applies to visual/UX craft specifically — the Volume VIII simplicity/YAGNI principles for backend architecture still hold; don't over-engineer plumbing, do over-polish what visitors see and feel.)
 
 ---
 
