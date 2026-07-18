@@ -536,20 +536,122 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 
 ---
 
-## Coding Conventions
-[To be defined in Volumes VIII-IX]
+## Technical Architecture, Performance & Engineering Standards (Volume VIII)
+
+### Tech Stack (Confirmed)
+React → TypeScript → Vite → Tailwind CSS → Framer Motion → React Router → React Hook Form → Zod → TanStack Query (only if server state exists) → React Helmet Async
+- Philosophy: "Build to evolve," not "build to launch" — every dependency must solve a real problem
+- Avoid unnecessary frameworks/dependency bloat; before adding any library ask "does React already solve this?"
 
 ### File Structure
-[Expected in Volume VIII — Technical Architecture]
+```
+src/
+  app/
+  components/ (ui/ layout/ navigation/ sections/ forms/ feedback/ media/ portfolio/)
+  pages/
+  hooks/
+  lib/
+  services/
+  constants/
+  types/
+  utils/
+  assets/
+  styles/
+  animations/
+  providers/
+  routes/
+  config/
+```
+- Component files: PascalCase (`Hero.tsx`, `PortfolioCard.tsx`) — never `hero.tsx` or `component1.tsx`
+- Folders: lowercase
+- One component per file; recommended 100–250 lines (a 900-line component is multiple components hiding in one file)
+- Self-contained component folders: `Button/Button.tsx`, `Button.types.ts`, `Button.test.tsx`, `Button.stories.tsx`, `index.ts`
+
+### Component Architecture (4-Layer Hierarchy)
+Primitive (Button, Input, Card, Badge — no business logic) → UI Component (Video Card, Accordion, Portfolio Tile — layout only) → Feature Component (Portfolio Grid, Agency Section — knows the domain) → Page Section (Homepage Hero, Contact Section — composes full experiences)
+- Composition over inheritance: `<Button variant="primary" size="lg" />` not a chain of extended button subclasses
+- Recommended: Class Variance Authority (CVA) for variant-heavy components (Button, Card, Badge, Input states)
+- Compound components for naturally grouped parts: `<Card><Card.Header/><Card.Body/><Card.Footer/></Card>`
+- One icon library only (Lucide/Heroicons/Phosphor) — never mix icon sets
+- Every component defines all states: Default/Hover/Focus/Active/Disabled/Loading/Error/Success
+- Never hardcode colors/spacing/radius — always reference design tokens (`bg-surface` not `background: #000`)
+
+### State Management (4-Level Hierarchy)
+Local State (useState, default choice — modals/accordions/tabs/hover) → Shared UI State (Context — theme/motion prefs/navigation/toasts; avoid for frequently-changing values) → Server State (TanStack Query — portfolio/case studies/testimonials/CMS content; automatic caching/retry/dedup) → Persistent Global State (only if truly required — auth, user prefs)
+- Core principle: "Keep state as close as possible to where it's used"; always ask "who owns this state?"
+- Forms: React Hook Form + Zod (single source of truth for validation; never duplicate validation rules)
+- Business logic layered: Component → Custom Hook → Service → API (never put business logic directly in UI components)
+- Never store derived state (e.g., don't store "Full Name" if you have First/Last — calculate it)
+
+### Performance Engineering
+**Target metrics:** FCP < 1.8s | LCP < 2.5s | INP < 200ms | CLS < 0.1
+- Optimization hierarchy: Architecture → Network → Rendering → Assets → JavaScript → Animations → Micro-optimizations
+- Route-based code splitting (every major page = own bundle); React.lazy() for heavy components (VideoPlayer, PortfolioGallery, Lightbox, BookingFlow)
+- Images: AVIF → WebP → JPEG/PNG fallback; responsive sizes (400/800/1200/1600/2400px); lazy-load below fold (except hero/LCP images); always define width/height to prevent layout shift
+- Video: muted-only autoplay, pause off-viewport, poster image always ready before playback, compress aggressively, MP4(H.264) primary format
+- Animation: GPU-friendly only (opacity/transform/scale/translate) — never animate width/height/top/left/margin
+- Performance budgets: Hero image <300KB, Thumbnail <120KB, Large portfolio image <500KB
+- Memoization (`React.memo`/`useMemo`/`useCallback`) only when profiling demonstrates measurable benefit — not by default
+
+### Accessibility Engineering
+**Baseline: WCAG 2.2 AA** (aim to exceed, not just meet)
+- Semantic HTML always preferred over ARIA (`<header>`, `<nav>`, `<main>` before `<div>` + role attributes)
+- One H1 per page, logical heading hierarchy, never skip levels
+- Every interactive element keyboard-reachable; visible focus indicators never removed without replacement
+- "Skip to Main Content" link required; native `<button>` always (never simulate with `<div>`/`<span>`)
+- Links describe destination ("View Commercial Portfolio" not "Click Here" or "Read More")
+- Forms: labels always associated with inputs (placeholder is never a label substitute); errors announced + focus moved to invalid field
+- Color never sole indicator of meaning (pair with icon + text)
+- Contrast minimums: 4.5:1 normal text, 3:1 large text; touch targets minimum 44×44px
+- `prefers-reduced-motion` always respected — replace movement with fade/instant transition, never remove information
+- Testing: automated (axe, Lighthouse) + mandatory manual (keyboard-only, screen reader, 200% zoom)
+
+### Security, Deployment & Production Infrastructure
+- Environment separation: Local → Development → Staging → Production (never test unfinished features directly in prod)
+- All secrets in environment variables — never committed to Git, never logged
+- HTTPS enforced everywhere; security headers required: CSP, HSTS, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
+- CI/CD pipeline: Commit → PR → Code Review → CI (lint/typecheck/tests/build/a11y) → Preview Deployment → Approval → Production
+- Every deployment must support immediate rollback; preview deployments for every PR
+- Server-side validation always required (never trust client-side validation alone)
+- Rate limiting on public endpoints (contact form, booking, uploads); spam protection via honeypot fields before CAPTCHA
+- File uploads: validate MIME type + extension, rename files, never trust original filename
+- Logging: log events, never secrets/passwords/API keys/personal data
+- Backups tested (not just created); documented disaster recovery procedures
+
+### Testing Strategy & QA
+**Quality pyramid:** Static Analysis → Unit Tests → Integration Tests → Component Tests → Visual Regression → Accessibility Testing → E2E Tests → Manual QA → Production Monitoring
+- Every PR auto-runs: lint → type-check → unit tests → build → accessibility audit
+- Critical E2E flows (minimum coverage): Homepage, Portfolio browsing, Case study nav, Contact form, Booking flow, 404 handling, Responsive nav
+- Every bug fix must add a corresponding regression test (same bug should never reappear)
+- Cross-browser: Chrome, Firefox, Safari, Edge, mobile browsers
+- Release checklist: all tests passing, no TS/lint errors, performance acceptable, a11y verified, responsive QA complete, rollback available
+
+### Analytics, SEO Engineering & Observability
+- Core principle: "Measure outcomes, not noise" — every tracked event must answer "what decision will this help us make?"
+- Analytics isolated in a service layer (Component → Analytics Service → Provider → Platform) — never call analytics APIs directly from business logic
+- Event naming: lowercase + underscores (`portfolio_viewed`, `discovery_call_booked`, `contact_form_submitted`)
+- Primary conversion funnel: Homepage → Portfolio → Case Study → Services → Contact → Inquiry Submitted (measure every step, identify drop-off)
+- Secondary funnel (agencies): Agency Partners → White-Label Page → Capability Deck → Discovery Call
+- SEO: centralized metadata system (title/description/canonical/OG/Twitter/structured data) generated per page; XML sitemap auto-generated; structured data for Organization, Service, FAQ, Article, Video
+- Business KPIs (not vanity metrics): qualified inquiries, discovery calls booked, agency partnership inquiries, organic traffic growth
+- A/B testing requires explicit hypothesis + success metric + duration + decision — never test multiple major variables simultaneously
+- Privacy-first: collect behavior, not identity; retain only data serving a legitimate purpose
+
+---
+
+## Coding Conventions
+
+### File Structure
+See Technical Architecture section above — `src/{app,components,pages,hooks,lib,services,constants,types,utils,assets,styles,animations,providers,routes,config}`
 
 ### Naming Conventions
-[Expected in Volume VIII — Technical Architecture]
+PascalCase for components (`PortfolioCard.tsx`), lowercase for folders, descriptive names that communicate responsibility (never `ComponentA`, `Box1`, `Thing`)
 
 ### Component Patterns
-[Expected in Volume VIII — Technical Architecture]
+4-layer hierarchy (Primitive → UI → Feature → Page Section); composition over inheritance; CVA for variants; compound components where parts naturally group
 
 ### Folder Organization
-[Expected in Volume VIII — Technical Architecture]
+Self-contained component folders (component + types + test + stories + index per component); services/hooks/utils separated by responsibility; centralized config/constants (never scattered magic values)
 
 ---
 
@@ -557,7 +659,7 @@ FrameBonds is a creative production studio that shapes perception and builds tru
 - All context and business details are in the PDFs provided by the user
 - Model upgrade requested when final website building begins
 - Minimal, focused implementation — no over-engineering
-- 7 of ~10 volumes received; Volume VIII confirmed next (Technical Architecture, Performance & Engineering Standards)
-- Complete brand, design system, page architecture, component library, motion system, and content strategy/copywriting documented
-- Next: React architecture, TypeScript conventions, folder structure, state management, API design, performance budgets, security, deployment, testing, analytics, CI/CD
-- Next: Content strategy/copywriting, technical stack, analytics/deployment
+- 8 of ~10 volumes received; Volume IX confirmed next and final (Implementation Roadmap, Future Scalability & Product Evolution)
+- Complete brand, design system, page architecture, component library, motion system, content strategy, and full engineering/technical specification documented
+- Tech stack now locked: React + TypeScript + Vite + Tailwind + Framer Motion + React Router + React Hook Form + Zod + TanStack Query
+- Next: Phased implementation plan, launch checklist, CMS evolution, future roadmap — likely the final volume before actual build begins

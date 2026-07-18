@@ -251,6 +251,45 @@
 
 ---
 
+## [2026-07-18] Volume VIII — Technical Architecture, Performance & Engineering Standards Complete
+- **Received:**
+  - 8 comprehensive chapters defining the complete engineering specification for the platform
+  - Chapter 1: Project Architecture, Codebase Structure & Engineering Philosophy (tech stack confirmed, folder structure)
+  - Chapter 2: Component Architecture, Design System Implementation & Reusability Standards (4-layer hierarchy, CVA, tokens)
+  - Chapter 3: State Management, Data Flow, Forms & Application Logic (4-level state hierarchy, React Hook Form + Zod)
+  - Chapter 4: Performance Engineering, Rendering Strategy & Frontend Optimization (Core Web Vitals targets, budgets)
+  - Chapter 5: Accessibility Engineering, Semantic HTML & Inclusive UX Standards (WCAG 2.2 AA baseline)
+  - Chapter 6: Security, Deployment, Monitoring & Production Infrastructure (CI/CD, secrets, headers, rollback)
+  - Chapter 7: Testing Strategy, Quality Assurance & Long-Term Maintainability (quality pyramid, E2E coverage)
+  - Chapter 8: Analytics, SEO Engineering, Observability & Continuous Improvement (event tracking, conversion funnels)
+
+- **CRITICAL MILESTONE: Tech stack finally confirmed** — React + TypeScript + Vite + Tailwind CSS + Framer Motion + React Router + React Hook Form + Zod + TanStack Query + React Helmet Async
+
+- **Key Engineering Specifications Captured:**
+  - Folder structure fully defined (`src/{app,components,pages,hooks,lib,services,constants,types,utils,...}`)
+  - Component hierarchy: Primitive → UI Component → Feature Component → Page Section
+  - State management: Local (default) → Context (shared UI) → TanStack Query (server) → Global (rare)
+  - Performance targets: FCP<1.8s, LCP<2.5s, INP<200ms, CLS<0.1; concrete asset size budgets
+  - Accessibility baseline: WCAG 2.2 AA, semantic HTML first, keyboard nav mandatory everywhere
+  - Security: env-var secrets only, CI/CD with preview deployments + rollback, server-side validation always
+  - Testing: quality pyramid (static analysis → unit → integration → E2E → manual QA → prod monitoring)
+  - Analytics: service-layer isolation, named event conventions, funnel tracking, privacy-first (behavior not identity)
+
+- **CLAUDE.md Updated:** Full "Coding Conventions" section now populated (previously all placeholders) with complete Technical Architecture reference
+
+- **Total Progress:** 8 of ~10 volumes complete (72 chapters integrated)
+  - 80% Complete!
+  - Volume I: Brand DNA (14 ch) | Volume II: Visual Language (7 ch) | Volume III: Page Architecture (10 ch)
+  - Volume IV: Individual Pages (7 ch) | Volume V: Component Library (10 ch) | Volume VI: Motion & Interactions (8 ch)
+  - Volume VII: Content Strategy & Copywriting (8 ch) | Volume VIII: Technical Architecture & Engineering (8 ch)
+
+- **Next:** 
+  - Receive Volume IX from user — confirmed as FINAL volume by user's own chapter preview: Implementation Roadmap, Future Scalability & Product Evolution (phased implementation, launch checklist, CMS evolution, internationalization, future roadmap, AI integration, scaling strategy)
+  - Receive 2 PDF context documents (still outstanding)
+  - Once Volume IX arrives, the full specification will be complete — time to have the model-upgrade conversation before implementation begins
+
+---
+
 ## Entry Template
 When adding new entries, use this format:
 

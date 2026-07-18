@@ -350,9 +350,65 @@ This file logs all non-trivial decisions made during the project, including the 
 **Reasoning:** "Write for people, structure for search engines" — protects brand voice integrity while still capturing organic search value through Authority/Relevance/Consistency rather than volume  
 **Trade-offs:** Slower content production (fewer, higher-quality pages vs. mass-produced SEO pages); requires ongoing editorial governance/review cadence rather than one-time setup  
 
+### Tech Stack: React + TypeScript + Vite + Tailwind + Framer Motion
+**Date:** 2026-07-18  
+**Context:** Every prior volume (design tokens, motion system, component library) needed a concrete implementation target; this is the first volume to name actual technologies  
+**Decision:** Core stack locked as React, TypeScript, Vite, Tailwind CSS, Framer Motion, React Router, React Hook Form, Zod, TanStack Query (only if server state exists), React Helmet Async  
+**Reasoning:** This stack directly supports everything specified in Volumes V–VII (component variants via CVA/Tailwind, motion tokens via Framer Motion, form validation via RHF+Zod matches the "single source of truth" validation philosophy)  
+**Trade-offs:** No CMS/backend explicitly chosen yet (TanStack Query is conditional "only if server state exists" — implies content may initially be static/hardcoded rather than CMS-driven); this remains an open question for Volume IX or PDF context  
+
+### Component Architecture: 4-Layer Hierarchy (Primitive → UI → Feature → Page Section)
+**Date:** 2026-07-18  
+**Context:** Volume V defined *what* components exist (7 card types, button hierarchy, etc.) but not *how* to structure them in code  
+**Decision:** Strict 4-layer hierarchy where Primitives (Button, Input) contain zero business logic, Feature Components (PortfolioGrid) know the FrameBonds domain, and Page Sections compose everything; composition over inheritance always  
+**Reasoning:** Prevents the common React anti-pattern of business logic leaking into low-level UI primitives; mirrors [[framebonds-component-library]] design system philosophy of "build fewer, better components"  
+**Trade-offs:** Requires upfront discipline to resist quick hacks (e.g., adding a one-off prop to Button instead of composing); more files/folders per component (self-contained folder pattern) increases initial scaffolding work  
+
+### State Management: Local-First, TanStack Query for Server State
+**Date:** 2026-07-18  
+**Context:** React apps commonly over-centralize state (Redux/Zustand everywhere) even when unnecessary, creating maintenance burden  
+**Decision:** Default to local `useState`; escalate to Context only for genuinely shared UI state (theme, motion prefs); use TanStack Query as the sole source of truth for any server state; avoid global state libraries unless real complexity demands it  
+**Reasoning:** "Keep state as close as possible to where it's used" — smaller state scope = fewer bugs, easier reasoning, less unnecessary re-rendering  
+**Trade-offs:** If the site turns out to need significant cross-cutting client state (e.g., a shopping cart or complex multi-step wizard), this philosophy may need revisiting; deliberately punts on that until real need is demonstrated  
+
+### Performance: Concrete Core Web Vitals Budgets
+**Date:** 2026-07-18  
+**Context:** Prior volumes (VI motion, V media) described *qualitative* performance goals ("smooth," "fast") without numeric targets  
+**Decision:** Hard targets set: FCP<1.8s, LCP<2.5s, INP<200ms, CLS<0.1; asset budgets: hero image <300KB, thumbnail <120KB, portfolio image <500KB  
+**Reasoning:** Numeric budgets make performance testable/enforceable in CI rather than subjective; directly supports the cinematic/video-heavy design from Volumes II/VI without letting media weight destroy load times  
+**Trade-offs:** Video-heavy hero sections (per Volume III/VI) will need aggressive compression to hit these budgets — may require accepting slightly lower video quality or shorter hero loops than originally envisioned in the cinematic spec  
+
+### Accessibility: WCAG 2.2 AA as Engineering Baseline (Not Just Design Intent)
+**Date:** 2026-07-18  
+**Context:** Volumes IV/V mentioned accessibility as design principles; this volume makes it an enforced engineering requirement with CI gates  
+**Decision:** WCAG 2.2 AA is the mandatory baseline, verified via automated tools (axe, Lighthouse) AND mandatory manual testing (keyboard-only, screen reader, 200% zoom) before every release  
+**Reasoning:** Treating accessibility as a "later" polish task is explicitly rejected — it's now a release-blocking CI/QA gate, matching the brand's "premium means universal usability" philosophy from Volume I  
+**Trade-offs:** Adds meaningful QA overhead to every release cycle; some ambitious motion/interaction ideas from Volume VI (parallax, layered depth) require built-in reduced-motion fallbacks from day one, not retrofitted later  
+
+### Security: Server-Side Validation Always, Secrets Never in Git
+**Date:** 2026-07-18  
+**Context:** Client-side-only validation (even with Zod) is a common but risky shortcut for small marketing sites  
+**Decision:** Every client-side validation (React Hook Form + Zod) must be duplicated server-side; all secrets (API keys, analytics IDs) live only in environment variables, never committed or logged  
+**Reasoning:** "Client validation improves UX. Server validation provides security." — non-negotiable even for a portfolio/marketing site since it includes forms (contact, booking, file upload) that accept public input  
+**Trade-offs:** Requires a real backend/API layer (even if minimal, e.g., serverless functions) rather than a pure static site — this has architecture implications for hosting choice still to be finalized  
+
+### Testing: Every Bug Fix Requires a Regression Test
+**Date:** 2026-07-18  
+**Context:** Marketing/portfolio sites are often under-tested because they're perceived as "just a website"; FrameBonds is being engineered like a software product instead  
+**Decision:** Full testing pyramid required (static analysis → unit → integration → component → visual regression → a11y → E2E → manual QA); every bug fix must add a corresponding test so "the same bug should never appear twice"  
+**Reasoning:** Matches the "built to evolve, not built to launch" philosophy from Chapter 1 — protects the significant design/content/motion investment from previous volumes against silent regressions as the site grows  
+**Trade-offs:** Significantly more engineering time upfront (test infrastructure, CI pipeline) than a typical agency site; may feel like over-engineering for an initial MVP launch — worth revisiting scope with user if timeline is tight  
+
+### Analytics: Service-Layer Isolation, Behavior Not Identity
+**Date:** 2026-07-18  
+**Context:** Analytics implementations often get scattered directly into components, making it hard to change providers or audit what's tracked  
+**Decision:** All analytics calls routed through a dedicated service layer (Component → Analytics Service → Provider → Platform); track only events that support a specific business decision; privacy-first (behavior, not personal identity)  
+**Reasoning:** Keeps analytics swappable/maintainable long-term; "if no decision exists, don't track it" prevents analytics bloat; aligns with Volume I's trust-first brand philosophy — visitors shouldn't feel surveilled  
+**Trade-offs:** Requires upfront architecture investment in the analytics service layer before any tracking code is written; team must resist the temptation to "just track everything" for later analysis  
+
 ---
 
-### Upcoming Decisions (Awaiting Volume VIII–IX)
+### Upcoming Decisions (Awaiting Volume IX — confirmed final volume)
 - Page architecture and content flow (expected in Volume III—Chapter 8)
 - Specific pages needed and their purpose
 - Content strategy and messaging tone
