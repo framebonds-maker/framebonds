@@ -1,7 +1,33 @@
 # Current State & Next Steps
 
 **Last Updated:** 2026-07-18  
-**Session Status:** 🎉 SPECIFICATION 100% COMPLETE + real sales philosophy confirmed from internal docs. Down to 3 pre-implementation items: proposal video, model upgrade, CMS/hosting choice.
+**Session Status:** 🎉 SPECIFICATION 100% COMPLETE. Model confirmed (Fable 5). Timeline confirmed: 1 week. Scope split agreed. Starting Phase 1 + Homepage now.
+
+---
+
+## ⏰ TIMELINE & SCOPE COMMITMENT (2026-07-18) — READ THIS FIRST IN FUTURE SESSIONS
+
+**Deadline: 1 week from 2026-07-18** (user's own words: "asap was in a week from now and i want it completed in a week"). User will edit/iterate as much as they want — the constraint is calendar time, not a request for a rushed/lower-quality result.
+
+**Agreed scope split (user has not explicitly confirmed this exact split yet, but it was proposed and the user moved on to "start it" — treat as working plan, revisit if they push back):**
+
+**In scope for Week 1 (the actual launch-ready website):**
+- Full design system (colors, typography, spacing, tokens) implemented in code
+- All core pages: Homepage, Portfolio, Case Study template, Services, About, Agency Partnership, Contact, 404
+- Full motion system per Volume VI (restrained/cinematic — NOT flashy; 70% static / 20% micro / 10% cinematic density)
+- Fully responsive, accessible (WCAG 2.2 AA), production-quality code
+- Placeholder content/media where real assets aren't ready (user will swap in real videos/photos later)
+- No internal-only info on the public site (no team member names, no internal process/ops details — user was explicit about this)
+
+**Fast-follow, NOT blocking Week 1 launch-readiness:**
+- Full headless CMS wiring/admin (content stays hardcoded/structured-but-static for week 1)
+- Full automated test suite (unit/integration/e2e) — basic sanity only for week 1
+- Analytics dashboards, SEO tooling depth, production security hardening
+- The "10-year platform vision" items from Volume IX (CRM, client portals, AI features, multi-brand, etc.)
+
+**Model:** Fable 5 (`claude-fable-5`) — user runs `/model` themselves to switch; I cannot invoke it from here.
+
+**Build order:** Homepage first (per Volume IX's own roadmap — it establishes the design language everything else follows), reviewed by user in-browser before spreading the pattern across remaining pages. This is the review checkpoint strategy — user explicitly does NOT mind iterating/editing, so showing homepage early and often is the right call.
 
 ---
 
