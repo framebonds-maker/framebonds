@@ -1,5 +1,27 @@
 # Project Progress Log
 
+## [2026-07-18] IMPLEMENTATION STARTED — Phase 1: Project Foundation Complete
+- **Completed:**
+  - Scaffolded Vite + React + TypeScript project (moved into repo root alongside existing CLAUDE.md/docs)
+  - Installed full tech stack: react-router-dom, framer-motion, react-hook-form, zod, @hookform/resolvers, @tanstack/react-query, react-helmet-async, class-variance-authority, clsx, tailwind-merge, lucide-react
+  - Installed Tailwind CSS v4 (+ @tailwindcss/vite plugin) and self-hosted fonts: Fraunces Variable (display/headline) + Manrope (body) — chosen specifically to avoid the generic "Inter everywhere" SaaS look per Volume II/user's Implementation Standards
+  - Built full Volume VIII folder structure under `src/` (components/ui, layout, navigation, sections, forms, feedback, media, portfolio; plus pages, hooks, lib, services, constants, types, utils, assets, styles, animations, providers, routes, config)
+  - Defined complete design token system in `src/styles/globals.css` via Tailwind v4 `@theme`: colors (charcoal/off-white per Volume II), typography scale (Display XL through Label per Volume II Ch2), spacing scale, radius, shadows, motion durations/easing (Volume VI Ch2), z-index scale
+  - Created `src/constants/motion.ts` (JS-side motion tokens for Framer Motion) and `src/animations/variants.ts` (reusable variants: fadeInUp, imageReveal, staggerContainer/Item, cardHover — matching Volume VI signature patterns)
+  - Created `useReducedMotion` hook (accessibility requirement, Volume VI/VIII)
+  - Created `cn()` utility (clsx + tailwind-merge, standard companion for CVA-based components)
+  - Wired main.tsx with HelmetProvider, QueryClientProvider, BrowserRouter; minimal placeholder App.tsx
+  - Set up `.claude/launch.json` for Browser-pane dev server preview
+  - **Verified: TypeScript compiles clean, production build succeeds, dev server renders with zero console errors**
+
+- **Files Touched:** package.json, vite.config.ts, tsconfig.app.json, index.html, src/main.tsx, src/app/App.tsx, src/styles/globals.css, src/constants/motion.ts, src/animations/variants.ts, src/hooks/useReducedMotion.ts, src/lib/utils.ts
+
+- **Open Issues:** None — foundation fully verified working before commit.
+
+- **Next:** Per explicit user instruction, implementation now PAUSES before Phase 2 (first real design system components) so the user can switch to their intended model (Fable 5) for all creative/component/page work. Foundation-only work (this phase) was done under Sonnet 5, which the user confirmed is fine since it required no creative/aesthetic judgment.
+
+---
+
 ## [2026-07-18] Setup Phase
 - **Completed:**
   - Initialized git repository
