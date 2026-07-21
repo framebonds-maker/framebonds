@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { MediaPlaceholder } from '@/components/media/MediaPlaceholder'
+import { VideoPreview } from '@/components/media/VideoPreview'
 import { fadeInUp, viewportOnce } from '@/animations/variants'
 
 /**
@@ -16,7 +16,11 @@ export function Perspective() {
       <Container>
         <div className="grid items-center gap-12 md:grid-cols-2 md:gap-16">
           <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-            <MediaPlaceholder hue="sage" className="aspect-[4/5]" />
+            <VideoPreview
+              src="/videos/ratnasar-goddess-full.mp4"
+              poster="/videos/ratnasar-goddess-poster.jpg"
+              className="mx-auto aspect-[9/16] max-w-xs md:max-w-sm"
+            />
           </motion.div>
           <div>
             <SectionHeading

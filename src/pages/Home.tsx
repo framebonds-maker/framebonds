@@ -6,6 +6,7 @@ import { ServicesSection } from '@/components/sections/home/ServicesSection'
 import { ProcessSection } from '@/components/sections/home/ProcessSection'
 import { WhyFrameBonds } from '@/components/sections/home/WhyFrameBonds'
 import { QuoteSection } from '@/components/sections/home/QuoteSection'
+import { CinematicBreak } from '@/components/sections/shared/CinematicBreak'
 import { FinalCta } from '@/components/sections/shared/FinalCta'
 
 /**
@@ -25,6 +26,22 @@ export default function Home() {
       <Philosophy />
       <ServicesSection />
       <ProcessSection />
+
+      <CinematicBreak
+        video="/videos/ratnasar-aria-full.mp4"
+        poster="/videos/ratnasar-aria-poster.jpg"
+        eyebrow="Recent Work"
+        statement={
+          <>
+            Every frame is a decision.
+            <br />
+            Not an accident<span className="text-accent">.</span>
+          </>
+        }
+        to="/work"
+        ctaLabel="See the full portfolio"
+      />
+
       <WhyFrameBonds />
       <QuoteSection />
       <FinalCta />
