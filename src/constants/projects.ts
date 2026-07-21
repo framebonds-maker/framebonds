@@ -35,7 +35,7 @@ export type Project = {
     previewPoster: string
     /** Drives which aspect box the frame renders in — must match the source so object-cover never crops. */
     orientation: 'portrait' | 'landscape'
-    gallery?: { src: string; poster: string }[]
+    gallery?: { src: string; poster: string; orientation: 'portrait' | 'landscape' }[]
   }
 }
 
@@ -69,7 +69,7 @@ export const projects: Project[] = [
       previewSrc: '/videos/raymond-preview.mp4',
       previewPoster: '/videos/raymond-poster.jpg',
       orientation: 'portrait',
-      gallery: [{ src: '/videos/raymond-gallery.mp4', poster: '/videos/raymond-poster.jpg' }],
+      gallery: [{ src: '/videos/raymond-gallery.mp4', poster: '/videos/raymond-poster.jpg', orientation: 'portrait' }],
     },
   },
   {
@@ -177,22 +177,34 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'aurelia-jewels',
-    title: 'Aurelia Jewels',
+    slug: 'ratnasar-jewels',
+    title: 'Ratnasar Jewels',
     industry: 'Luxury Retail',
     category: 'Luxury Retail',
-    year: '2024',
-    summary: 'Generations of craft, photographed like it deserves to be remembered.',
+    year: '2025',
+    summary: 'Two heritage sets, filmed to let craftsmanship carry the frame.',
     hue: 'plum',
-    client: 'Aurelia Jewels',
-    services: ['Product Photography', 'Brand Film'],
+    featured: true,
+    client: 'Ratnasar Jewels',
+    services: ['Brand Film', 'Social Content'],
     timeline: '1-week production',
-    deliverables: ['Macro Product Photography', 'Brand Film', 'Social Content'],
+    deliverables: ['Brand Films', 'Vertical Reels', 'Social Cutdowns'],
     challenge:
-      'A jewelry house needed to show craftsmanship at a level of detail that most retail photography never attempts.',
-    approach: 'Macro-focused lighting setups designed to reveal texture, facet and material honestly.',
-    production: 'Studio production across three days, built around controlled directional lighting.',
-    results: ['Full product catalog refreshed with consistent visual language'],
+      'A heritage jewelry house needed each set to be shown with the same craftsmanship the pieces themselves were made with — not standard product-photography lighting.',
+    approach:
+      'Every piece was filmed in motion under controlled directional light, giving stones and metalwork room to catch and hold the light rather than sitting flat.',
+    production: 'Studio production across both sets, built around controlled lighting and slow, deliberate camera movement.',
+    results: ['Two complete sets delivered as brand films and vertical social cutdowns'],
+    media: {
+      heroSrc: '/videos/ratnasar-aria-full.mp4',
+      heroPoster: '/videos/ratnasar-aria-poster.jpg',
+      previewSrc: '/videos/ratnasar-aria-preview.mp4',
+      previewPoster: '/videos/ratnasar-aria-poster.jpg',
+      orientation: 'landscape',
+      gallery: [
+        { src: '/videos/ratnasar-goddess-full.mp4', poster: '/videos/ratnasar-goddess-poster.jpg', orientation: 'portrait' },
+      ],
+    },
   },
   {
     slug: 'banyan-and-oak',

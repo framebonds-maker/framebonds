@@ -54,10 +54,10 @@ export default function Portfolio() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="grid gap-8 md:grid-cols-3"
+            className="flex flex-col gap-14 md:flex-row md:gap-8"
           >
             {featured.map((project) => (
-              <ProjectCard key={project.slug} project={project} aspect="aspect-[16/9]" />
+              <ProjectCard key={project.slug} project={project} rowHeight="md:h-[420px]" />
             ))}
           </motion.div>
         </Container>

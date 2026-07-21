@@ -155,7 +155,8 @@ export default function CaseStudy() {
         </Container>
       </Section>
 
-      {/* Gallery */}
+      {/* Gallery — one shared row height; real footage keeps its exact ratio,
+          placeholders grow to fill whatever width is left. */}
       <Section>
         <Container width="wide">
           <motion.div
@@ -163,33 +164,25 @@ export default function CaseStudy() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6"
+            className="flex flex-col gap-4 md:flex-row md:gap-6"
           >
-            <motion.div
-              variants={fadeInUp}
-              className={project.media?.gallery?.[0] && project.media.orientation === 'portrait' ? '' : 'col-span-2'}
-            >
-              {project.media?.gallery?.[0] ? (
-                <VideoPreview
-                  src={project.media.gallery[0].src}
-                  poster={project.media.gallery[0].poster}
-                  play
-                  allowTap
-                  className={project.media.orientation === 'portrait' ? 'aspect-[9/16] max-w-sm' : 'aspect-[16/9]'}
-                />
-              ) : (
-                <MediaPlaceholder hue={project.hue} className="aspect-[16/9]" />
-              )}
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <MediaPlaceholder hue={project.hue} className="aspect-[3/4]" />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <MediaPlaceholder hue={project.hue} className="aspect-square" />
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <MediaPlaceholder hue={project.hue} className="aspect-square" />
-            </motion.div>
+            {(project.media?.gallery ?? []).map((item) => (
+              <motion.div key={item.src} variants={fadeInUp} className="w-full md:w-auto md:shrink-0">
+                <div
+                  style={{ aspectRatio: item.orientation === 'portrait' ? 9 / 16 : 16 / 9 }}
+                  className="relative w-full md:h-[380px] md:w-auto"
+                >
+                  <VideoPreview src={item.src} poster={item.poster} play allowTap className="h-full w-full" />
+                </div>
+              </motion.div>
+            ))}
+            {Array.from({ length: Math.max(0, 3 - (project.media?.gallery?.length ?? 0)) }).map((_, i) => (
+              <motion.div key={i} variants={fadeInUp} className="w-full md:flex-1 md:basis-0">
+                <div style={{ aspectRatio: 4 / 3 }} className="relative w-full md:h-[380px] md:w-auto">
+                  <MediaPlaceholder hue={project.hue} className="h-full w-full" />
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </Container>
       </Section>
@@ -248,10 +241,10 @@ export default function CaseStudy() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="mt-8 grid gap-8 md:grid-cols-3"
+            className="mt-8 flex flex-col gap-10 md:flex-row md:gap-8"
           >
             {related.map((p) => (
-              <ProjectCard key={p.slug} project={p} aspect="aspect-[4/5]" />
+              <ProjectCard key={p.slug} project={p} rowHeight="md:h-[360px]" />
             ))}
           </motion.div>
         </Container>

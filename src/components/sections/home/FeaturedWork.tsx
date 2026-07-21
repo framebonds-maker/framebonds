@@ -9,10 +9,10 @@ import { staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
 
 /**
- * Featured work — Volume III Ch4. Editorial grid: each project's box shape
- * follows its own footage orientation (portrait footage gets a portrait
- * frame, never a cropped wide one) — composition varies row to row so the
- * mismatch never reads as an accident.
+ * Featured work — Volume III Ch4. Justified rows: every card in a row shares
+ * one height, and each card's own width comes from its real footage ratio —
+ * portrait and landscape footage sit flush together with no cropping and no
+ * uneven gaps, the way a proper editorial layout mixes orientations.
  */
 export function FeaturedWork() {
   const [a, b, c, d, e] = projects.slice(0, 5)
@@ -41,13 +41,17 @@ export function FeaturedWork() {
           initial="hidden"
           whileInView="visible"
           viewport={viewportOnce}
-          className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 md:mt-20 md:grid-cols-12"
+          className="mt-14 flex flex-col gap-14 md:mt-20"
         >
-          <ProjectCard project={a} portraitAspect="aspect-[9/16]" className="md:col-span-4" />
-          <ProjectCard project={b} className="md:col-span-8" />
-          <ProjectCard project={c} portraitAspect="aspect-[9/16]" className="md:col-span-4" />
-          <ProjectCard project={d} portraitAspect="aspect-[9/16]" className="md:col-span-4" />
-          <ProjectCard project={e} aspect="aspect-[4/3]" className="md:col-span-4" />
+          <div className="flex flex-col gap-14 md:flex-row md:gap-8">
+            <ProjectCard project={a} rowHeight="md:h-[480px]" />
+            <ProjectCard project={b} rowHeight="md:h-[480px]" />
+          </div>
+          <div className="flex flex-col gap-14 md:flex-row md:gap-8">
+            <ProjectCard project={c} rowHeight="md:h-[380px]" />
+            <ProjectCard project={d} rowHeight="md:h-[380px]" />
+            <ProjectCard project={e} rowHeight="md:h-[380px]" />
+          </div>
         </motion.div>
       </Container>
     </Section>
