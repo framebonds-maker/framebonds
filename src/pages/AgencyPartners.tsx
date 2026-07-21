@@ -46,6 +46,7 @@ export default function AgencyPartners() {
       <CinematicBreak
         video="/videos/bts.mp4"
         poster="/videos/bts-poster.jpg"
+        orientation="portrait"
         eyebrow="On Set"
         statement={
           <>
