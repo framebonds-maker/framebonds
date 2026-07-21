@@ -13,12 +13,28 @@ import { cn } from '@/lib/utils'
  */
 type ProjectCardProps = {
   project: Project
-  /** Tailwind aspect class controls the frame shape per grid position. */
+  /** Aspect box used only when there's no real footage (cinematic placeholder). */
   aspect?: string
+  /** Aspect box for real portrait footage — defaults to the exact 9:16 source ratio. */
+  portraitAspect?: string
+  /** Aspect box for real landscape footage — defaults to the exact 16:9 source ratio. */
+  landscapeAspect?: string
   className?: string
 }
 
-export function ProjectCard({ project, aspect = 'aspect-[16/10]', className }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  aspect = 'aspect-[16/10]',
+  portraitAspect = 'aspect-[9/16]',
+  landscapeAspect = 'aspect-[16/9]',
+  className,
+}: ProjectCardProps) {
+  const resolvedAspect = project.media
+    ? project.media.orientation === 'portrait'
+      ? portraitAspect
+      : landscapeAspect
+    : aspect
+
   return (
     <motion.article variants={staggerItem} className={cn('group', className)}>
       <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
@@ -26,10 +42,10 @@ export function ProjectCard({ project, aspect = 'aspect-[16/10]', className }: P
           <VideoPreview
             src={project.media.previewSrc}
             poster={project.media.previewPoster}
-            className={aspect}
+            className={resolvedAspect}
           />
         ) : (
-          <MediaPlaceholder hue={project.hue} className={aspect} />
+          <MediaPlaceholder hue={project.hue} className={resolvedAspect} />
         )}
         <div className="mt-5 flex items-start justify-between gap-4">
           <div>

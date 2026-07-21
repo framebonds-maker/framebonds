@@ -59,32 +59,29 @@ export function HomeHero() {
           initial={{ opacity: 0, y: 32, scale: 0.99 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ delay: 0.42, duration: 1.1, ease: easing.entrance }}
-          className="mt-16 md:mt-20"
+          className="mt-16 flex flex-col-reverse items-center gap-10 md:mt-20 md:flex-row md:items-end md:justify-between md:gap-14"
         >
+          <div className="max-w-sm text-center md:text-left">
+            <p className="text-label font-semibold uppercase tracking-[0.18em] text-ink-muted">
+              Recent Work
+            </p>
+            <p className="mt-2 font-display text-heading-l font-medium text-ink md:text-heading-xl">
+              Straight from production.
+            </p>
+            <Link
+              to="/work"
+              className="mt-5 inline-flex items-center gap-2 text-body-s font-semibold text-ink transition-colors duration-[180ms] hover:text-accent-hover"
+            >
+              View Work
+              <ArrowUpRight className="h-4 w-4" />
+            </Link>
+          </div>
+
           <VideoPreview
             src="/videos/featured-reel.mp4"
             poster="/videos/featured-reel-poster.jpg"
             autoPlay
-            className="aspect-[16/9] md:aspect-[21/9]"
-            caption={
-              <div className="flex w-full items-end justify-between gap-4">
-                <div>
-                  <p className="text-label font-semibold uppercase tracking-[0.18em] text-ink/70">
-                    Recent Work
-                  </p>
-                  <p className="mt-1 font-display text-heading-m font-medium text-ink">
-                    Straight from production.
-                  </p>
-                </div>
-                <Link
-                  to="/work"
-                  className="hidden shrink-0 items-center gap-2 rounded-full border border-ink/25 bg-canvas/30 px-5 py-2.5 text-body-s font-semibold text-ink backdrop-blur-sm transition-colors duration-[180ms] hover:border-ink/40 md:flex"
-                >
-                  View Work
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </div>
-            }
+            className="aspect-[9/16] w-full max-w-[280px] shrink-0 md:max-w-xs"
           />
         </motion.div>
       </Container>

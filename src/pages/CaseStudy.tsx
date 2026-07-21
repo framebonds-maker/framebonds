@@ -53,13 +53,23 @@ export default function CaseStudy() {
 
           <motion.div variants={imageReveal} initial="hidden" animate="visible" className="mt-12 md:mt-16">
             {project.media ? (
-              <VideoPreview
-                src={project.media.heroSrc}
-                poster={project.media.heroPoster}
-                play
-                allowTap
-                className="aspect-[16/9] md:aspect-[21/9]"
-              />
+              project.media.orientation === 'portrait' ? (
+                <VideoPreview
+                  src={project.media.heroSrc}
+                  poster={project.media.heroPoster}
+                  play
+                  allowTap
+                  className="mx-auto aspect-[9/16] max-w-sm md:max-w-md"
+                />
+              ) : (
+                <VideoPreview
+                  src={project.media.heroSrc}
+                  poster={project.media.heroPoster}
+                  play
+                  allowTap
+                  className="aspect-[16/9] md:aspect-[21/9]"
+                />
+              )
             ) : (
               <MediaPlaceholder hue={project.hue} play className="aspect-[16/9] md:aspect-[21/9]" />
             )}
@@ -155,14 +165,17 @@ export default function CaseStudy() {
             viewport={viewportOnce}
             className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6"
           >
-            <motion.div variants={fadeInUp} className="col-span-2">
+            <motion.div
+              variants={fadeInUp}
+              className={project.media?.gallery?.[0] && project.media.orientation === 'portrait' ? '' : 'col-span-2'}
+            >
               {project.media?.gallery?.[0] ? (
                 <VideoPreview
                   src={project.media.gallery[0].src}
                   poster={project.media.gallery[0].poster}
                   play
                   allowTap
-                  className="aspect-[16/9]"
+                  className={project.media.orientation === 'portrait' ? 'aspect-[9/16] max-w-sm' : 'aspect-[16/9]'}
                 />
               ) : (
                 <MediaPlaceholder hue={project.hue} className="aspect-[16/9]" />

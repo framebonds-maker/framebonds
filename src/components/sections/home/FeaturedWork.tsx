@@ -9,11 +9,13 @@ import { staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
 
 /**
- * Featured work — Volume III Ch4. Editorial grid: the lead project gets the
- * full width, the rest alternate 7/5 columns so no two rows feel identical.
+ * Featured work — Volume III Ch4. Editorial grid: each project's box shape
+ * follows its own footage orientation (portrait footage gets a portrait
+ * frame, never a cropped wide one) — composition varies row to row so the
+ * mismatch never reads as an accident.
  */
 export function FeaturedWork() {
-  const [lead, ...rest] = projects.slice(0, 5)
+  const [a, b, c, d, e] = projects.slice(0, 5)
 
   return (
     <Section tone="secondary">
@@ -41,11 +43,11 @@ export function FeaturedWork() {
           viewport={viewportOnce}
           className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 md:mt-20 md:grid-cols-12"
         >
-          <ProjectCard project={lead} aspect="aspect-[16/9] md:aspect-[21/9]" className="md:col-span-12" />
-          <ProjectCard project={rest[0]} aspect="aspect-[16/10]" className="md:col-span-7" />
-          <ProjectCard project={rest[1]} aspect="aspect-[16/10] md:aspect-[4/3]" className="md:col-span-5" />
-          <ProjectCard project={rest[2]} aspect="aspect-[16/10] md:aspect-[4/3]" className="md:col-span-5" />
-          <ProjectCard project={rest[3]} aspect="aspect-[16/10]" className="md:col-span-7" />
+          <ProjectCard project={a} portraitAspect="aspect-[9/16]" className="md:col-span-4" />
+          <ProjectCard project={b} className="md:col-span-8" />
+          <ProjectCard project={c} portraitAspect="aspect-[9/16]" className="md:col-span-4" />
+          <ProjectCard project={d} portraitAspect="aspect-[9/16]" className="md:col-span-4" />
+          <ProjectCard project={e} aspect="aspect-[4/3]" className="md:col-span-4" />
         </motion.div>
       </Container>
     </Section>

@@ -57,7 +57,7 @@ export default function Portfolio() {
             className="grid gap-8 md:grid-cols-3"
           >
             {featured.map((project) => (
-              <ProjectCard key={project.slug} project={project} aspect="aspect-[4/5]" />
+              <ProjectCard key={project.slug} project={project} aspect="aspect-[16/9]" />
             ))}
           </motion.div>
         </Container>
@@ -93,7 +93,7 @@ export default function Portfolio() {
             className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2"
           >
             {filtered.map((project: Project) => (
-              <ProjectCard key={project.slug} project={project} aspect="aspect-[16/11]" />
+              <ProjectCard key={project.slug} project={project} aspect="aspect-[16/9]" />
             ))}
           </motion.div>
 

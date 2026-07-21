@@ -33,6 +33,8 @@ export type Project = {
     heroPoster: string
     previewSrc: string
     previewPoster: string
+    /** Drives which aspect box the frame renders in — must match the source so object-cover never crops. */
+    orientation: 'portrait' | 'landscape'
     gallery?: { src: string; poster: string }[]
   }
 }
@@ -66,6 +68,7 @@ export const projects: Project[] = [
       heroPoster: '/videos/raymond-poster.jpg',
       previewSrc: '/videos/raymond-preview.mp4',
       previewPoster: '/videos/raymond-poster.jpg',
+      orientation: 'portrait',
       gallery: [{ src: '/videos/raymond-gallery.mp4', poster: '/videos/raymond-poster.jpg' }],
     },
   },
@@ -94,6 +97,7 @@ export const projects: Project[] = [
       heroPoster: '/videos/automotive-poster.jpg',
       previewSrc: '/videos/automotive-preview.mp4',
       previewPoster: '/videos/automotive-poster.jpg',
+      orientation: 'landscape',
     },
   },
   {
@@ -120,6 +124,7 @@ export const projects: Project[] = [
       heroPoster: '/videos/forge-poster.jpg',
       previewSrc: '/videos/forge-preview.mp4',
       previewPoster: '/videos/forge-poster.jpg',
+      orientation: 'portrait',
     },
   },
   {
@@ -145,6 +150,7 @@ export const projects: Project[] = [
       heroPoster: '/videos/coach-poster.jpg',
       previewSrc: '/videos/coach-preview.mp4',
       previewPoster: '/videos/coach-poster.jpg',
+      orientation: 'portrait',
     },
   },
   {
