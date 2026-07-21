@@ -59,12 +59,21 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
       onMouseLeave={stopPreview}
       onClick={handleTap}
     >
+      {/* Blurred backdrop fill — handles vertical clips inside wide frames without
+          cropping the subject; the sharp layer below sits letterboxed on top. */}
+      <img
+        src={poster}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full scale-110 object-cover opacity-60 blur-2xl"
+      />
+
       <img
         src={poster}
         alt=""
         aria-hidden
         className={cn(
-          'absolute inset-0 h-full w-full object-cover transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+          'absolute inset-0 h-full w-full object-contain transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
           active ? 'opacity-0' : 'opacity-100',
         )}
       />
@@ -77,7 +86,7 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
         autoPlay={autoPlay}
         preload={autoPlay ? 'auto' : 'none'}
         className={cn(
-          'absolute inset-0 h-full w-full scale-[1.02] object-cover transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+          'absolute inset-0 h-full w-full object-contain transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
           active ? 'opacity-100' : 'opacity-0',
         )}
       />

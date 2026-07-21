@@ -97,30 +97,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: 'the-morning-grind',
-    title: 'The Morning Grind',
-    industry: 'Food & Beverage',
-    category: 'Food & Beverage',
-    year: '2025',
-    summary: 'A café brand made unmistakable through texture, light and ritual.',
-    hue: 'terracotta',
-    featured: true,
-    client: 'The Morning Grind',
-    services: ['Monthly Content Package', 'Photography'],
-    timeline: 'Ongoing monthly partnership',
-    deliverables: ['Monthly Reels', 'Product Photography', 'Seasonal Menu Content'],
-    challenge:
-      'An independent café needed a steady stream of premium content without the cost or complexity of a full-time production hire.',
-    approach:
-      'One planned shoot day per month, structured around seasonal menu changes, delivers a full month of content in a single session.',
-    production:
-      'Early-morning shoots to catch natural window light before the café opens, minimizing disruption to service.',
-    results: [
-      'Twelve consecutive months of on-time content delivery',
-      'Content consistently used across the café\'s own social channels',
-    ],
-  },
-  {
     slug: 'forge-athletics',
     title: 'Forge Athletics',
     industry: 'Fitness',
@@ -128,6 +104,7 @@ export const projects: Project[] = [
     year: '2024',
     summary: 'Monthly content systems that keep a growing gym impossible to ignore.',
     hue: 'slate',
+    featured: true,
     client: 'Forge Athletics',
     services: ['Monthly Content Package', 'Brand Film'],
     timeline: 'Ongoing monthly partnership',
@@ -143,8 +120,55 @@ export const projects: Project[] = [
       heroPoster: '/videos/forge-poster.jpg',
       previewSrc: '/videos/forge-preview.mp4',
       previewPoster: '/videos/forge-poster.jpg',
-      gallery: [{ src: '/videos/coach-full.mp4', poster: '/videos/coach-poster.jpg' }],
     },
+  },
+  {
+    slug: 'peak-form-coaching',
+    title: 'Peak Form Coaching',
+    industry: 'Fitness',
+    category: 'Fitness',
+    year: '2025',
+    summary: 'Personal-coaching content built around real sessions, not staged testimonials.',
+    hue: 'slate',
+    client: 'Peak Form Coaching',
+    services: ['Monthly Content Package', 'Social Content'],
+    timeline: 'Ongoing monthly partnership',
+    deliverables: ['Monthly Reels', 'Session Highlight Films'],
+    challenge:
+      'An independent coach needed content that built trust in their method, without the over-produced feel that makes fitness content forgettable.',
+    approach:
+      'We filmed real coaching sessions as they happened — cueing, form corrections, genuine effort — rather than reenacting them for the camera.',
+    production: 'Half-day monthly shoots embedded within live coaching sessions.',
+    results: ['Ongoing monthly content pipeline supporting client acquisition'],
+    media: {
+      heroSrc: '/videos/coach-full.mp4',
+      heroPoster: '/videos/coach-poster.jpg',
+      previewSrc: '/videos/coach-preview.mp4',
+      previewPoster: '/videos/coach-poster.jpg',
+    },
+  },
+  {
+    slug: 'the-morning-grind',
+    title: 'The Morning Grind',
+    industry: 'Food & Beverage',
+    category: 'Food & Beverage',
+    year: '2025',
+    summary: 'A café brand made unmistakable through texture, light and ritual.',
+    hue: 'terracotta',
+    client: 'The Morning Grind',
+    services: ['Monthly Content Package', 'Photography'],
+    timeline: 'Ongoing monthly partnership',
+    deliverables: ['Monthly Reels', 'Product Photography', 'Seasonal Menu Content'],
+    challenge:
+      'An independent café needed a steady stream of premium content without the cost or complexity of a full-time production hire.',
+    approach:
+      'One planned shoot day per month, structured around seasonal menu changes, delivers a full month of content in a single session.',
+    production:
+      'Early-morning shoots to catch natural window light before the café opens, minimizing disruption to service.',
+    results: [
+      'Twelve consecutive months of on-time content delivery',
+      'Content consistently used across the café\'s own social channels',
+    ],
   },
   {
     slug: 'aurelia-jewels',

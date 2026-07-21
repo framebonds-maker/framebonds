@@ -6,7 +6,7 @@ export const site = {
   name: 'FrameBonds',
   tagline: 'Premium visual production for brands and agencies that value craftsmanship.',
   city: 'Jaipur, India',
-  email: 'hello@framebonds.com',
+  email: 'framebonds@gmail.com',
   social: {
     instagram: 'https://instagram.com/framebonds',
     linkedin: 'https://linkedin.com/company/framebonds',

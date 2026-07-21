@@ -18,7 +18,7 @@ export const buttonStyles = cva(
   [
     'group/btn relative inline-flex items-center justify-center gap-2.5',
     'font-body font-semibold tracking-[-0.01em] whitespace-nowrap select-none',
-    'transition-[color,background-color,box-shadow] duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+    'transition-[color,background-color,border-color,box-shadow] duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
     'disabled:pointer-events-none disabled:opacity-45',
   ],
   {
@@ -32,7 +32,7 @@ export const buttonStyles = cva(
         secondary: [
           'bg-transparent text-ink rounded-[0.75rem]',
           'border border-edge-strong',
-          'hover:border-ink-secondary hover:bg-surface',
+          'hover:border-accent/60 hover:bg-surface hover:shadow-[0_8px_24px_-10px_rgb(201_160_92_/_35%)]',
         ],
         text: [
           'bg-transparent text-ink rounded-none px-0',
@@ -41,7 +41,7 @@ export const buttonStyles = cva(
         icon: [
           'bg-transparent text-ink rounded-full',
           'border border-edge',
-          'hover:border-edge-strong hover:bg-surface',
+          'hover:border-accent/50 hover:bg-surface',
         ],
       },
       size: {
@@ -126,7 +126,7 @@ export function ButtonLink({
   children,
 }: ButtonLinkProps) {
   const classes = cn(buttonStyles({ variant, size }), className)
-  const isMagnetic = variant === 'primary' && size === 'lg'
+  const isMagnetic = (variant === 'primary' || variant === 'secondary') && size === 'lg'
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const magnetic = useMagnetic(10)
   const magneticProps = isMagnetic
