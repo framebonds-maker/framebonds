@@ -28,6 +28,10 @@ type ProjectCardProps = {
    * whatever width is left in the row.
    */
   rowHeight?: string
+  /** Same idea as `rowHeight`, but a computed pixel value (for dynamic
+   * justified-row layouts) rather than a static Tailwind class. Assumes the
+   * caller has already decided desktop-row layout is active. */
+  rowHeightPx?: number
   className?: string
 }
 
@@ -37,8 +41,31 @@ export function ProjectCard({
   portraitAspect = 'aspect-[9/16]',
   landscapeAspect = 'aspect-[16/9]',
   rowHeight,
+  rowHeightPx,
   className,
 }: ProjectCardProps) {
+  if (rowHeightPx) {
+    const ratio = project.media ? (project.media.orientation === 'portrait' ? 9 / 16 : 16 / 9) : 4 / 3
+    return (
+      <motion.article variants={staggerItem} className={cn('group flex flex-col shrink-0', className)}>
+        <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+          <div style={{ height: rowHeightPx, aspectRatio: ratio }} className="relative">
+            {project.media ? (
+              <VideoPreview
+                src={project.media.previewSrc}
+                poster={project.media.previewPoster}
+                className="h-full w-full"
+              />
+            ) : (
+              <MediaPlaceholder hue={project.hue} className="h-full w-full" />
+            )}
+          </div>
+          <ProjectCardCaption project={project} />
+        </Link>
+      </motion.article>
+    )
+  }
+
   if (rowHeight) {
     // Real footage keeps its exact ratio; placeholders default to a
     // reasonable box on mobile (stacked, full-width) and simply grow to

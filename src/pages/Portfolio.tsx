@@ -5,21 +5,20 @@ import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionLabel } from '@/components/ui/SectionHeading'
 import { Tag } from '@/components/ui/Tag'
-import { ProjectCard } from '@/components/portfolio/ProjectCard'
-import { projects, type Project } from '@/constants/projects'
-import { staggerContainer, fadeInUp, viewportOnce } from '@/animations/variants'
-import { stagger } from '@/constants/motion'
+import { JustifiedPortfolioGrid } from '@/components/portfolio/JustifiedPortfolioGrid'
+import { projects } from '@/constants/projects'
+import { fadeInUp, viewportOnce } from '@/animations/variants'
 
 const filters = ['All', ...Array.from(new Set(projects.map((p) => p.category)))] as const
 
 /**
- * Portfolio — Volume IV Ch1. Quiet hero (not another showreel), 3 flagship
- * projects up top, then the full editorial grid with simple category filters.
+ * Portfolio — Volume IV Ch1. Quiet hero (not another showreel), then one
+ * justified-row editorial grid — no separate "flagship strip" repeating the
+ * same handful of projects twice, since every project here is real work.
  */
 export default function Portfolio() {
   const [active, setActive] = useState<(typeof filters)[number]>('All')
 
-  const featured = projects.filter((p) => p.featured)
   const filtered = useMemo(
     () => (active === 'All' ? projects : projects.filter((p) => p.category === active)),
     [active],
@@ -46,24 +45,7 @@ export default function Portfolio() {
         </Container>
       </Section>
 
-      {/* Flagship projects — largest canvas */}
-      <Section spacing="compact" tone="secondary">
-        <Container width="wide">
-          <motion.div
-            variants={staggerContainer(stagger.large)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="flex flex-col gap-14 md:flex-row md:gap-8"
-          >
-            {featured.map((project) => (
-              <ProjectCard key={project.slug} project={project} rowHeight="md:h-[420px]" />
-            ))}
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* Filters + full grid */}
+      {/* Filters + justified editorial grid */}
       <Section>
         <Container width="wide">
           <motion.div
@@ -85,17 +67,7 @@ export default function Portfolio() {
             ))}
           </motion.div>
 
-          <motion.div
-            key={active}
-            variants={staggerContainer(stagger.medium)}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2"
-          >
-            {filtered.map((project: Project) => (
-              <ProjectCard key={project.slug} project={project} aspect="aspect-[16/9]" />
-            ))}
-          </motion.div>
+          <JustifiedPortfolioGrid projects={filtered} />
 
           {filtered.length === 0 && (
             <p className="py-20 text-center text-body text-ink-muted">

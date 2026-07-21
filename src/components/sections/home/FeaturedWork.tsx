@@ -1,22 +1,17 @@
-import { motion } from 'framer-motion'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ButtonLink } from '@/components/ui/Button'
-import { ProjectCard } from '@/components/portfolio/ProjectCard'
+import { JustifiedPortfolioGrid } from '@/components/portfolio/JustifiedPortfolioGrid'
 import { projects } from '@/constants/projects'
-import { staggerContainer, viewportOnce } from '@/animations/variants'
-import { stagger } from '@/constants/motion'
 
 /**
- * Featured work — Volume III Ch4. Justified rows: every card in a row shares
- * one height, and each card's own width comes from its real footage ratio —
- * portrait and landscape footage sit flush together with no cropping and no
- * uneven gaps, the way a proper editorial layout mixes orientations.
+ * Featured work — Volume III Ch4. Same justified-row engine as the full
+ * Portfolio page: every card in a row shares one height, and each card's
+ * width comes from its real footage ratio, so mixed orientations sit flush
+ * with no cropping and no uneven gaps.
  */
 export function FeaturedWork() {
-  const [a, b, c, d, e] = projects.slice(0, 5)
-
   return (
     <Section tone="secondary">
       <Container width="wide">
@@ -36,23 +31,9 @@ export function FeaturedWork() {
           </ButtonLink>
         </div>
 
-        <motion.div
-          variants={staggerContainer(stagger.large)}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-          className="mt-14 flex flex-col gap-14 md:mt-20"
-        >
-          <div className="flex flex-col gap-14 md:flex-row md:gap-8">
-            <ProjectCard project={a} rowHeight="md:h-[480px]" />
-            <ProjectCard project={b} rowHeight="md:h-[480px]" />
-          </div>
-          <div className="flex flex-col gap-14 md:flex-row md:gap-8">
-            <ProjectCard project={c} rowHeight="md:h-[380px]" />
-            <ProjectCard project={d} rowHeight="md:h-[380px]" />
-            <ProjectCard project={e} rowHeight="md:h-[380px]" />
-          </div>
-        </motion.div>
+        <div className="mt-14 md:mt-20">
+          <JustifiedPortfolioGrid projects={projects} />
+        </div>
       </Container>
     </Section>
   )
