@@ -7,6 +7,7 @@ import { WhyAgenciesPartner } from '@/components/sections/agency/WhyAgenciesPart
 import { PartnershipModels } from '@/components/sections/agency/PartnershipModels'
 import { HowItWorks } from '@/components/sections/agency/HowItWorks'
 import { ConfidentialityPromise } from '@/components/sections/agency/ConfidentialityPromise'
+import { CinematicBreak } from '@/components/sections/shared/CinematicBreak'
 import { FaqSection } from '@/components/sections/shared/FaqSection'
 import { FinalCta } from '@/components/sections/shared/FinalCta'
 import { agencyFaq } from '@/constants/faq'
@@ -41,6 +42,20 @@ export default function AgencyPartners() {
 
       <WhoThisIsFor />
       <WhyAgenciesPartner />
+
+      <CinematicBreak
+        video="/videos/bts.mp4"
+        poster="/videos/bts-poster.jpg"
+        eyebrow="On Set"
+        statement={
+          <>
+            Your clients see the finished film.
+            <br />
+            We're the part they never see<span className="text-accent">.</span>
+          </>
+        }
+      />
+
       <PartnershipModels />
       <HowItWorks />
       <ConfidentialityPromise />

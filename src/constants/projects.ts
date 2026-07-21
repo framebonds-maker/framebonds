@@ -12,7 +12,7 @@ export type Project = {
   slug: string
   title: string
   industry: string
-  category: 'Retail' | 'Automotive' | 'Food & Beverage' | 'Fitness' | 'Luxury Retail' | 'Hospitality' | 'White-Label'
+  category: 'Retail' | 'Automotive' | 'Fitness' | 'Luxury Retail' | 'White-Label'
   year: string
   summary: string
   hue: 'amber' | 'steel' | 'sage' | 'terracotta' | 'plum' | 'slate'
@@ -154,29 +154,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: 'the-morning-grind',
-    title: 'The Morning Grind',
-    industry: 'Food & Beverage',
-    category: 'Food & Beverage',
-    year: '2025',
-    summary: 'A café brand made unmistakable through texture, light and ritual.',
-    hue: 'terracotta',
-    client: 'The Morning Grind',
-    services: ['Monthly Content Package', 'Photography'],
-    timeline: 'Ongoing monthly partnership',
-    deliverables: ['Monthly Reels', 'Product Photography', 'Seasonal Menu Content'],
-    challenge:
-      'An independent café needed a steady stream of premium content without the cost or complexity of a full-time production hire.',
-    approach:
-      'One planned shoot day per month, structured around seasonal menu changes, delivers a full month of content in a single session.',
-    production:
-      'Early-morning shoots to catch natural window light before the café opens, minimizing disruption to service.',
-    results: [
-      'Twelve consecutive months of on-time content delivery',
-      'Content consistently used across the café\'s own social channels',
-    ],
-  },
-  {
     slug: 'ratnasar-jewels',
     title: 'Ratnasar Jewels',
     industry: 'Luxury Retail',
@@ -205,24 +182,6 @@ export const projects: Project[] = [
         { src: '/videos/ratnasar-goddess-full.mp4', poster: '/videos/ratnasar-goddess-poster.jpg', orientation: 'portrait' },
       ],
     },
-  },
-  {
-    slug: 'banyan-and-oak',
-    title: 'Banyan & Oak',
-    industry: 'Hospitality',
-    category: 'Hospitality',
-    year: '2024',
-    summary: 'A boutique stay told through atmosphere instead of amenities.',
-    hue: 'sage',
-    client: 'Banyan & Oak',
-    services: ['Brand Film', 'Photography'],
-    timeline: '4-day production',
-    deliverables: ['Brand Film', 'Room & Property Photography', 'Social Content'],
-    challenge:
-      'A boutique property competing against larger hotel chains needed to sell atmosphere, not amenities.',
-    approach: 'Slow, observational filming — the property at rest, in the hours guests actually experience it.',
-    production: 'Four days on-site across sunrise and golden-hour sessions.',
-    results: ['Direct booking inquiries attributed to the campaign\'s launch week'],
   },
 ]
 

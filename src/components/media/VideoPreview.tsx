@@ -19,9 +19,11 @@ type VideoPreviewProps = {
   allowTap?: boolean
   /** Hero usage — plays immediately on mount instead of waiting for hover. */
   autoPlay?: boolean
+  /** Full-bleed usage — drops the rounded corners and border. */
+  bare?: boolean
 }
 
-export function VideoPreview({ src, poster, play, caption, className, allowTap, autoPlay }: VideoPreviewProps) {
+export function VideoPreview({ src, poster, play, caption, className, allowTap, autoPlay, bare }: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [active, setActive] = useState(Boolean(autoPlay))
@@ -54,7 +56,11 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
 
   return (
     <div
-      className={cn('group/media relative overflow-hidden rounded-[1rem] border border-edge bg-[#101114]', className)}
+      className={cn(
+        'group/media relative overflow-hidden bg-[#101114]',
+        bare ? 'rounded-none border-0' : 'rounded-[1rem] border border-edge',
+        className,
+      )}
       onMouseEnter={startPreview}
       onMouseLeave={stopPreview}
       onClick={handleTap}

@@ -3,7 +3,7 @@ import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionLabel } from '@/components/ui/SectionHeading'
 import { ButtonLink } from '@/components/ui/Button'
-import { MediaPlaceholder } from '@/components/media/MediaPlaceholder'
+import { VideoPreview } from '@/components/media/VideoPreview'
 import { fadeInUp, staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
 
@@ -44,7 +44,11 @@ export function WhiteLabelTeaser() {
             </motion.div>
           </motion.div>
           <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-            <MediaPlaceholder hue="slate" className="aspect-[4/5]" />
+            <VideoPreview
+              src="/videos/raymond-gallery.mp4"
+              poster="/videos/raymond-poster.jpg"
+              className="aspect-[4/5]"
+            />
           </motion.div>
         </div>
       </Container>
