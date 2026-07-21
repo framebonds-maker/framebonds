@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Navigation } from '@/components/navigation/Navigation'
 import { Footer } from '@/components/layout/Footer'
+import { CursorGlow } from '@/components/layout/CursorGlow'
 import { duration, easing } from '@/constants/motion'
 
 /**
@@ -14,6 +15,7 @@ export function PageLayout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-canvas">
+      <CursorGlow />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-[0.5rem] focus:bg-ink focus:px-4 focus:py-2 focus:text-body-s focus:font-semibold focus:text-canvas"

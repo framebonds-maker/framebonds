@@ -6,6 +6,7 @@ import { Section } from '@/components/layout/Section'
 import { SectionLabel } from '@/components/ui/SectionHeading'
 import { ButtonLink } from '@/components/ui/Button'
 import { MediaPlaceholder } from '@/components/media/MediaPlaceholder'
+import { VideoPreview } from '@/components/media/VideoPreview'
 import { ProjectCard } from '@/components/portfolio/ProjectCard'
 import { getProjectBySlug, getRelatedProjects } from '@/constants/projects'
 import { fadeInUp, imageReveal, staggerContainer, viewportOnce } from '@/animations/variants'
@@ -51,7 +52,17 @@ export default function CaseStudy() {
           </motion.div>
 
           <motion.div variants={imageReveal} initial="hidden" animate="visible" className="mt-12 md:mt-16">
-            <MediaPlaceholder hue={project.hue} play className="aspect-[16/9] md:aspect-[21/9]" />
+            {project.media ? (
+              <VideoPreview
+                src={project.media.heroSrc}
+                poster={project.media.heroPoster}
+                play
+                allowTap
+                className="aspect-[16/9] md:aspect-[21/9]"
+              />
+            ) : (
+              <MediaPlaceholder hue={project.hue} play className="aspect-[16/9] md:aspect-[21/9]" />
+            )}
           </motion.div>
         </Container>
       </Section>
@@ -145,7 +156,17 @@ export default function CaseStudy() {
             className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6"
           >
             <motion.div variants={fadeInUp} className="col-span-2">
-              <MediaPlaceholder hue={project.hue} className="aspect-[16/9]" />
+              {project.media?.gallery?.[0] ? (
+                <VideoPreview
+                  src={project.media.gallery[0].src}
+                  poster={project.media.gallery[0].poster}
+                  play
+                  allowTap
+                  className="aspect-[16/9]"
+                />
+              ) : (
+                <MediaPlaceholder hue={project.hue} className="aspect-[16/9]" />
+              )}
             </motion.div>
             <motion.div variants={fadeInUp}>
               <MediaPlaceholder hue={project.hue} className="aspect-[3/4]" />

@@ -1,11 +1,12 @@
 import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-
-const MotionLink = motion.create(Link)
 import { cva, type VariantProps } from 'class-variance-authority'
 import { ArrowRight, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { useMagnetic } from '@/hooks/useMagnetic'
+
+const MotionLink = motion.create(Link)
 
 /**
  * Button system — Volume V Chapter 2.
@@ -17,7 +18,7 @@ export const buttonStyles = cva(
   [
     'group/btn relative inline-flex items-center justify-center gap-2.5',
     'font-body font-semibold tracking-[-0.01em] whitespace-nowrap select-none',
-    'transition-colors duration-[180ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+    'transition-[color,background-color,box-shadow] duration-[220ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
     'disabled:pointer-events-none disabled:opacity-45',
   ],
   {
@@ -25,7 +26,8 @@ export const buttonStyles = cva(
       variant: {
         primary: [
           'bg-ink text-canvas rounded-[0.75rem]',
-          'hover:bg-white hover:shadow-medium',
+          'shadow-[0_0_0_0_rgb(201_160_92_/_0%)]',
+          'hover:bg-white hover:shadow-[0_0_0_1px_rgb(201_160_92_/_45%),0_10px_32px_-8px_rgb(201_160_92_/_45%)]',
         ],
         secondary: [
           'bg-transparent text-ink rounded-[0.75rem]',
@@ -124,14 +126,23 @@ export function ButtonLink({
   children,
 }: ButtonLinkProps) {
   const classes = cn(buttonStyles({ variant, size }), className)
+  const isMagnetic = variant === 'primary' && size === 'lg'
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const magnetic = useMagnetic(10)
+  const magneticProps = isMagnetic
+    ? { style: { x: magnetic.x, y: magnetic.y }, onMouseMove: magnetic.onMouseMove, onMouseLeave: magnetic.onMouseLeave }
+    : {}
+
   if (external) {
     return (
       <motion.a
+        ref={isMagnetic ? (magnetic.ref as React.RefObject<HTMLAnchorElement>) : undefined}
         href={to}
         target="_blank"
         rel="noopener noreferrer"
         className={classes}
         {...tapHover}
+        {...magneticProps}
       >
         {children}
         {withArrow && <TrailingArrow />}
@@ -139,7 +150,13 @@ export function ButtonLink({
     )
   }
   return (
-    <MotionLink to={to} className={classes} {...tapHover}>
+    <MotionLink
+      ref={isMagnetic ? (magnetic.ref as React.RefObject<HTMLAnchorElement>) : undefined}
+      to={to}
+      className={classes}
+      {...tapHover}
+      {...magneticProps}
+    >
       {children}
       {withArrow && <TrailingArrow />}
     </MotionLink>

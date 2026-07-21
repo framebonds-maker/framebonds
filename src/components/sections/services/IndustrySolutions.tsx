@@ -12,7 +12,7 @@ const industries = [
   { name: 'Fashion & Retail', goal: 'Premium product presentation and seasonal campaigns.' },
   { name: 'Hospitality', goal: 'Atmosphere and guest experience over amenity lists.' },
   { name: 'Fitness', goal: 'Genuine energy and community, captured without staging.' },
-  { name: 'Real Estate', goal: 'Lifestyle-first storytelling that sells the feeling first.' },
+  { name: 'Automotive', goal: 'Detail-first films that make craftsmanship and performance felt.' },
   { name: 'Marketing Agencies', goal: 'A reliable white-label production partner behind your brand.' },
   { name: 'Food & Beverage', goal: 'Texture, light and ritual that make a menu memorable.' },
 ]

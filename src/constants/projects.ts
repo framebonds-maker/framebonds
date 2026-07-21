@@ -12,7 +12,7 @@ export type Project = {
   slug: string
   title: string
   industry: string
-  category: 'Retail' | 'Real Estate' | 'Food & Beverage' | 'Fitness' | 'Luxury Retail' | 'Hospitality' | 'White-Label'
+  category: 'Retail' | 'Automotive' | 'Food & Beverage' | 'Fitness' | 'Luxury Retail' | 'Hospitality' | 'White-Label'
   year: string
   summary: string
   hue: 'amber' | 'steel' | 'sage' | 'terracotta' | 'plum' | 'slate'
@@ -27,6 +27,14 @@ export type Project = {
   results: string[]
   /** Present only for real, confidentiality-cleared white-label work. */
   confidential?: boolean
+  /** Real footage, where it exists — falls back to the cinematic placeholder otherwise. */
+  media?: {
+    heroSrc: string
+    heroPoster: string
+    previewSrc: string
+    previewPoster: string
+    gallery?: { src: string; poster: string }[]
+  }
 }
 
 export const projects: Project[] = [
@@ -53,30 +61,40 @@ export const projects: Project[] = [
       'Campaign launched across the brand\'s flagship stores and digital channels',
       'Delivered a full content library from a single two-day shoot',
     ],
+    media: {
+      heroSrc: '/videos/raymond-full.mp4',
+      heroPoster: '/videos/raymond-poster.jpg',
+      previewSrc: '/videos/raymond-preview.mp4',
+      previewPoster: '/videos/raymond-poster.jpg',
+      gallery: [{ src: '/videos/raymond-gallery.mp4', poster: '/videos/raymond-poster.jpg' }],
+    },
   },
   {
-    slug: 'skyline-residences',
-    title: 'Skyline Residences',
-    industry: 'Real Estate',
-    category: 'Real Estate',
+    slug: 'velocity-auto',
+    title: 'Velocity Auto',
+    industry: 'Automotive',
+    category: 'Automotive',
     year: '2025',
-    summary: 'Lifestyle-led films for a residential launch that sold the feeling first.',
+    summary: 'A feature film built around detail, motion and the craft under the hood.',
     hue: 'steel',
     featured: true,
-    client: 'Skyline Residences',
-    services: ['Brand Film', 'Drone Cinematography', 'Social Content'],
-    timeline: '2-week production, 7-day delivery',
-    deliverables: ['Launch Film', 'Drone Sequences', 'Vertical Reels', 'Show-Unit Walkthrough'],
+    client: 'Velocity Auto',
+    services: ['Brand Film', 'Social Content'],
+    timeline: '1-week production, 7-day delivery',
+    deliverables: ['Feature Film', 'Vertical Reels', 'Social Cutdowns'],
     challenge:
-      'A residential launch needed to communicate lifestyle and scale simultaneously, for buyers comparing dozens of near-identical developments.',
+      'A dealership needed content that moved past spec sheets and showroom lighting — something that made the craftsmanship of each vehicle actually felt.',
     approach:
-      'We treated the show unit like a home already lived in — natural movement, morning light, a family present but never posed.',
+      'Movement carries the story here — tracking shots and detail passes paced to let each line and surface register, rather than a static walk-around.',
     production:
-      'A full-day shoot combining drone establishing sequences with an intimate, handheld interior sequence.',
-    results: [
-      'Became the primary asset across the developer\'s launch campaign',
-      'Reused across print, digital and on-site sales presentations',
-    ],
+      'A single day combining moving-vehicle sequences with static detail and lighting setups on location.',
+    results: ['Delivered a full vertical and horizontal content set from a single production day'],
+    media: {
+      heroSrc: '/videos/automotive-full.mp4',
+      heroPoster: '/videos/automotive-poster.jpg',
+      previewSrc: '/videos/automotive-preview.mp4',
+      previewPoster: '/videos/automotive-poster.jpg',
+    },
   },
   {
     slug: 'the-morning-grind',
@@ -120,6 +138,13 @@ export const projects: Project[] = [
       'Filming real classes in progress rather than staged sessions, prioritizing authentic effort over choreographed movement.',
     production: 'Half-day monthly shoots embedded within live class schedules.',
     results: ['Consistent monthly content pipeline maintained for over a year'],
+    media: {
+      heroSrc: '/videos/forge-full.mp4',
+      heroPoster: '/videos/forge-poster.jpg',
+      previewSrc: '/videos/forge-preview.mp4',
+      previewPoster: '/videos/forge-poster.jpg',
+      gallery: [{ src: '/videos/coach-full.mp4', poster: '/videos/coach-poster.jpg' }],
+    },
   },
   {
     slug: 'aurelia-jewels',

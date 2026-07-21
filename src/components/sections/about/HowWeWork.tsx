@@ -3,6 +3,7 @@ import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { MediaPlaceholder } from '@/components/media/MediaPlaceholder'
+import { VideoPreview } from '@/components/media/VideoPreview'
 import { fadeInUp, staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
 
@@ -26,7 +27,10 @@ export function HowWeWork() {
           viewport={viewportOnce}
           className="grid gap-6 md:grid-cols-3"
         >
-          {(['amber', 'steel', 'terracotta'] as const).map((hue) => (
+          <motion.div variants={fadeInUp}>
+            <VideoPreview src="/videos/bts.mp4" poster="/videos/bts-poster.jpg" className="aspect-[4/5]" />
+          </motion.div>
+          {(['steel', 'terracotta'] as const).map((hue) => (
             <motion.div key={hue} variants={fadeInUp}>
               <MediaPlaceholder hue={hue} className="aspect-[4/5]" />
             </motion.div>

@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
+import { ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { Container } from '@/components/layout/Container'
-import { Button, ButtonLink } from '@/components/ui/Button'
-import { MediaPlaceholder } from '@/components/media/MediaPlaceholder'
+import { ButtonLink } from '@/components/ui/Button'
+import { VideoPreview } from '@/components/media/VideoPreview'
 import { SectionLabel } from '@/components/ui/SectionHeading'
 import { duration, easing } from '@/constants/motion'
 
@@ -59,29 +61,29 @@ export function HomeHero() {
           transition={{ delay: 0.42, duration: 1.1, ease: easing.entrance }}
           className="mt-16 md:mt-20"
         >
-          <MediaPlaceholder
-            hue="amber"
-            play
+          <VideoPreview
+            src="/videos/featured-reel.mp4"
+            poster="/videos/featured-reel-poster.jpg"
+            autoPlay
             className="aspect-[16/9] md:aspect-[21/9]"
             caption={
-              <>
+              <div className="flex w-full items-end justify-between gap-4">
                 <div>
                   <p className="text-label font-semibold uppercase tracking-[0.18em] text-ink/70">
-                    Showreel
+                    Recent Work
                   </p>
                   <p className="mt-1 font-display text-heading-m font-medium text-ink">
-                    Two minutes of proof.
+                    Straight from production.
                   </p>
                 </div>
-                <Button
-                  variant="icon"
-                  size="md"
-                  aria-label="Play showreel"
-                  className="hidden border-ink/25 bg-canvas/30 backdrop-blur-sm md:flex"
+                <Link
+                  to="/work"
+                  className="hidden shrink-0 items-center gap-2 rounded-full border border-ink/25 bg-canvas/30 px-5 py-2.5 text-body-s font-semibold text-ink backdrop-blur-sm transition-colors duration-[180ms] hover:border-ink/40 md:flex"
                 >
-                  <span className="text-caption font-semibold">2:04</span>
-                </Button>
-              </>
+                  View Work
+                  <ArrowUpRight className="h-4 w-4" />
+                </Link>
+              </div>
             }
           />
         </motion.div>

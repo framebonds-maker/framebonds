@@ -12,7 +12,7 @@ import { stagger } from '@/constants/motion'
 const industries = [
   'Fashion & Retail',
   'Hospitality',
-  'Real Estate',
+  'Automotive',
   'Fitness',
   'Food & Beverage',
   'Marketing Agencies',

@@ -88,11 +88,13 @@ export function Navigation() {
             ))}
           </div>
 
-          <div className="hidden lg:block">
-            <ButtonLink to="/contact" variant="primary" size="sm">
-              Book a Call
-            </ButtonLink>
-          </div>
+          {location.pathname !== '/contact' && (
+            <div className="hidden lg:block">
+              <ButtonLink to="/contact" variant="primary" size="sm">
+                Book a Call
+              </ButtonLink>
+            </div>
+          )}
 
           {/* Mobile trigger */}
           <button

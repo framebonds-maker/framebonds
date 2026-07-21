@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import type { Project } from '@/constants/projects'
 import { MediaPlaceholder } from '@/components/media/MediaPlaceholder'
+import { VideoPreview } from '@/components/media/VideoPreview'
 import { staggerItem } from '@/animations/variants'
 import { cn } from '@/lib/utils'
 
@@ -21,7 +22,15 @@ export function ProjectCard({ project, aspect = 'aspect-[16/10]', className }: P
   return (
     <motion.article variants={staggerItem} className={cn('group', className)}>
       <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-        <MediaPlaceholder hue={project.hue} className={aspect} />
+        {project.media ? (
+          <VideoPreview
+            src={project.media.previewSrc}
+            poster={project.media.previewPoster}
+            className={aspect}
+          />
+        ) : (
+          <MediaPlaceholder hue={project.hue} className={aspect} />
+        )}
         <div className="mt-5 flex items-start justify-between gap-4">
           <div>
             <h3 className="font-display text-heading-m font-medium text-ink transition-colors duration-[180ms] group-hover:text-accent-hover">
