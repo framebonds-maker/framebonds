@@ -210,24 +210,26 @@ export default function CaseStudy() {
               </motion.ul>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer(stagger.small)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-            >
-              <motion.div variants={fadeInUp}>
-                <SectionLabel>Results</SectionLabel>
+            {project.results.length > 0 && (
+              <motion.div
+                variants={staggerContainer(stagger.small)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+              >
+                <motion.div variants={fadeInUp}>
+                  <SectionLabel>Results</SectionLabel>
+                </motion.div>
+                <motion.ul variants={fadeInUp} className="mt-6 space-y-3">
+                  {project.results.map((r) => (
+                    <li key={r} className="flex items-start gap-3 text-body-s text-ink-secondary">
+                      <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
+                      {r}
+                    </li>
+                  ))}
+                </motion.ul>
               </motion.div>
-              <motion.ul variants={fadeInUp} className="mt-6 space-y-3">
-                {project.results.map((r) => (
-                  <li key={r} className="flex items-start gap-3 text-body-s text-ink-secondary">
-                    <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent" />
-                    {r}
-                  </li>
-                ))}
-              </motion.ul>
-            </motion.div>
+            )}
           </div>
         </Container>
       </Section>
