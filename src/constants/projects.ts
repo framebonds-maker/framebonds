@@ -123,6 +123,7 @@ export const projects: Project[] = [
       previewSrc: '/videos/automotive-preview.mp4',
       previewPoster: '/videos/automotive-poster.jpg',
       orientation: 'landscape',
+      gallery: [{ src: '/videos/bts.mp4', poster: '/videos/bts-poster.jpg', orientation: 'portrait' }],
     },
   },
   {
