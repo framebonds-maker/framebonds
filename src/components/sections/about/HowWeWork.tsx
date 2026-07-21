@@ -28,11 +28,11 @@ export function HowWeWork() {
           className="grid gap-6 md:grid-cols-3"
         >
           <motion.div variants={fadeInUp}>
-            <VideoPreview src="/videos/bts.mp4" poster="/videos/bts-poster.jpg" className="aspect-[4/5]" />
+            <VideoPreview src="/videos/bts.mp4" poster="/videos/bts-poster.jpg" className="aspect-[9/16]" />
           </motion.div>
           {(['steel', 'terracotta'] as const).map((hue) => (
             <motion.div key={hue} variants={fadeInUp}>
-              <MediaPlaceholder hue={hue} className="aspect-[4/5]" />
+              <MediaPlaceholder hue={hue} className="aspect-[9/16]" />
             </motion.div>
           ))}
         </motion.div>

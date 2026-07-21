@@ -47,7 +47,7 @@ export function WhiteLabelTeaser() {
             <VideoPreview
               src="/videos/raymond-gallery.mp4"
               poster="/videos/raymond-poster.jpg"
-              className="aspect-[4/5]"
+              className="mx-auto aspect-[9/16] max-w-xs md:max-w-sm"
             />
           </motion.div>
         </div>
