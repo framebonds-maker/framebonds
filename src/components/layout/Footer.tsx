@@ -3,11 +3,14 @@ import { MessageCircle } from 'lucide-react'
 import { InstagramIcon } from '@/components/ui/SocialIcons'
 import { navLinks, site } from '@/constants/site'
 import { Container } from '@/components/layout/Container'
-import { ButtonLink } from '@/components/ui/Button'
 
 /**
  * Global footer — Volume IV Chapter 10 / Volume V Chapter 9.
  * The final impression: calm, spacious, nothing crowded.
+ *
+ * Deliberately has no CTA button of its own — every page already ends with
+ * its own FinalCta section directly above this, and a second button here
+ * just duplicated it on the same screen.
  */
 export function Footer() {
   const year = new Date().getFullYear()
@@ -15,16 +18,8 @@ export function Footer() {
   return (
     <footer className="border-t border-divider bg-canvas">
       <Container width="wide" className="pt-14 pb-10 md:pt-16">
-        {/* Quiet closing line — fallback CTA for pages without their own */}
-        <div className="flex flex-col items-start justify-between gap-6 border-b border-divider pb-12 md:flex-row md:items-center md:pb-14">
-          <span className="text-body-l text-ink-secondary">Ready to start your next project?</span>
-          <ButtonLink to="/contact" variant="primary" size="lg" withArrow>
-            Book a Discovery Call
-          </ButtonLink>
-        </div>
-
         {/* Info columns */}
-        <div className="grid gap-12 py-14 md:grid-cols-[2fr_1fr_1fr] md:py-16">
+        <div className="grid gap-12 pb-14 md:grid-cols-[2fr_1fr_1fr] md:pb-16">
           <div className="max-w-sm">
             <Link to="/" className="font-display text-[1.35rem] font-medium text-ink">
               {site.name}
