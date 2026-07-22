@@ -4,14 +4,18 @@ import { ProjectCard } from '@/components/portfolio/ProjectCard'
 import { staggerContainer } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
 
+/** Small per-card nudges to settle a specific masonry pairing — keyed by
+ * slug rather than reworking the whole layout for one card. */
+const NUDGE: Record<string, string> = {
+  'ratnasar-aria-set': 'sm:mt-16',
+}
+
 /**
- * Editorial grid — a real CSS grid, not multi-column masonry. Masonry fills
- * column-by-column, so two cards side by side can start at completely
- * different heights depending on what filled the column above them (that
- * read as "misaligned" — titles and metadata landed at different vertical
- * positions from one card to its neighbor). A grid keeps every row's cards
- * starting flush at the same top edge; each card still sizes to its own
- * footage ratio, so rows are free to vary in height row to row.
+ * Editorial masonry — CSS multi-column layout, the standard premium
+ * portfolio pattern (Pinterest, Are.na, most agency sites). Each card keeps
+ * its own footage at its exact ratio (no forced row height, no cropping);
+ * columns naturally settle at different heights instead of being forced
+ * into uniform rows or a horizontally-scrolling strip.
  *
  * Reveals on mount (`animate`), not `whileInView` — this grid's contents
  * change whenever a category filter is applied, and a `viewport={once:true}`
@@ -26,10 +30,12 @@ export function JustifiedPortfolioGrid({ projects }: { projects: Project[] }) {
       variants={staggerContainer(stagger.medium)}
       initial="hidden"
       animate="visible"
-      className="grid grid-cols-1 items-start gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3"
+      className="columns-1 gap-8 sm:columns-2 lg:columns-3"
     >
       {projects.map((project) => (
-        <ProjectCard key={project.slug} project={project} />
+        <div key={project.slug} className={`mb-8 break-inside-avoid ${NUDGE[project.slug] ?? ''}`}>
+          <ProjectCard project={project} />
+        </div>
       ))}
     </motion.div>
   )

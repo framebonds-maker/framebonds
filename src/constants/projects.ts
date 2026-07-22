@@ -13,6 +13,10 @@ export type Project = {
   title: string
   industry: string
   category: 'Retail' | 'Automotive' | 'Fitness' | 'Luxury Retail' | 'White-Label' | 'Studio'
+  /** Lets a piece also surface under another filter tab without duplicating
+   * the whole project entry (e.g. a Studio piece that's also relevant work
+   * for the Automotive or Fitness filter). */
+  extraCategories?: Project['category'][]
   year: string
   summary: string
   hue: 'amber' | 'steel' | 'sage' | 'terracotta' | 'plum' | 'slate'
@@ -241,6 +245,7 @@ export const projects: Project[] = [
     title: 'On Set',
     industry: 'Production',
     category: 'Studio',
+    extraCategories: ['Automotive'],
     year: '2025',
     summary: 'A quiet look at the part of the process clients never see.',
     hue: 'slate',
@@ -267,6 +272,7 @@ export const projects: Project[] = [
     title: 'Studio Session',
     industry: 'Production',
     category: 'Studio',
+    extraCategories: ['Fitness'],
     year: '2025',
     summary: 'A study in texture and light — practice with what was already in the room.',
     hue: 'slate',

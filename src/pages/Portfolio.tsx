@@ -20,7 +20,10 @@ export default function Portfolio() {
   const [active, setActive] = useState<(typeof filters)[number]>('All')
 
   const filtered = useMemo(
-    () => (active === 'All' ? projects : projects.filter((p) => p.category === active)),
+    () =>
+      active === 'All'
+        ? projects
+        : projects.filter((p) => p.category === active || p.extraCategories?.includes(active)),
     [active],
   )
 
