@@ -1,17 +1,12 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
 import { InstagramIcon, LinkedinIcon, YoutubeIcon } from '@/components/ui/SocialIcons'
 import { navLinks, site } from '@/constants/site'
 import { Container } from '@/components/layout/Container'
+import { ButtonLink } from '@/components/ui/Button'
 
 /**
  * Global footer — Volume IV Chapter 10 / Volume V Chapter 9.
  * The final impression: calm, spacious, nothing crowded.
- *
- * The footer CTA stays deliberately small (a text link, not a button) —
- * pages like Home already have their own dedicated Final CTA section
- * right above this. Volume III Ch10 is explicit that the footer's CTA
- * should "quietly conclude," never repeat the big emotional close.
  */
 export function Footer() {
   const year = new Date().getFullYear()
@@ -20,18 +15,12 @@ export function Footer() {
     <footer className="border-t border-divider bg-canvas">
       <Container width="wide" className="pt-14 pb-10 md:pt-16">
         {/* Quiet closing line — fallback CTA for pages without their own */}
-        <Link
-          to="/contact"
-          className="group flex items-center justify-between gap-4 border-b border-divider pb-12 md:pb-14"
-        >
-          <span className="text-body-l text-ink-secondary transition-colors duration-[180ms] group-hover:text-ink">
-            Ready to start your next project?
-          </span>
-          <span className="flex shrink-0 items-center gap-2 text-body-s font-semibold text-ink">
+        <div className="flex flex-col items-start justify-between gap-6 border-b border-divider pb-12 md:flex-row md:items-center md:pb-14">
+          <span className="text-body-l text-ink-secondary">Ready to start your next project?</span>
+          <ButtonLink to="/contact" variant="primary" size="lg" withArrow>
             Book a Discovery Call
-            <ArrowRight className="h-4 w-4 transition-transform duration-[180ms] group-hover:translate-x-1" />
-          </span>
-        </Link>
+          </ButtonLink>
+        </div>
 
         {/* Info columns */}
         <div className="grid gap-12 py-14 md:grid-cols-[2fr_1fr_1fr] md:py-16">
