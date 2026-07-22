@@ -3,16 +3,20 @@ import { Section } from '@/components/layout/Section'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ButtonLink } from '@/components/ui/Button'
 import { ProjectCard } from '@/components/portfolio/ProjectCard'
-import { projects } from '@/constants/projects'
+import { getProjectBySlug } from '@/constants/projects'
 
 /**
  * Featured work — Volume III Ch4. A small, hand-composed selection (not
- * the full catalogue — that lives on /work). Two flush rows, one landscape
- * paired with one portrait per row, sized to each clip's real ratio.
+ * the full catalogue — that lives on /work). Picked by slug (not just "the
+ * first N featured projects") so the composition here stays deliberate as
+ * new work gets added.
  */
 export function FeaturedWork() {
-  const featured = projects.filter((p) => p.featured)
-  const [a, b, c, d] = featured
+  const raymond = getProjectBySlug('ethnix-by-raymond')!
+  const velocity = getProjectBySlug('velocity-auto')!
+  const raymondLook2 = getProjectBySlug('ethnix-look-2')!
+  const forge = getProjectBySlug('forge-athletics')!
+  const aria = getProjectBySlug('ratnasar-aria-set')!
 
   return (
     <Section tone="secondary">
@@ -35,13 +39,14 @@ export function FeaturedWork() {
 
         <div className="mt-14 flex flex-col gap-14 md:mt-20">
           <div className="flex flex-col gap-14 md:flex-row md:gap-8">
-            <ProjectCard project={a} rowHeight="md:h-[480px]" />
-            <ProjectCard project={b} rowHeight="md:h-[480px]" />
+            <ProjectCard project={raymond} rowHeight="md:h-[480px]" />
+            <ProjectCard project={velocity} rowHeight="md:h-[480px]" />
           </div>
           <div className="flex flex-col gap-14 md:flex-row md:gap-8">
-            <ProjectCard project={c} rowHeight="md:h-[380px]" />
-            <ProjectCard project={d} rowHeight="md:h-[380px]" />
+            <ProjectCard project={raymondLook2} rowHeight="md:h-[380px]" />
+            <ProjectCard project={forge} rowHeight="md:h-[380px]" />
           </div>
+          <ProjectCard project={aria} aspect="aspect-[16/9] md:aspect-[21/9]" />
         </div>
       </Container>
     </Section>

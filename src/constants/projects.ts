@@ -102,6 +102,33 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: 'ethnix-look-2',
+    title: 'Ethnix by Raymond — The Look',
+    industry: 'Fashion & Retail',
+    category: 'Retail',
+    featured: true,
+    year: '2025',
+    summary: 'A closer look at the styling behind the campaign.',
+    hue: 'amber',
+    client: 'Ethnix by Raymond',
+    services: ['Brand Film', 'Social Content'],
+    timeline: 'Delivered alongside the main campaign film',
+    deliverables: ['Vertical Reels'],
+    challenge:
+      'The campaign needed a piece that lingered on the clothing itself — texture, drape, detail — rather than the wider brand story.',
+    approach:
+      'Slower framing on the garments in the store\'s own setting, letting the styling carry the frame without a model in motion.',
+    production: 'Shot in-store alongside the main campaign production.',
+    results: ['Delivered as part of the full campaign asset library'],
+    media: {
+      heroSrc: '/videos/raymond-look-2-full.mp4',
+      heroPoster: '/videos/raymond-look-2-poster.jpg',
+      previewSrc: '/videos/raymond-look-2-preview.mp4',
+      previewPoster: '/videos/raymond-look-2-poster.jpg',
+      orientation: 'portrait',
+    },
+  },
+  {
     slug: 'velocity-auto',
     title: 'Velocity Auto',
     industry: 'Automotive',

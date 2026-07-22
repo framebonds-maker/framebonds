@@ -6,6 +6,7 @@ import { Section } from '@/components/layout/Section'
 import { SectionLabel } from '@/components/ui/SectionHeading'
 import { Tag } from '@/components/ui/Tag'
 import { JustifiedPortfolioGrid } from '@/components/portfolio/JustifiedPortfolioGrid'
+import { FinalCta } from '@/components/sections/shared/FinalCta'
 import { projects } from '@/constants/projects'
 import { fadeInUp, viewportOnce } from '@/animations/variants'
 
@@ -79,6 +80,16 @@ export default function Portfolio() {
           )}
         </Container>
       </Section>
+
+      <FinalCta
+        heading={
+          <>
+            Inspired by this work<span className="text-accent">?</span>
+          </>
+        }
+        copy="Let's talk about what you're trying to create."
+        primaryLabel="Book a Discovery Call"
+      />
     </>
   )
 }
