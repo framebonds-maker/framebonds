@@ -178,6 +178,9 @@ export const projects: Project[] = [
       previewSrc: '/videos/coach-preview.mp4',
       previewPoster: '/videos/coach-poster.jpg',
       orientation: 'portrait',
+      gallery: [
+        { src: '/videos/studio-session-full.mp4', poster: '/videos/studio-session-poster.jpg', orientation: 'portrait' },
+      ],
     },
   },
   {
