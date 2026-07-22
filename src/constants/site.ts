@@ -7,6 +7,8 @@ export const site = {
   tagline: 'Premium visual production for brands and agencies that value craftsmanship.',
   city: 'Jaipur, India',
   email: 'framebonds@gmail.com',
+  /** Digits only, international format (no +, no spaces) — used to build the wa.me link. */
+  whatsappNumber: '919251077854',
   social: {
     instagram: 'https://instagram.com/framebonds',
     linkedin: 'https://linkedin.com/company/framebonds',

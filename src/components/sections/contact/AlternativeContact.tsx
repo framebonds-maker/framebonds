@@ -8,7 +8,7 @@ const methods = [
     icon: MessageCircle,
     label: 'WhatsApp',
     value: 'Message us directly',
-    href: `https://wa.me/`,
+    href: `https://wa.me/${site.whatsappNumber}`,
   },
   { icon: InstagramIcon, label: 'Instagram', value: '@framebonds', href: site.social.instagram },
   { icon: LinkedinIcon, label: 'LinkedIn', value: 'FrameBonds', href: site.social.linkedin },
