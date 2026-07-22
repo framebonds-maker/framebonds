@@ -71,7 +71,10 @@ export default function Portfolio() {
             ))}
           </motion.div>
 
-          <JustifiedPortfolioGrid projects={filtered} large={active === 'Luxury Retail'} />
+          <JustifiedPortfolioGrid
+            projects={filtered}
+            large={active === 'Luxury Retail' || active === 'Automotive'}
+          />
 
           {filtered.length === 0 && (
             <p className="py-20 text-center text-body text-ink-muted">

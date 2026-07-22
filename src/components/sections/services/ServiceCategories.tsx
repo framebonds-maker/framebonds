@@ -42,11 +42,11 @@ const pillars: Pillar[] = [
     problem: 'Product and campaign content that looks like everyone else\'s rarely moves anyone.',
     solution:
       'Retail, product and campaign films built to sell without sounding like an advertisement — composed, graded and paced with intention.',
-    video: '/videos/automotive-preview.mp4',
-    poster: '/videos/automotive-poster.jpg',
-    orientation: 'landscape',
-    to: '/work/velocity-auto',
-    cta: 'Watch Velocity Auto',
+    video: '/videos/raymond-gallery-preview.mp4',
+    poster: '/videos/raymond-gallery-poster.jpg',
+    orientation: 'portrait',
+    to: '/work/ethnix-campaign-cut',
+    cta: 'Watch Ethnix by Raymond — Campaign Cut',
   },
   {
     name: 'Social Content Systems',
