@@ -12,10 +12,8 @@ import { getProjectBySlug } from '@/constants/projects'
  * new work gets added.
  */
 export function FeaturedWork() {
-  const raymond = getProjectBySlug('ethnix-by-raymond')!
-  const velocity = getProjectBySlug('velocity-auto')!
-  const forge = getProjectBySlug('forge-athletics')!
   const aria = getProjectBySlug('ratnasar-aria-set')!
+  const forge = getProjectBySlug('forge-athletics')!
 
   return (
     <Section tone="secondary">
@@ -36,15 +34,9 @@ export function FeaturedWork() {
           </ButtonLink>
         </div>
 
-        <div className="mt-14 flex flex-col gap-14 md:mt-20">
-          <div className="flex flex-col gap-14 md:flex-row md:gap-8">
-            <ProjectCard project={raymond} rowHeight="md:h-[480px]" />
-            <ProjectCard project={velocity} rowHeight="md:h-[480px]" />
-          </div>
-          <div className="flex flex-col gap-14 md:flex-row md:gap-8">
-            <ProjectCard project={forge} rowHeight="md:h-[380px]" />
-            <ProjectCard project={aria} rowHeight="md:h-[380px]" />
-          </div>
+        <div className="mt-14 flex flex-col gap-14 md:mt-20 md:flex-row md:gap-8">
+          <ProjectCard project={aria} rowHeight="md:h-[420px]" />
+          <ProjectCard project={forge} rowHeight="md:h-[420px]" />
         </div>
       </Container>
     </Section>

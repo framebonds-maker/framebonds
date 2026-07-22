@@ -17,13 +17,41 @@ const NUDGE: Record<string, string> = {
  * columns naturally settle at different heights instead of being forced
  * into uniform rows or a horizontally-scrolling strip.
  *
+ * `large` switches to a different, dedicated layout — full-width stacked
+ * landscape cards — used only when the Luxury Retail tab is the active
+ * filter (see Portfolio.tsx). It never applies to "All" or any other tab,
+ * so that view stays exactly as it was.
+ *
  * Reveals on mount (`animate`), not `whileInView` — this grid's contents
  * change whenever a category filter is applied, and a `viewport={once:true}`
  * trigger never re-fires for cards that mount after the first reveal,
  * leaving them stuck at opacity 0 (this is exactly what caused filtered
  * categories to render as an empty column).
  */
-export function JustifiedPortfolioGrid({ projects }: { projects: Project[] }) {
+export function JustifiedPortfolioGrid({ projects, large }: { projects: Project[]; large?: boolean }) {
+  if (large) {
+    return (
+      <motion.div
+        key={projects.map((p) => p.slug).join('-')}
+        variants={staggerContainer(stagger.medium)}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col gap-14"
+      >
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            aspect="aspect-[16/9]"
+            landscapeAspect="aspect-[16/9]"
+            portraitAspect="aspect-[16/9]"
+            mediaFit={project.media?.orientation === 'portrait' ? 'contain' : undefined}
+          />
+        ))}
+      </motion.div>
+    )
+  }
+
   return (
     <motion.div
       key={projects.map((p) => p.slug).join('-')}

@@ -32,6 +32,9 @@ type ProjectCardProps = {
    * justified-row layouts) rather than a static Tailwind class. Assumes the
    * caller has already decided desktop-row layout is active. */
   rowHeightPx?: number
+  /** 'contain' letterboxes instead of cropping — for a clip whose real
+   * orientation doesn't match the box it's being placed in here. */
+  mediaFit?: 'cover' | 'contain'
   className?: string
 }
 
@@ -42,6 +45,7 @@ export function ProjectCard({
   landscapeAspect = 'aspect-[16/9]',
   rowHeight,
   rowHeightPx,
+  mediaFit,
   className,
 }: ProjectCardProps) {
   if (rowHeightPx) {
@@ -109,6 +113,7 @@ export function ProjectCard({
             src={project.media.previewSrc}
             poster={project.media.previewPoster}
             className={resolvedAspect}
+            fit={mediaFit}
           />
         ) : (
           <MediaPlaceholder hue={project.hue} className={resolvedAspect} />

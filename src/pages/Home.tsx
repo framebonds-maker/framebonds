@@ -28,8 +28,8 @@ export default function Home() {
       <ProcessSection />
 
       <CinematicBreak
-        video="/videos/ratnasar-aria-full.mp4"
-        poster="/videos/ratnasar-aria-poster.jpg"
+        video="/videos/automotive-full.mp4"
+        poster="/videos/automotive-poster.jpg"
         eyebrow="Recent Work"
         statement={
           <>

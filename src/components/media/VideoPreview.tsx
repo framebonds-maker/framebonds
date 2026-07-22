@@ -21,9 +21,23 @@ type VideoPreviewProps = {
   autoPlay?: boolean
   /** Full-bleed usage — drops the rounded corners and border. */
   bare?: boolean
+  /** 'contain' shows the whole frame letterboxed instead of cropping to
+   * fill — for a clip whose orientation doesn't match the box it's placed
+   * in and shouldn't be zoomed/cropped to force it. */
+  fit?: 'cover' | 'contain'
 }
 
-export function VideoPreview({ src, poster, play, caption, className, allowTap, autoPlay, bare }: VideoPreviewProps) {
+export function VideoPreview({
+  src,
+  poster,
+  play,
+  caption,
+  className,
+  allowTap,
+  autoPlay,
+  bare,
+  fit = 'cover',
+}: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [active, setActive] = useState(Boolean(autoPlay))
@@ -78,7 +92,8 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
         alt=""
         aria-hidden
         className={cn(
-          'absolute inset-0 h-full w-full object-cover transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+          'absolute inset-0 h-full w-full transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+          fit === 'contain' ? 'object-contain' : 'object-cover',
           showVideo ? 'opacity-0' : 'opacity-100',
         )}
       />
@@ -92,7 +107,8 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
         preload={autoPlay ? 'auto' : 'none'}
         onLoadedData={() => setReady(true)}
         className={cn(
-          'absolute inset-0 h-full w-full object-cover transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+          'absolute inset-0 h-full w-full transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+          fit === 'contain' ? 'object-contain' : 'object-cover',
           showVideo ? 'opacity-100' : 'opacity-0',
         )}
       />
