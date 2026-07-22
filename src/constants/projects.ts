@@ -151,6 +151,7 @@ export const projects: Project[] = [
       previewSrc: '/videos/forge-preview.mp4',
       previewPoster: '/videos/forge-poster.jpg',
       orientation: 'portrait',
+      gallery: [{ src: '/videos/bts.mp4', poster: '/videos/bts-poster.jpg', orientation: 'portrait' }],
     },
   },
   {

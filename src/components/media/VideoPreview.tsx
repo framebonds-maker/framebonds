@@ -27,6 +27,11 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
   const videoRef = useRef<HTMLVideoElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [active, setActive] = useState(Boolean(autoPlay))
+  // The poster stays up until the video actually has a frame decoded —
+  // otherwise autoplay swaps to a black <video> element before its first
+  // frame paints, showing a brief black flash instead of the poster.
+  const [ready, setReady] = useState(false)
+  const showVideo = active && ready
 
   function startPreview() {
     hoverTimer.current = setTimeout(() => {
@@ -74,7 +79,7 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
         aria-hidden
         className={cn(
           'absolute inset-0 h-full w-full object-cover transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
-          active ? 'opacity-0' : 'opacity-100',
+          showVideo ? 'opacity-0' : 'opacity-100',
         )}
       />
       <video
@@ -85,9 +90,10 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
         playsInline
         autoPlay={autoPlay}
         preload={autoPlay ? 'auto' : 'none'}
+        onLoadedData={() => setReady(true)}
         className={cn(
           'absolute inset-0 h-full w-full object-cover transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
-          active ? 'opacity-100' : 'opacity-0',
+          showVideo ? 'opacity-100' : 'opacity-0',
         )}
       />
 
@@ -101,7 +107,7 @@ export function VideoPreview({ src, poster, play, caption, className, allowTap, 
         }}
       />
 
-      {play && !active && (
+      {play && !showVideo && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <span className="flex h-16 w-16 items-center justify-center rounded-full border border-ink/25 bg-canvas/30 backdrop-blur-sm transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/media:scale-105 group-hover/media:border-ink/40 md:h-20 md:w-20">
             <Play className="ml-1 h-6 w-6 fill-ink text-ink" />
