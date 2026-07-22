@@ -14,7 +14,6 @@ import { getProjectBySlug } from '@/constants/projects'
 export function FeaturedWork() {
   const raymond = getProjectBySlug('ethnix-by-raymond')!
   const velocity = getProjectBySlug('velocity-auto')!
-  const raymondLook2 = getProjectBySlug('ethnix-look-2')!
   const forge = getProjectBySlug('forge-athletics')!
   const aria = getProjectBySlug('ratnasar-aria-set')!
 
@@ -43,10 +42,9 @@ export function FeaturedWork() {
             <ProjectCard project={velocity} rowHeight="md:h-[480px]" />
           </div>
           <div className="flex flex-col gap-14 md:flex-row md:gap-8">
-            <ProjectCard project={raymondLook2} rowHeight="md:h-[380px]" />
             <ProjectCard project={forge} rowHeight="md:h-[380px]" />
+            <ProjectCard project={aria} rowHeight="md:h-[380px]" />
           </div>
-          <ProjectCard project={aria} aspect="aspect-[16/9] md:aspect-[21/9]" />
         </div>
       </Container>
     </Section>

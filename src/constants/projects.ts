@@ -106,7 +106,6 @@ export const projects: Project[] = [
     title: 'Ethnix by Raymond — The Look',
     industry: 'Fashion & Retail',
     category: 'Retail',
-    featured: true,
     year: '2025',
     summary: 'A closer look at the styling behind the campaign.',
     hue: 'amber',
