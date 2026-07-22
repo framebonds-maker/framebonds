@@ -3,15 +3,17 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, AlertCircle } from 'lucide-react'
 import { Input, Textarea, Select } from '@/components/forms/Field'
 import { Button } from '@/components/ui/Button'
 import { fadeInUp } from '@/animations/variants'
 
+const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjgnebzo'
+
 /**
- * Minimal inquiry form — Volume III Ch8 / Volume V Ch4. Server-side
- * validation is required at the real endpoint; this schema is the
- * client-side half of that contract, not a substitute for it.
+ * Minimal inquiry form — Volume III Ch8 / Volume V Ch4. Posts directly to
+ * Formspree (no custom backend needed) — real submissions land in the
+ * inbox tied to that form immediately.
  */
 const contactSchema = z.object({
   name: z.string().trim().min(2, 'Please enter your full name.'),
@@ -28,15 +30,26 @@ type ContactValues = z.infer<typeof contactSchema>
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState(false)
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<ContactValues>({ resolver: zodResolver(contactSchema) })
 
-  async function onSubmit() {
-    await new Promise((resolve) => setTimeout(resolve, 600))
-    setSubmitted(true)
+  async function onSubmit(values: ContactValues) {
+    setSubmitError(false)
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(values),
+      })
+      if (!response.ok) throw new Error('Submission failed')
+      setSubmitted(true)
+    } catch {
+      setSubmitError(true)
+    }
   }
 
   if (submitted) {
@@ -120,6 +133,12 @@ export function ContactForm() {
         <Button type="submit" variant="primary" size="lg" loading={isSubmitting} className="mt-2 self-start">
           Send Inquiry
         </Button>
+        {submitError && (
+          <p role="alert" className="flex items-center gap-2 text-body-s text-ink-secondary">
+            <AlertCircle className="h-4 w-4 shrink-0 text-accent" />
+            Something didn't go through — mind trying again, or reaching us on WhatsApp instead?
+          </p>
+        )}
       </motion.form>
     </AnimatePresence>
   )
