@@ -11,8 +11,6 @@ export const site = {
   whatsappNumber: '919251077854',
   social: {
     instagram: 'https://instagram.com/framebonds',
-    linkedin: 'https://linkedin.com/company/framebonds',
-    youtube: 'https://youtube.com/@framebonds',
   },
 } as const
 

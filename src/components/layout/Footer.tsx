@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import { InstagramIcon, LinkedinIcon, YoutubeIcon } from '@/components/ui/SocialIcons'
+import { MessageCircle } from 'lucide-react'
+import { InstagramIcon } from '@/components/ui/SocialIcons'
 import { navLinks, site } from '@/constants/site'
 import { Container } from '@/components/layout/Container'
 import { ButtonLink } from '@/components/ui/Button'
@@ -68,8 +69,7 @@ export function Footer() {
             <div className="mt-6 flex gap-3">
               {[
                 { href: site.social.instagram, label: 'Instagram', Icon: InstagramIcon },
-                { href: site.social.linkedin, label: 'LinkedIn', Icon: LinkedinIcon },
-                { href: site.social.youtube, label: 'YouTube', Icon: YoutubeIcon },
+                { href: `https://wa.me/${site.whatsappNumber}`, label: 'WhatsApp', Icon: MessageCircle },
               ].map(({ href, label, Icon }) => (
                 <a
                   key={label}

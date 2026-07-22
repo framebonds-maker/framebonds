@@ -1,6 +1,6 @@
 import { Mail, MessageCircle } from 'lucide-react'
 import { site } from '@/constants/site'
-import { InstagramIcon, LinkedinIcon } from '@/components/ui/SocialIcons'
+import { InstagramIcon } from '@/components/ui/SocialIcons'
 
 const methods = [
   { icon: Mail, label: 'Email', value: site.email, href: `mailto:${site.email}` },
@@ -11,7 +11,6 @@ const methods = [
     href: `https://wa.me/${site.whatsappNumber}`,
   },
   { icon: InstagramIcon, label: 'Instagram', value: '@framebonds', href: site.social.instagram },
-  { icon: LinkedinIcon, label: 'LinkedIn', value: 'FrameBonds', href: site.social.linkedin },
 ]
 
 /**
