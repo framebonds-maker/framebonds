@@ -17,10 +17,11 @@ const NUDGE: Record<string, string> = {
  * columns naturally settle at different heights instead of being forced
  * into uniform rows or a horizontally-scrolling strip.
  *
- * `large` switches to a different, dedicated layout — full-width stacked
- * landscape cards — used only when the Luxury Retail tab is the active
- * filter (see Portfolio.tsx). It never applies to "All" or any other tab,
- * so that view stays exactly as it was.
+ * `large` switches to a different, dedicated layout — a side-by-side pair,
+ * same technique as the homepage's FeaturedWork row (shared height, each
+ * card's own native aspect ratio, no cropping) — used only when the Luxury
+ * Retail tab is the active filter (see Portfolio.tsx). It never applies to
+ * "All" or any other tab, so that view stays exactly as it was.
  *
  * Reveals on mount (`animate`), not `whileInView` — this grid's contents
  * change whenever a category filter is applied, and a `viewport={once:true}`
@@ -36,17 +37,10 @@ export function JustifiedPortfolioGrid({ projects, large }: { projects: Project[
         variants={staggerContainer(stagger.medium)}
         initial="hidden"
         animate="visible"
-        className="flex flex-col gap-14"
+        className="flex flex-col gap-14 md:flex-row md:gap-8"
       >
         {projects.map((project) => (
-          <ProjectCard
-            key={project.slug}
-            project={project}
-            aspect="aspect-[16/9]"
-            landscapeAspect="aspect-[16/9]"
-            portraitAspect="aspect-[16/9]"
-            mediaFit={project.media?.orientation === 'portrait' ? 'contain' : undefined}
-          />
+          <ProjectCard key={project.slug} project={project} rowHeight="md:h-[420px]" />
         ))}
       </motion.div>
     )
