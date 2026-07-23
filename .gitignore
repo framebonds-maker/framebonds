@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Internal project notes — not for the public repo
+CLAUDE.md
+docs/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
