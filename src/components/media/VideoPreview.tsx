@@ -1,5 +1,5 @@
-import { useRef, useState, type ReactNode } from 'react'
-import { Play } from 'lucide-react'
+import { useRef, useState, type MouseEvent, type ReactNode } from 'react'
+import { Play, Volume2, VolumeX } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /**
@@ -25,6 +25,9 @@ type VideoPreviewProps = {
    * fill — for a clip whose orientation doesn't match the box it's placed
    * in and shouldn't be zoomed/cropped to force it. */
   fit?: 'cover' | 'contain'
+  /** Shows a mute/unmute control — reserved for autoplaying hero footage
+   * that actually carries sound. Starts muted; the visitor opts in. */
+  soundToggle?: boolean
 }
 
 export function VideoPreview({
@@ -37,15 +40,23 @@ export function VideoPreview({
   autoPlay,
   bare,
   fit = 'cover',
+  soundToggle,
 }: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [active, setActive] = useState(Boolean(autoPlay))
+  const [muted, setMuted] = useState(true)
   // The poster stays up until the video actually has a frame decoded —
   // otherwise autoplay swaps to a black <video> element before its first
   // frame paints, showing a brief black flash instead of the poster.
   const [ready, setReady] = useState(false)
   const showVideo = active && ready
+
+  function toggleSound(e: MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
+    setMuted((m) => !m)
+  }
 
   function startPreview() {
     hoverTimer.current = setTimeout(() => {
@@ -80,8 +91,8 @@ export function VideoPreview({
         bare ? 'rounded-none border-0' : 'rounded-[1rem] border border-edge',
         className,
       )}
-      onMouseEnter={startPreview}
-      onMouseLeave={stopPreview}
+      onMouseEnter={autoPlay ? undefined : startPreview}
+      onMouseLeave={autoPlay ? undefined : stopPreview}
       onClick={handleTap}
     >
       {/* The container aspect is chosen upstream to match the source footage
@@ -100,7 +111,7 @@ export function VideoPreview({
       <video
         ref={videoRef}
         src={src}
-        muted
+        muted={!soundToggle || muted}
         loop
         playsInline
         autoPlay={autoPlay}
@@ -129,6 +140,17 @@ export function VideoPreview({
             <Play className="ml-1 h-6 w-6 fill-ink text-ink" />
           </span>
         </div>
+      )}
+
+      {soundToggle && showVideo && (
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-label={muted ? 'Unmute video' : 'Mute video'}
+          className="absolute bottom-6 right-6 z-10 flex h-10 w-10 items-center justify-center rounded-full border border-ink/20 bg-canvas/40 text-ink/80 backdrop-blur-sm transition-colors duration-[180ms] hover:border-ink/40 hover:text-ink md:bottom-8 md:right-8"
+        >
+          {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+        </button>
       )}
 
       {caption && (

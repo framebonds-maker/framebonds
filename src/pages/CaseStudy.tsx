@@ -59,6 +59,7 @@ export default function CaseStudy() {
                   poster={project.media.heroPoster}
                   play
                   allowTap
+                  soundToggle
                   className="mx-auto aspect-[9/16] max-w-sm md:max-w-md"
                 />
               ) : (
@@ -67,6 +68,7 @@ export default function CaseStudy() {
                   poster={project.media.heroPoster}
                   play
                   allowTap
+                  soundToggle
                   className="aspect-[16/9] md:aspect-[21/9]"
                 />
               )
@@ -151,38 +153,6 @@ export default function CaseStudy() {
             <motion.p variants={fadeInUp} className="mt-6 text-body-l leading-relaxed text-ink-secondary">
               {project.production}
             </motion.p>
-          </motion.div>
-        </Container>
-      </Section>
-
-      {/* Gallery — one shared row height; real footage keeps its exact ratio,
-          placeholders grow to fill whatever width is left. */}
-      <Section>
-        <Container width="wide">
-          <motion.div
-            variants={staggerContainer(stagger.medium)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="flex flex-col gap-4 md:flex-row md:gap-6"
-          >
-            {(project.media?.gallery ?? []).map((item) => (
-              <motion.div key={item.src} variants={fadeInUp} className="w-full md:w-auto md:shrink-0">
-                <div
-                  style={{ aspectRatio: item.orientation === 'portrait' ? 9 / 16 : 16 / 9 }}
-                  className="relative w-full md:h-[380px] md:w-auto"
-                >
-                  <VideoPreview src={item.src} poster={item.poster} play allowTap className="h-full w-full" />
-                </div>
-              </motion.div>
-            ))}
-            {Array.from({ length: Math.max(0, 3 - (project.media?.gallery?.length ?? 0)) }).map((_, i) => (
-              <motion.div key={i} variants={fadeInUp} className="w-full md:flex-1 md:basis-0">
-                <div style={{ aspectRatio: 4 / 3 }} className="relative w-full md:h-[380px] md:w-auto">
-                  <MediaPlaceholder hue={project.hue} className="h-full w-full" />
-                </div>
-              </motion.div>
-            ))}
           </motion.div>
         </Container>
       </Section>

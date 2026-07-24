@@ -1,6 +1,7 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import { PageLayout } from '@/components/layout/PageLayout'
+import { IntroAnimation } from '@/components/intro/IntroAnimation'
 
 const Styleguide = lazy(() => import('@/pages/Styleguide'))
 const Home = lazy(() => import('@/pages/Home'))
@@ -13,22 +14,27 @@ const Contact = lazy(() => import('@/pages/Contact'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
 function App() {
+  const [introDone, setIntroDone] = useState(false)
+
   return (
-    <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
-      <Routes>
-        <Route path="/styleguide" element={<Styleguide />} />
-        <Route element={<PageLayout />}>
-          <Route index element={<Home />} />
-          <Route path="work" element={<Portfolio />} />
-          <Route path="work/:slug" element={<CaseStudy />} />
-          <Route path="services" element={<Services />} />
-          <Route path="agency-partners" element={<AgencyPartners />} />
-          <Route path="about" element={<About />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <>
+      {!introDone && <IntroAnimation onComplete={() => setIntroDone(true)} />}
+      <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
+        <Routes>
+          <Route path="/styleguide" element={<Styleguide />} />
+          <Route element={<PageLayout />}>
+            <Route index element={<Home />} />
+            <Route path="work" element={<Portfolio />} />
+            <Route path="work/:slug" element={<CaseStudy />} />
+            <Route path="services" element={<Services />} />
+            <Route path="agency-partners" element={<AgencyPartners />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </>
   )
 }
 

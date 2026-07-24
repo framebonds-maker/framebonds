@@ -30,6 +30,7 @@ export default function Home() {
       <CinematicBreak
         video="/videos/automotive-full.mp4"
         poster="/videos/automotive-poster.jpg"
+        autoPlay={false}
         eyebrow="Recent Work"
         statement={
           <>

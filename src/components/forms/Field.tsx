@@ -19,7 +19,7 @@ const fieldBase = [
 type FieldWrapperProps = {
   label: string
   htmlFor: string
-  optional?: boolean
+  optional?: boolean | string
   error?: string
   errorId: string
   children: ReactNode
@@ -30,7 +30,11 @@ function FieldWrapper({ label, htmlFor, optional, error, errorId, children }: Fi
     <div className="flex flex-col gap-2">
       <label htmlFor={htmlFor} className="font-body text-body-s font-semibold text-ink">
         {label}
-        {optional && <span className="ml-2 font-normal text-ink-muted">(Optional)</span>}
+        {optional && (
+          <span className="ml-2 font-normal text-ink-muted">
+            ({typeof optional === 'string' ? optional : 'Optional'})
+          </span>
+        )}
       </label>
       {children}
       {error && (
@@ -44,7 +48,7 @@ function FieldWrapper({ label, htmlFor, optional, error, errorId, children }: Fi
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string
-  optional?: boolean
+  optional?: boolean | string
   error?: string
 }
 
@@ -71,7 +75,7 @@ Input.displayName = 'Input'
 
 type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label: string
-  optional?: boolean
+  optional?: boolean | string
   error?: string
 }
 
@@ -99,7 +103,7 @@ Textarea.displayName = 'Textarea'
 
 type SelectProps = SelectHTMLAttributes<HTMLSelectElement> & {
   label: string
-  optional?: boolean
+  optional?: boolean | string
   error?: string
   children: ReactNode
 }

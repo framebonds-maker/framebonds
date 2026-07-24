@@ -56,8 +56,9 @@ export function ProjectCard({
           <div style={{ height: rowHeightPx, aspectRatio: ratio }} className="relative">
             {project.media ? (
               <VideoPreview
-                src={project.media.previewSrc}
-                poster={project.media.previewPoster}
+                src={project.media.heroSrc}
+                poster={project.media.heroPoster}
+                soundToggle
                 className="h-full w-full"
               />
             ) : (
@@ -85,8 +86,9 @@ export function ProjectCard({
           <div style={{ aspectRatio: ratio }} className={cn('relative w-full md:w-auto', rowHeight)}>
             {project.media ? (
               <VideoPreview
-                src={project.media.previewSrc}
-                poster={project.media.previewPoster}
+                src={project.media.heroSrc}
+                poster={project.media.heroPoster}
+                soundToggle
                 className="h-full w-full"
               />
             ) : (
@@ -110,8 +112,9 @@ export function ProjectCard({
       <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
         {project.media ? (
           <VideoPreview
-            src={project.media.previewSrc}
-            poster={project.media.previewPoster}
+            src={project.media.heroSrc}
+            poster={project.media.heroPoster}
+            soundToggle
             className={resolvedAspect}
             fit={mediaFit}
           />

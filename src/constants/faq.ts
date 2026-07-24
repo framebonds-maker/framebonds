@@ -12,7 +12,7 @@ export const servicesFaq = [
   {
     question: 'Do you travel outside your home base for shoots?',
     answer:
-      "Yes. We're based in Jaipur and travel for productions across India — travel is simply scoped into the project plan upfront.",
+      "Yes. We're based in Jaipur, and productions within the city are included in the project plan. Travel outside Jaipur is scoped separately — we'll provide a dedicated quotation for it once we understand the location and requirements.",
   },
   {
     question: 'Can we book recurring, monthly content?',
@@ -44,7 +44,8 @@ export const contactFaq = [
   },
   {
     question: 'Do you take on projects outside Jaipur?',
-    answer: 'Yes — travel is simply scoped into the project plan and quoted upfront.',
+    answer:
+      "Yes. Travel outside Jaipur is conditional on the location and requirements — we'll provide a separate quotation for it before anything is confirmed.",
   },
   {
     question: 'Do you work with agencies as well as direct brands?',

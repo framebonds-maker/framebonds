@@ -45,8 +45,9 @@ export function WhiteLabelTeaser() {
           </motion.div>
           <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <VideoPreview
-              src="/videos/raymond-gallery.mp4"
-              poster="/videos/raymond-poster.jpg"
+              src="/videos/bts.mp4"
+              poster="/videos/bts-poster.jpg"
+              soundToggle
               className="mx-auto aspect-[9/16] max-w-xs md:max-w-sm"
             />
           </motion.div>

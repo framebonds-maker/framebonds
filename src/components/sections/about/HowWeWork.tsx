@@ -8,8 +8,8 @@ import { stagger } from '@/constants/motion'
 
 const clips = [
   { src: '/videos/bts.mp4', poster: '/videos/bts-poster.jpg' },
-  { src: '/videos/coach-preview.mp4', poster: '/videos/coach-poster.jpg' },
-  { src: '/videos/studio-session-preview.mp4', poster: '/videos/studio-session-poster.jpg' },
+  { src: '/videos/coach-full.mp4', poster: '/videos/coach-poster.jpg' },
+  { src: '/videos/studio-session-full.mp4', poster: '/videos/studio-session-poster.jpg' },
 ]
 
 /**
@@ -34,7 +34,7 @@ export function HowWeWork() {
         >
           {clips.map((clip) => (
             <motion.div key={clip.src} variants={fadeInUp}>
-              <VideoPreview src={clip.src} poster={clip.poster} className="aspect-[9/16]" />
+              <VideoPreview src={clip.src} poster={clip.poster} soundToggle className="aspect-[9/16]" />
             </motion.div>
           ))}
         </motion.div>

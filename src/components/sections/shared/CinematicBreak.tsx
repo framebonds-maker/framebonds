@@ -18,6 +18,8 @@ type CinematicBreakProps = {
   /** Must match the source footage — a portrait clip stays contained at its
    * real ratio instead of being stretched into a cropped wide banner. */
   orientation?: 'portrait' | 'landscape'
+  /** Plays immediately on scroll-into-view instead of waiting for hover. */
+  autoPlay?: boolean
 }
 
 /**
@@ -37,6 +39,7 @@ export function CinematicBreak({
   to,
   ctaLabel,
   orientation = 'landscape',
+  autoPlay = true,
 }: CinematicBreakProps) {
   return (
     <Section spacing="compact">
@@ -77,7 +80,8 @@ export function CinematicBreak({
             <VideoPreview
               src={video}
               poster={poster}
-              autoPlay
+              autoPlay={autoPlay}
+              soundToggle
               className={orientation === 'portrait' ? 'mx-auto aspect-[9/16] max-w-xs md:max-w-sm' : 'aspect-[16/9]'}
             />
           </motion.div>

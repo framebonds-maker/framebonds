@@ -20,6 +20,7 @@ export function Perspective() {
           src="/videos/ratnasar-aria-full.mp4"
           poster="/videos/ratnasar-aria-poster.jpg"
           autoPlay
+          soundToggle
           className="aspect-[4/5] md:aspect-[16/9]"
           caption={
             <motion.div

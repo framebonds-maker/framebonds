@@ -19,6 +19,7 @@ const contactSchema = z.object({
   name: z.string().trim().min(2, 'Please enter your full name.'),
   company: z.string().trim().min(1, 'Please enter your company or agency name.'),
   email: z.string().trim().email('Please enter a valid email address.'),
+  phone: z.string().trim().optional(),
   businessType: z.enum(['brand', 'agency', 'other'], {
     message: 'Please tell us which best describes you.',
   }),
@@ -95,6 +96,14 @@ export function ContactForm() {
           placeholder="jordan@studionorth.com"
           {...register('email')}
           error={errors.email?.message}
+        />
+        <Input
+          label="Phone Number"
+          type="tel"
+          optional="Recommended"
+          placeholder="+91 98765 43210"
+          {...register('phone')}
+          error={errors.phone?.message}
         />
         <Select
           label="Which best describes you?"

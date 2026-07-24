@@ -59,9 +59,9 @@ export function HomeHero() {
             transition={{ delay: 0.3, duration: 1, ease: easing.entrance }}
           >
             <VideoPreview
-              src="/videos/raymond-preview.mp4"
+              src="/videos/raymond-full.mp4"
               poster="/videos/raymond-poster.jpg"
-              autoPlay
+              soundToggle
               className="mx-auto aspect-[9/16] w-full max-w-xs"
             />
           </motion.div>
