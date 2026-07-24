@@ -13,12 +13,19 @@ const AgencyPartners = lazy(() => import('@/pages/AgencyPartners'))
 const Contact = lazy(() => import('@/pages/Contact'))
 const NotFound = lazy(() => import('@/pages/NotFound'))
 
+const INTRO_SEEN_KEY = 'fb-intro-seen'
+
 function App() {
-  const [introDone, setIntroDone] = useState(false)
+  const [introDone, setIntroDone] = useState(() => sessionStorage.getItem(INTRO_SEEN_KEY) === '1')
+
+  function handleIntroComplete() {
+    sessionStorage.setItem(INTRO_SEEN_KEY, '1')
+    setIntroDone(true)
+  }
 
   return (
     <>
-      {!introDone && <IntroAnimation onComplete={() => setIntroDone(true)} />}
+      {!introDone && <IntroAnimation onComplete={handleIntroComplete} />}
       <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
         <Routes>
           <Route path="/styleguide" element={<Styleguide />} />

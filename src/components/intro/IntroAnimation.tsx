@@ -319,6 +319,15 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
         updateScrub()
       }
     }
+    function onWheel(e: WheelEvent) {
+      if (done) return
+      e.preventDefault()
+      interacted = true
+      hideHint()
+      const delta = e.deltaY !== 0 ? e.deltaY : e.deltaX
+      p = clamp(p + delta * 0.0009, 0, 1)
+      updateScrub()
+    }
     function onSkipClick() {
       skip()
     }
@@ -336,6 +345,7 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     window.addEventListener('pointerup', onPointerUp)
     window.addEventListener('keydown', onKeyDown)
     window.addEventListener('resize', onResize)
+    intro.addEventListener('wheel', onWheel, { passive: false })
     skipRef.current?.addEventListener('click', onSkipClick)
 
     const skipTimer = setTimeout(() => {
@@ -355,6 +365,7 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
       window.removeEventListener('pointerup', onPointerUp)
       window.removeEventListener('keydown', onKeyDown)
       window.removeEventListener('resize', onResize)
+      intro.removeEventListener('wheel', onWheel)
       skipRef.current?.removeEventListener('click', onSkipClick)
     }
   }, [])
