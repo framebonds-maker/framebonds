@@ -6,12 +6,14 @@ import { ButtonLink } from '@/components/ui/Button'
 import { VideoPreview } from '@/components/media/VideoPreview'
 import { fadeInUp, staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 /**
  * White-label teaser on the Services page — the full partnership case
  * lives at /agency-partners (Volume IV Ch5). This is the bridge.
  */
 export function WhiteLabelTeaser() {
+  const isMobile = useIsMobile()
   return (
     <Section tone="secondary">
       <Container>
@@ -48,8 +50,9 @@ export function WhiteLabelTeaser() {
               src="/videos/bts.mp4"
               poster="/videos/bts-poster.jpg"
               soundToggle
-              play
-              allowTap
+              play={isMobile}
+              allowTap={isMobile}
+              autoActivateOnView={isMobile}
               className="mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm"
             />
           </motion.div>

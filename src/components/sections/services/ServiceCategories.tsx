@@ -7,6 +7,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { VideoPreview } from '@/components/media/VideoPreview'
 import { fadeInUp, staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
+import { useIsMobile } from '@/hooks/useIsMobile'
 import { cn } from '@/lib/utils'
 
 /**
@@ -73,6 +74,7 @@ const pillars: Pillar[] = [
 ]
 
 export function ServiceCategories() {
+  const isMobile = useIsMobile()
   return (
     <Section tone="secondary">
       <Container width="wide">
@@ -100,7 +102,7 @@ export function ServiceCategories() {
                   <VideoPreview
                     src={pillar.video}
                     poster={pillar.poster}
-                    play
+                    play={isMobile}
                     soundToggle
                     className={cn(
                       'mx-auto',

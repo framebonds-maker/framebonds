@@ -47,6 +47,7 @@ export default function AgencyPartners() {
         video="/videos/bts.mp4"
         poster="/videos/bts-poster.jpg"
         orientation="portrait"
+        autoPlay={false}
         eyebrow="On Set"
         statement={
           <>

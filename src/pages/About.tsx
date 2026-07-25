@@ -25,6 +25,7 @@ export default function About() {
       <CinematicBreak
         video="/videos/automotive-full.mp4"
         poster="/videos/automotive-poster.jpg"
+        autoPlay={false}
         eyebrow="On Set"
         statement={
           <>

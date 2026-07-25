@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 
-const QUERY = '(max-width: 767px) and (pointer: coarse)'
+const QUERY = '(max-width: 767px)'
 
 /**
- * True only for an actual touch device at phone width — not just a narrow
- * desktop window. A resized desktop Chrome window still has `pointer: fine`
- * even under 768px, so it keeps normal hover behavior; only a real
- * touchscreen (phone/tablet) gets the tap-to-play / no-hover treatment.
+ * Width-only, matching every other mobile-only style on the site (Tailwind's
+ * `md:` breakpoint is width-only too). A narrow desktop window will get
+ * mobile treatment here just like it gets mobile CSS everywhere else on the
+ * site — that's consistent with the rest of the codebase, not a bug.
  */
 export function useIsMobile() {
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.matchMedia(QUERY).matches)

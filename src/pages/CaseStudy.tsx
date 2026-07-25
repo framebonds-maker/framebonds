@@ -11,6 +11,7 @@ import { ProjectCard } from '@/components/portfolio/ProjectCard'
 import { getProjectBySlug, getRelatedProjects } from '@/constants/projects'
 import { fadeInUp, imageReveal, staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 /**
  * Case study — Volume IV Ch2. Documentary storytelling formula:
@@ -19,6 +20,7 @@ import { stagger } from '@/constants/motion'
  * so this template simply omits that section until a real one exists.
  */
 export default function CaseStudy() {
+  const isMobile = useIsMobile()
   const { slug } = useParams<{ slug: string }>()
   const project = slug ? getProjectBySlug(slug) : undefined
 
@@ -57,7 +59,7 @@ export default function CaseStudy() {
                 <VideoPreview
                   src={project.media.heroSrc}
                   poster={project.media.heroPoster}
-                  play
+                  play={isMobile}
                   allowTap
                   soundToggle
                   className="mx-auto aspect-[9/16] max-w-sm md:max-w-md"
@@ -66,7 +68,7 @@ export default function CaseStudy() {
                 <VideoPreview
                   src={project.media.heroSrc}
                   poster={project.media.heroPoster}
-                  play
+                  play={isMobile}
                   allowTap
                   soundToggle
                   className="aspect-[16/9] md:aspect-[21/9]"
