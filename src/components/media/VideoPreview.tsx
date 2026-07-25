@@ -1,4 +1,4 @@
-import { useRef, useState, type MouseEvent, type ReactNode } from 'react'
+import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react'
 import { Play, Volume2, VolumeX } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -28,6 +28,10 @@ type VideoPreviewProps = {
   /** Shows a mute/unmute control — reserved for autoplaying hero footage
    * that actually carries sound. Starts muted; the visitor opts in. */
   soundToggle?: boolean
+  /** Starts playing on its own once the card has sat mostly in view for
+   * ~2s — feed-style autoplay. Caller decides when this applies (e.g.
+   * mobile only), this component just implements the observer. */
+  autoActivateOnView?: boolean
 }
 
 export function VideoPreview({
@@ -41,9 +45,12 @@ export function VideoPreview({
   bare,
   fit = 'cover',
   soundToggle,
+  autoActivateOnView,
 }: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const viewTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [active, setActive] = useState(Boolean(autoPlay))
   const [muted, setMuted] = useState(true)
   // The poster stays up until the video actually has a frame decoded —
@@ -51,6 +58,30 @@ export function VideoPreview({
   // frame paints, showing a brief black flash instead of the poster.
   const [ready, setReady] = useState(false)
   const showVideo = active && ready
+
+  useEffect(() => {
+    if (!autoActivateOnView || autoPlay) return
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          viewTimer.current = setTimeout(() => {
+            setActive(true)
+            videoRef.current?.play().catch(() => {})
+          }, 2000)
+        } else {
+          clearTimeout(viewTimer.current)
+        }
+      },
+      { threshold: 0.6 },
+    )
+    observer.observe(el)
+    return () => {
+      observer.disconnect()
+      clearTimeout(viewTimer.current)
+    }
+  }, [autoActivateOnView, autoPlay])
 
   function toggleSound(e: MouseEvent) {
     e.preventDefault()
@@ -74,11 +105,15 @@ export function VideoPreview({
     }
   }
 
-  function handleTap() {
+  function handleTap(e: MouseEvent) {
     if (!allowTap) return
     if (active) {
       stopPreview()
     } else {
+      // Swallow this tap so it doesn't also trigger a parent <Link> — the
+      // first tap's job is just to start playback in place, not navigate.
+      e.preventDefault()
+      e.stopPropagation()
       setActive(true)
       videoRef.current?.play().catch(() => {})
     }
@@ -86,6 +121,7 @@ export function VideoPreview({
 
   return (
     <div
+      ref={containerRef}
       className={cn(
         'group/media relative overflow-hidden bg-[#101114]',
         bare ? 'rounded-none border-0' : 'rounded-[1rem] border border-edge',

@@ -395,26 +395,35 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
       setTimeout(() => {
         film!.style.transform = 'scale(1)'
       }, 260)
+      // The grain and dust go still a moment before the dissolve starts —
+      // motion stopping first reads as a deliberate settle, not a cutoff.
+      setTimeout(() => {
+        if (grainRef.current) {
+          grainRef.current.style.transition = 'opacity .5s ease'
+          grainRef.current.style.opacity = '0'
+        }
+        dcanvas!.style.transition = 'opacity .5s ease'
+        dcanvas!.style.opacity = '0'
+      }, 1000)
       setTimeout(() => swing(), 1400)
     }
 
+    // A held beat of warm light (like the moment a projector lamp catches),
+    // then a slow, eased dissolve with a faint scale-settle — cinematic
+    // rather than a flat opacity cut. The assembled reel itself never
+    // moves or spins; only the whole scene gently glows and fades.
     function swing() {
-      // The assembled reel spins fast in a full circle — like a film reel
-      // spooling up to speed — then shrinks and pulls toward the corner
-      // where the real hero clip sits, fading into it rather than just
-      // sliding off-screen.
-      film!.style.transformOrigin = '50% 50%'
-      film!.style.transition = 'transform .55s cubic-bezier(.5,0,.5,1)'
-      film!.style.transform = 'rotate(1080deg) scale(0.92)'
+      intro!.style.transition = 'filter .3s ease'
+      intro!.style.filter = 'brightness(1.4)'
       setTimeout(() => {
-        intro!.style.transition = 'transform .7s cubic-bezier(.6,0,.2,1), opacity .55s ease .25s, filter .6s ease'
-        intro!.style.transform = 'translate(18%, -8%) scale(0.1) rotate(1080deg)'
+        intro!.style.transition = 'opacity 1.3s cubic-bezier(.4,0,.2,1), transform 1.3s cubic-bezier(.4,0,.2,1), filter .7s ease'
         intro!.style.opacity = '0'
-        intro!.style.filter = 'blur(4px)'
-      }, 260)
+        intro!.style.transform = 'scale(1.03)'
+        intro!.style.filter = 'brightness(1)'
+      }, 220)
       setTimeout(() => {
         onCompleteRef.current()
-      }, 940)
+      }, 1500)
     }
 
     function skip() {

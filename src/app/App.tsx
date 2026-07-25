@@ -26,21 +26,23 @@ function App() {
   return (
     <>
       {!introDone && <IntroAnimation onComplete={handleIntroComplete} />}
-      <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
-        <Routes>
-          <Route path="/styleguide" element={<Styleguide />} />
-          <Route element={<PageLayout />}>
-            <Route index element={<Home />} />
-            <Route path="work" element={<Portfolio />} />
-            <Route path="work/:slug" element={<CaseStudy />} />
-            <Route path="services" element={<Services />} />
-            <Route path="agency-partners" element={<AgencyPartners />} />
-            <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      {introDone && (
+        <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
+          <Routes>
+            <Route path="/styleguide" element={<Styleguide />} />
+            <Route element={<PageLayout />}>
+              <Route index element={<Home />} />
+              <Route path="work" element={<Portfolio />} />
+              <Route path="work/:slug" element={<CaseStudy />} />
+              <Route path="services" element={<Services />} />
+              <Route path="agency-partners" element={<AgencyPartners />} />
+              <Route path="about" element={<About />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      )}
     </>
   )
 }

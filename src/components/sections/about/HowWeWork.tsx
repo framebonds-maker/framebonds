@@ -34,7 +34,7 @@ export function HowWeWork() {
         >
           {clips.map((clip) => (
             <motion.div key={clip.src} variants={fadeInUp}>
-              <VideoPreview src={clip.src} poster={clip.poster} soundToggle className="aspect-[9/16]" />
+              <VideoPreview src={clip.src} poster={clip.poster} soundToggle play allowTap className="aspect-[9/16]" />
             </motion.div>
           ))}
         </motion.div>

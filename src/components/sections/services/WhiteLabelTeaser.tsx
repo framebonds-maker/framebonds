@@ -48,6 +48,8 @@ export function WhiteLabelTeaser() {
               src="/videos/bts.mp4"
               poster="/videos/bts-poster.jpg"
               soundToggle
+              play
+              allowTap
               className="mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm"
             />
           </motion.div>

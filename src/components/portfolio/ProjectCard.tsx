@@ -5,11 +5,18 @@ import type { Project } from '@/constants/projects'
 import { MediaPlaceholder } from '@/components/media/MediaPlaceholder'
 import { VideoPreview } from '@/components/media/VideoPreview'
 import { staggerItem } from '@/animations/variants'
+import { useIsMobile } from '@/hooks/useIsMobile'
 import { cn } from '@/lib/utils'
 
 /**
  * Portfolio card — the most important reusable component (Volume V Ch3).
  * The media dominates; text stays minimal: title, industry, nothing else.
+ *
+ * Desktop: the whole card is one link — hover previews, click opens the
+ * case study. Mobile has no hover, so tapping the media instead plays the
+ * clip in place (never navigates); tapping the title/caption underneath
+ * opens the case study. Mobile clips also autoplay on their own once
+ * they've sat in view for ~2s, feed-style.
  */
 type ProjectCardProps = {
   project: Project
@@ -48,25 +55,42 @@ export function ProjectCard({
   mediaFit,
   className,
 }: ProjectCardProps) {
+  const isMobile = useIsMobile()
+
   if (rowHeightPx) {
     const ratio = project.media ? (project.media.orientation === 'portrait' ? 9 / 16 : 16 / 9) : 4 / 3
+    const media = (
+      <div style={{ height: rowHeightPx, aspectRatio: ratio }} className="relative">
+        {project.media ? (
+          <VideoPreview
+            src={project.media.heroSrc}
+            poster={project.media.heroPoster}
+            soundToggle
+            play={isMobile}
+            allowTap={isMobile}
+            autoActivateOnView={isMobile}
+            className="h-full w-full"
+          />
+        ) : (
+          <MediaPlaceholder hue={project.hue} className="h-full w-full" />
+        )}
+      </div>
+    )
     return (
       <motion.article variants={staggerItem} whileTap={{ scale: 0.98 }} className={cn('group flex flex-col shrink-0', className)}>
-        <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-          <div style={{ height: rowHeightPx, aspectRatio: ratio }} className="relative">
-            {project.media ? (
-              <VideoPreview
-                src={project.media.heroSrc}
-                poster={project.media.heroPoster}
-                soundToggle
-                className="h-full w-full"
-              />
-            ) : (
-              <MediaPlaceholder hue={project.hue} className="h-full w-full" />
-            )}
-          </div>
-          <ProjectCardCaption project={project} />
-        </Link>
+        {isMobile ? (
+          <>
+            {media}
+            <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+              <ProjectCardCaption project={project} />
+            </Link>
+          </>
+        ) : (
+          <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+            {media}
+            <ProjectCardCaption project={project} />
+          </Link>
+        )}
       </motion.article>
     )
   }
@@ -77,27 +101,42 @@ export function ProjectCard({
     // fill leftover row width on desktop — `rowHeight` should only carry
     // md+ height classes (e.g. "md:h-[420px]") so mobile stays full-width.
     const ratio = project.media ? (project.media.orientation === 'portrait' ? 9 / 16 : 16 / 9) : 4 / 3
+    const media = (
+      <div style={{ aspectRatio: ratio }} className={cn('relative w-full md:w-auto', rowHeight)}>
+        {project.media ? (
+          <VideoPreview
+            src={project.media.heroSrc}
+            poster={project.media.heroPoster}
+            soundToggle
+            play={isMobile}
+            allowTap={isMobile}
+            autoActivateOnView={isMobile}
+            className="h-full w-full"
+          />
+        ) : (
+          <MediaPlaceholder hue={project.hue} className="h-full w-full" />
+        )}
+      </div>
+    )
     return (
       <motion.article
         variants={staggerItem}
         whileTap={{ scale: 0.98 }}
         className={cn('group flex flex-col', project.media ? 'md:shrink-0' : 'md:flex-1 md:basis-0', className)}
       >
-        <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-          <div style={{ aspectRatio: ratio }} className={cn('relative w-full md:w-auto', rowHeight)}>
-            {project.media ? (
-              <VideoPreview
-                src={project.media.heroSrc}
-                poster={project.media.heroPoster}
-                soundToggle
-                className="h-full w-full"
-              />
-            ) : (
-              <MediaPlaceholder hue={project.hue} className="h-full w-full" />
-            )}
-          </div>
-          <ProjectCardCaption project={project} />
-        </Link>
+        {isMobile ? (
+          <>
+            {media}
+            <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+              <ProjectCardCaption project={project} />
+            </Link>
+          </>
+        ) : (
+          <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+            {media}
+            <ProjectCardCaption project={project} />
+          </Link>
+        )}
       </motion.article>
     )
   }
@@ -108,22 +147,36 @@ export function ProjectCard({
       : landscapeAspect
     : aspect
 
+  const media = project.media ? (
+    <VideoPreview
+      src={project.media.heroSrc}
+      poster={project.media.heroPoster}
+      soundToggle
+      play={isMobile}
+      allowTap={isMobile}
+      autoActivateOnView={isMobile}
+      className={resolvedAspect}
+      fit={mediaFit}
+    />
+  ) : (
+    <MediaPlaceholder hue={project.hue} className={resolvedAspect} />
+  )
+
   return (
     <motion.article variants={staggerItem} whileTap={{ scale: 0.98 }} className={cn('group', className)}>
-      <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-        {project.media ? (
-          <VideoPreview
-            src={project.media.heroSrc}
-            poster={project.media.heroPoster}
-            soundToggle
-            className={resolvedAspect}
-            fit={mediaFit}
-          />
-        ) : (
-          <MediaPlaceholder hue={project.hue} className={resolvedAspect} />
-        )}
-        <ProjectCardCaption project={project} />
-      </Link>
+      {isMobile ? (
+        <>
+          {media}
+          <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+            <ProjectCardCaption project={project} />
+          </Link>
+        </>
+      ) : (
+        <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+          {media}
+          <ProjectCardCaption project={project} />
+        </Link>
+      )}
     </motion.article>
   )
 }
