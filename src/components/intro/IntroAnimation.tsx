@@ -98,6 +98,7 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     let fw = 0
     let fh = 0
     let frameNow = performance.now()
+    let wordShrink = 1
     let mouseX = -9999
     let mouseY = -9999
     const gap = isMobile ? 2 : 3
@@ -260,7 +261,7 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
       const ec = clamp(w.v, 0, 1)
       const blur = (1 - ec) * 9
       const lift = (1 - ec) * 16
-      const scale = 0.94 + 0.06 * ec
+      const scale = (0.94 + 0.06 * ec) * wordShrink
       w.el.style.transform = `translate(${w.anchorX - w.width / 2}px,${w.anchorY - w.height / 2 + lift}px) scale(${scale})`
       w.el.style.filter = `blur(${blur.toFixed(2)}px)`
       w.el.style.opacity = ec.toFixed(3)
@@ -292,14 +293,22 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
       const widths = words.map((w) => w.el.offsetWidth)
       const heights = words.map((w) => w.el.offsetHeight)
       const totalWordsWidth = widths.reduce((a, b) => a + b, 0) + wordGap * Math.max(0, words.length - 1)
-      let cursor = (W - totalWordsWidth) / 2
+      // If the assembled sentence would be wider than the screen (phones,
+      // mostly), shrink the whole row uniformly to fit instead of letting
+      // it run off both edges.
+      const maxRowWidth = (isMobile ? 0.94 : 0.88) * W
+      wordShrink = clamp(maxRowWidth / Math.max(1, totalWordsWidth), 0.001, 1)
+      const scaledGap = wordGap * wordShrink
+      const scaledTotal = totalWordsWidth * wordShrink
+      let cursor = (W - scaledTotal) / 2
       const wordCy = H * (isMobile ? 0.26 : 0.28)
       words.forEach((w, i) => {
         w.width = widths[i]
         w.height = heights[i]
-        w.anchorX = cursor + w.width / 2
+        const sw = w.width * wordShrink
+        w.anchorX = cursor + sw / 2
         w.anchorY = wordCy
-        cursor += w.width + wordGap
+        cursor += sw + scaledGap
         applyWord(w)
       })
 
