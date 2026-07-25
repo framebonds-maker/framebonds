@@ -62,7 +62,7 @@ export function HomeHero() {
               src="/videos/raymond-full.mp4"
               poster="/videos/raymond-poster.jpg"
               soundToggle
-              className="mx-auto aspect-[9/16] w-full max-w-xs"
+              className="mx-auto aspect-[9/16] w-full max-w-[92vw] md:max-w-xs"
             />
           </motion.div>
         </div>

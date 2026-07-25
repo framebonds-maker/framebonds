@@ -51,7 +51,7 @@ export function ProjectCard({
   if (rowHeightPx) {
     const ratio = project.media ? (project.media.orientation === 'portrait' ? 9 / 16 : 16 / 9) : 4 / 3
     return (
-      <motion.article variants={staggerItem} className={cn('group flex flex-col shrink-0', className)}>
+      <motion.article variants={staggerItem} whileTap={{ scale: 0.98 }} className={cn('group flex flex-col shrink-0', className)}>
         <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
           <div style={{ height: rowHeightPx, aspectRatio: ratio }} className="relative">
             {project.media ? (
@@ -80,6 +80,7 @@ export function ProjectCard({
     return (
       <motion.article
         variants={staggerItem}
+        whileTap={{ scale: 0.98 }}
         className={cn('group flex flex-col', project.media ? 'md:shrink-0' : 'md:flex-1 md:basis-0', className)}
       >
         <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
@@ -108,7 +109,7 @@ export function ProjectCard({
     : aspect
 
   return (
-    <motion.article variants={staggerItem} className={cn('group', className)}>
+    <motion.article variants={staggerItem} whileTap={{ scale: 0.98 }} className={cn('group', className)}>
       <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
         {project.media ? (
           <VideoPreview

@@ -104,7 +104,7 @@ export function ServiceCategories() {
                     soundToggle
                     className={cn(
                       'mx-auto',
-                      pillar.orientation === 'portrait' ? 'aspect-[9/16] max-w-xs md:max-w-sm' : 'aspect-[16/9]',
+                      pillar.orientation === 'portrait' ? 'aspect-[9/16] max-w-[92vw] md:max-w-sm' : 'aspect-[16/9]',
                     )}
                   />
                 </Link>

@@ -82,7 +82,7 @@ export function CinematicBreak({
               poster={poster}
               autoPlay={autoPlay}
               soundToggle
-              className={orientation === 'portrait' ? 'mx-auto aspect-[9/16] max-w-xs md:max-w-sm' : 'aspect-[16/9]'}
+              className={orientation === 'portrait' ? 'mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm' : 'aspect-[16/9]'}
             />
           </motion.div>
         </div>
