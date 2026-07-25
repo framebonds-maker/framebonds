@@ -45,16 +45,23 @@ type Dust = { x: number; y: number; r: number; vx: number; vy: number; a: number
 const ACCENT = '#c9a05c'
 const CANVAS_BG = '#0d0e10'
 const INK = '#f4f3f0'
-const SENTENCES = [
+const SENTENCES_DESKTOP = [
   "Every story starts with one frame. Let's find yours.",
   "There's more behind every reel. Come see how it's made.",
   "Some stories are worth staying for. This is one of them.",
 ]
+const SENTENCES_MOBILE = ['Every frame tells a story.', 'Come see the story unfold.', 'One frame. One story. Begin here.']
 const NEGATIVE_COUNT = 15
 const GRAIN_AMOUNT = 0.05
 
 export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
-  const sentenceRef = useRef(SENTENCES[Math.floor(Math.random() * SENTENCES.length)])
+  const sentenceRef = useRef(
+    (() => {
+      const isMobileInit = typeof window !== 'undefined' && window.matchMedia('(max-width: 767px)').matches
+      const pool = isMobileInit ? SENTENCES_MOBILE : SENTENCES_DESKTOP
+      return pool[Math.floor(Math.random() * pool.length)]
+    })(),
+  )
   const rootRef = useRef<HTMLDivElement>(null)
   const filmRef = useRef<HTMLDivElement>(null)
   const wordsRef = useRef<HTMLDivElement>(null)
@@ -533,6 +540,12 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     setupDust()
     layout()
     updateScrub()
+
+    // Word widths are measured in the fallback font if the real display
+    // font (Fraunces) hasn't finished loading yet at this exact instant —
+    // once it swaps in with different metrics, the pre-computed gaps no
+    // longer match, so re-measure and re-lay-out once fonts are ready.
+    document.fonts?.ready?.then(() => layout())
 
     track.addEventListener('pointerdown', onPointerDown)
     window.addEventListener('pointermove', onPointerMove)
