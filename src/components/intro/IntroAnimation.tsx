@@ -399,20 +399,22 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     }
 
     function swing() {
-      // The assembled reel spins away like film winding off a reel, rather
-      // than just sliding off-screen — a quick wind-up (slight over-rotate)
-      // then the full spin-and-shrink into the homepage underneath.
-      film!.style.transition = 'transform .32s cubic-bezier(.4,0,.6,1)'
-      film!.style.transform = 'scale(1.04) rotate(-2deg)'
-      requestAnimationFrame(() => {
-        intro!.style.transition = 'transform .85s cubic-bezier(.55,0,.2,1), opacity .85s ease .15s, filter .85s ease'
-        intro!.style.transform = 'perspective(1400px) rotateY(65deg) rotateZ(-8deg) scale(0.72) translateX(6%)'
+      // The assembled reel spins fast in a full circle — like a film reel
+      // spooling up to speed — then shrinks and pulls toward the corner
+      // where the real hero clip sits, fading into it rather than just
+      // sliding off-screen.
+      film!.style.transformOrigin = '50% 50%'
+      film!.style.transition = 'transform .55s cubic-bezier(.5,0,.5,1)'
+      film!.style.transform = 'rotate(1080deg) scale(0.92)'
+      setTimeout(() => {
+        intro!.style.transition = 'transform .7s cubic-bezier(.6,0,.2,1), opacity .55s ease .25s, filter .6s ease'
+        intro!.style.transform = 'translate(18%, -8%) scale(0.1) rotate(1080deg)'
         intro!.style.opacity = '0'
-        intro!.style.filter = 'blur(6px)'
-      })
+        intro!.style.filter = 'blur(4px)'
+      }, 260)
       setTimeout(() => {
         onCompleteRef.current()
-      }, 820)
+      }, 940)
     }
 
     function skip() {
