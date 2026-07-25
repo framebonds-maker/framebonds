@@ -88,6 +88,14 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     const track = trackRef.current
     if (!film || !wordsLayer || !intro || !dcanvas || !track) return
 
+    // Without this, a wheel/touch scroll over the fixed overlay still
+    // scrolls the real homepage sitting underneath it, invisibly — the
+    // visitor scrubs the reel and the actual page silently scrolls too.
+    const prevOverflow = document.body.style.overflow
+    const prevTouchAction = document.body.style.touchAction
+    document.body.style.overflow = 'hidden'
+    document.body.style.touchAction = 'none'
+
     const dctx = dcanvas.getContext('2d')
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
     // Mobile-only branch — desktop keeps its original count/floor untouched.
@@ -391,9 +399,17 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     }
 
     function swing() {
-      intro!.style.transition = 'transform .78s cubic-bezier(.7,0,.25,1),opacity .78s ease'
-      intro!.style.transform = 'translateY(-120%) rotate(-5deg)'
-      intro!.style.opacity = '0.35'
+      // The assembled reel spins away like film winding off a reel, rather
+      // than just sliding off-screen — a quick wind-up (slight over-rotate)
+      // then the full spin-and-shrink into the homepage underneath.
+      film!.style.transition = 'transform .32s cubic-bezier(.4,0,.6,1)'
+      film!.style.transform = 'scale(1.04) rotate(-2deg)'
+      requestAnimationFrame(() => {
+        intro!.style.transition = 'transform .85s cubic-bezier(.55,0,.2,1), opacity .85s ease .15s, filter .85s ease'
+        intro!.style.transform = 'perspective(1400px) rotateY(65deg) rotateZ(-8deg) scale(0.72) translateX(6%)'
+        intro!.style.opacity = '0'
+        intro!.style.filter = 'blur(6px)'
+      })
       setTimeout(() => {
         onCompleteRef.current()
       }, 820)
@@ -565,6 +581,8 @@ export function IntroAnimation({ onComplete }: { onComplete: () => void }) {
     if (reduced) assembleInstant()
 
     return () => {
+      document.body.style.overflow = prevOverflow
+      document.body.style.touchAction = prevTouchAction
       cancelAnimationFrame(raf)
       clearTimeout(skipTimer)
       clearTimeout(fpsResetTimer)
