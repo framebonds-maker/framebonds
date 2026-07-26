@@ -67,7 +67,7 @@ export function CinematicBreak({
               <motion.div variants={fadeInUp} className="mt-6">
                 <Link
                   to={to}
-                  className="inline-flex items-center gap-2 text-body-s font-semibold text-ink transition-colors duration-[180ms] hover:text-accent-hover"
+                  className="inline-flex min-h-11 items-center gap-2 text-body-s font-semibold text-ink transition-colors duration-[180ms] hover:text-accent-hover"
                 >
                   {ctaLabel}
                   <ArrowUpRight className="h-4 w-4" />

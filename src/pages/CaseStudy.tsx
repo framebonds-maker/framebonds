@@ -215,7 +215,7 @@ export default function CaseStudy() {
             initial="hidden"
             whileInView="visible"
             viewport={viewportOnce}
-            className="mt-8 flex flex-col gap-10 md:flex-row md:gap-8"
+            className="mt-8 flex flex-col gap-10 md:flex-row md:flex-wrap md:gap-8"
           >
             {related.map((p) => (
               <ProjectCard key={p.slug} project={p} rowHeight="md:h-[360px]" />

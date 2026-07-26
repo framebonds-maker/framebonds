@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { Navigation } from '@/components/navigation/Navigation'
 import { Footer } from '@/components/layout/Footer'
 import { CursorGlow } from '@/components/layout/CursorGlow'
-import { MobileStickyBar } from '@/components/layout/MobileStickyBar'
 import { duration, easing } from '@/constants/motion'
 
 /**
@@ -34,14 +33,13 @@ export function PageLayout() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: duration.medium, ease: easing.standard }}
-          className="flex-1 pb-20 md:pb-0"
+          className="flex-1"
         >
           <Outlet />
         </motion.main>
       </AnimatePresence>
 
       <Footer />
-      <MobileStickyBar />
     </div>
   )
 }

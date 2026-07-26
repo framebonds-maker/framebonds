@@ -32,12 +32,12 @@ export function Footer() {
             <p className="text-label font-semibold uppercase tracking-[0.18em] text-ink-muted">
               Explore
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-2">
               {navLinks.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-body-s text-ink-secondary transition-colors duration-[180ms] hover:text-ink"
+                    className="flex min-h-11 items-center text-body-s text-ink-secondary transition-colors duration-[180ms] hover:text-ink"
                   >
                     {link.label}
                   </Link>
@@ -50,18 +50,18 @@ export function Footer() {
             <p className="text-label font-semibold uppercase tracking-[0.18em] text-ink-muted">
               Connect
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-2">
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  className="text-body-s text-ink-secondary transition-colors duration-[180ms] hover:text-ink"
+                  className="flex min-h-11 items-center text-body-s text-ink-secondary transition-colors duration-[180ms] hover:text-ink"
                 >
                   {site.email}
                 </a>
               </li>
-              <li className="text-body-s text-ink-secondary">{site.city}</li>
+              <li className="flex min-h-11 items-center text-body-s text-ink-secondary">{site.city}</li>
             </ul>
-            <div className="mt-6 flex gap-3">
+            <div className="mt-4 flex gap-3">
               {[
                 { href: site.social.instagram, label: 'Instagram', Icon: InstagramIcon },
                 { href: `https://wa.me/${site.whatsappNumber}`, label: 'WhatsApp', Icon: MessageCircle },
@@ -72,7 +72,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-edge text-ink-secondary transition-all duration-[180ms] hover:border-edge-strong hover:text-ink"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-edge text-ink-secondary transition-all duration-[180ms] hover:border-edge-strong hover:text-ink"
                 >
                   <Icon className="h-4 w-4" />
                 </a>

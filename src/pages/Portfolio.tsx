@@ -64,7 +64,7 @@ export default function Portfolio() {
                 key={f}
                 onClick={() => setActive(f)}
                 aria-pressed={active === f}
-                className="rounded-full bg-transparent p-0"
+                className="flex min-h-11 items-center rounded-full bg-transparent p-0"
               >
                 <Tag active={active === f}>{f}</Tag>
               </button>

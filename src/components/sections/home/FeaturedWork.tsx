@@ -35,7 +35,7 @@ export function FeaturedWork() {
           </ButtonLink>
         </div>
 
-        <div className="mt-14 flex flex-col gap-14 md:mt-20 md:flex-row md:gap-8">
+        <div className="mt-14 flex flex-col gap-14 md:mt-20 md:flex-row md:flex-wrap md:gap-8">
           <ProjectCard project={aria} rowHeight="md:h-[420px]" />
           <ProjectCard project={forge} rowHeight="md:h-[420px]" />
           <ProjectCard project={studioSession} rowHeight="md:h-[420px]" />

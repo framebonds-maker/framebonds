@@ -30,7 +30,7 @@ export function FinalCta({
   primaryTo = '/contact',
 }: FinalCtaProps) {
   return (
-    <Section spacing="hero">
+    <Section spacing="hero" className="final-cta-section">
       <Container>
         <motion.div
           variants={staggerContainer(stagger.medium)}
