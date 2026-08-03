@@ -29,7 +29,7 @@ function App() {
       {introDone && (
         <Suspense fallback={<div className="min-h-screen bg-canvas" />}>
           <Routes>
-            <Route path="/styleguide" element={<Styleguide />} />
+            {import.meta.env.DEV && <Route path="/styleguide" element={<Styleguide />} />}
             <Route element={<PageLayout />}>
               <Route index element={<Home />} />
               <Route path="work" element={<Portfolio />} />

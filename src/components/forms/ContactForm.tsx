@@ -9,6 +9,10 @@ import { Button } from '@/components/ui/Button'
 import { fadeInUp } from '@/animations/variants'
 
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xjgnebzo'
+const LAST_SUBMIT_KEY = 'fb-contact-last-submit'
+// A real visitor only ever needs to send one inquiry; this only ever engages
+// a script that reloads the page and resubmits in a loop.
+const COOLDOWN_MS = 60_000
 
 /**
  * Minimal inquiry form — Volume III Ch8 / Volume V Ch4. Posts directly to
@@ -25,6 +29,9 @@ const contactSchema = z.object({
   }),
   projectType: z.string().trim().min(1, 'Please select a project type.'),
   message: z.string().trim().min(10, 'A few sentences helps us prepare for the call.'),
+  // Honeypot — invisible to real visitors, only bots fill hidden fields. Kept
+  // out of the resolver-validated fields above so it never surfaces an error.
+  _gotcha: z.string().max(0).optional(),
 })
 
 type ContactValues = z.infer<typeof contactSchema>
@@ -32,6 +39,7 @@ type ContactValues = z.infer<typeof contactSchema>
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState(false)
+  const [cooldownActive, setCooldownActive] = useState(false)
   const {
     register,
     handleSubmit,
@@ -40,6 +48,14 @@ export function ContactForm() {
 
   async function onSubmit(values: ContactValues) {
     setSubmitError(false)
+    setCooldownActive(false)
+
+    const lastSubmit = Number(localStorage.getItem(LAST_SUBMIT_KEY) ?? 0)
+    if (Date.now() - lastSubmit < COOLDOWN_MS) {
+      setCooldownActive(true)
+      return
+    }
+
     try {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: 'POST',
@@ -47,6 +63,7 @@ export function ContactForm() {
         body: JSON.stringify(values),
       })
       if (!response.ok) throw new Error('Submission failed')
+      localStorage.setItem(LAST_SUBMIT_KEY, String(Date.now()))
       setSubmitted(true)
     } catch {
       setSubmitError(true)
@@ -83,6 +100,15 @@ export function ContactForm() {
         noValidate
         className="flex flex-col gap-6"
       >
+        {/* Honeypot — visually hidden, unreachable by keyboard/AT; only bots fill it */}
+        <input
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute left-[-9999px] h-px w-px opacity-0"
+          {...register('_gotcha')}
+        />
         <Input label="Full Name" placeholder="Jordan Patel" {...register('name')} error={errors.name?.message} />
         <Input
           label="Company / Agency"
@@ -146,6 +172,12 @@ export function ContactForm() {
           <p role="alert" className="flex items-center gap-2 text-body-s text-ink-secondary">
             <AlertCircle className="h-4 w-4 shrink-0 text-accent" />
             Something didn't go through — mind trying again, or reaching us on WhatsApp instead?
+          </p>
+        )}
+        {cooldownActive && (
+          <p role="alert" className="flex items-center gap-2 text-body-s text-ink-secondary">
+            <AlertCircle className="h-4 w-4 shrink-0 text-accent" />
+            Looks like you just sent a message — we've got it, no need to send another right away.
           </p>
         )}
       </motion.form>
