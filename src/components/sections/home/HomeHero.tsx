@@ -4,6 +4,7 @@ import { ButtonLink } from '@/components/ui/Button'
 import { VideoPreview } from '@/components/media/VideoPreview'
 import { SectionLabel } from '@/components/ui/SectionHeading'
 import { duration, easing } from '@/constants/motion'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 /**
  * Homepage hero — Volume III Ch3.
@@ -19,6 +20,7 @@ const reveal = (delay: number) => ({
 })
 
 export function HomeHero() {
+  const isMobile = useIsMobile()
   return (
     <section className="pt-36 pb-20 md:pt-44 md:pb-28">
       <Container width="wide">
@@ -62,6 +64,8 @@ export function HomeHero() {
               src="/videos/raymond-full.mp4"
               poster="/videos/raymond-poster.jpg"
               soundToggle
+              play={isMobile}
+              allowTap={isMobile}
               className="mx-auto aspect-[9/16] w-full max-w-[92vw] md:max-w-xs"
             />
           </motion.div>

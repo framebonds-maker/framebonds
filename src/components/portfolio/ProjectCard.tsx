@@ -14,9 +14,8 @@ import { cn } from '@/lib/utils'
  *
  * Desktop: the whole card is one link — hover previews, click opens the
  * case study. Mobile has no hover, so tapping the media instead plays the
- * clip in place (never navigates); tapping the title/caption underneath
- * opens the case study. Mobile clips also autoplay on their own once
- * they've sat in view for ~2s, feed-style.
+ * clip in place via a dedicated play/pause control (never navigates);
+ * tapping the title/caption underneath opens the case study.
  */
 type ProjectCardProps = {
   project: Project
@@ -68,7 +67,6 @@ export function ProjectCard({
             soundToggle
             play={isMobile}
             allowTap={isMobile}
-            autoActivateOnView={isMobile}
             className="h-full w-full"
           />
         ) : (
@@ -110,7 +108,6 @@ export function ProjectCard({
             soundToggle
             play={isMobile}
             allowTap={isMobile}
-            autoActivateOnView={isMobile}
             className="h-full w-full"
           />
         ) : (
@@ -154,7 +151,6 @@ export function ProjectCard({
       soundToggle
       play={isMobile}
       allowTap={isMobile}
-      autoActivateOnView={isMobile}
       className={resolvedAspect}
       fit={mediaFit}
     />

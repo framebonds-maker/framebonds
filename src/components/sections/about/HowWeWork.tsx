@@ -42,7 +42,6 @@ export function HowWeWork() {
                 soundToggle
                 play={isMobile}
                 allowTap={isMobile}
-                autoActivateOnView={isMobile}
                 className="aspect-[9/16]"
               />
             </motion.div>

@@ -7,6 +7,7 @@ import { Section } from '@/components/layout/Section'
 import { VideoPreview } from '@/components/media/VideoPreview'
 import { fadeInUp, staggerContainer, viewportOnce } from '@/animations/variants'
 import { stagger } from '@/constants/motion'
+import { useIsMobile } from '@/hooks/useIsMobile'
 
 type CinematicBreakProps = {
   video: string
@@ -41,6 +42,7 @@ export function CinematicBreak({
   orientation = 'landscape',
   autoPlay = true,
 }: CinematicBreakProps) {
+  const isMobile = useIsMobile()
   return (
     <Section spacing="compact">
       <Container width="wide">
@@ -80,7 +82,9 @@ export function CinematicBreak({
             <VideoPreview
               src={video}
               poster={poster}
-              autoPlay={autoPlay}
+              autoPlay={autoPlay && !isMobile}
+              play={isMobile}
+              allowTap={isMobile}
               soundToggle
               className={orientation === 'portrait' ? 'mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm' : 'aspect-[16/9]'}
             />

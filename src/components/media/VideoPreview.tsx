@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react'
-import { Play, Volume2, VolumeX } from 'lucide-react'
+import { useRef, useState, type MouseEvent, type ReactNode } from 'react'
+import { Pause, Play, Volume2, VolumeX } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 /**
@@ -28,10 +28,6 @@ type VideoPreviewProps = {
   /** Shows a mute/unmute control — reserved for autoplaying hero footage
    * that actually carries sound. Starts muted; the visitor opts in. */
   soundToggle?: boolean
-  /** Starts playing on its own once the card has sat mostly in view for
-   * ~2s — feed-style autoplay. Caller decides when this applies (e.g.
-   * mobile only), this component just implements the observer. */
-  autoActivateOnView?: boolean
 }
 
 export function VideoPreview({
@@ -45,12 +41,10 @@ export function VideoPreview({
   bare,
   fit = 'cover',
   soundToggle,
-  autoActivateOnView,
 }: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  const viewTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [active, setActive] = useState(Boolean(autoPlay))
   const [muted, setMuted] = useState(true)
   // The poster stays up until the video actually has a frame decoded —
@@ -58,30 +52,6 @@ export function VideoPreview({
   // frame paints, showing a brief black flash instead of the poster.
   const [ready, setReady] = useState(false)
   const showVideo = active && ready
-
-  useEffect(() => {
-    if (!autoActivateOnView || autoPlay) return
-    const el = containerRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          viewTimer.current = setTimeout(() => {
-            setActive(true)
-            videoRef.current?.play().catch(() => {})
-          }, 2000)
-        } else {
-          clearTimeout(viewTimer.current)
-        }
-      },
-      { threshold: 0.6 },
-    )
-    observer.observe(el)
-    return () => {
-      observer.disconnect()
-      clearTimeout(viewTimer.current)
-    }
-  }, [autoActivateOnView, autoPlay])
 
   function toggleSound(e: MouseEvent) {
     e.preventDefault()
@@ -105,10 +75,20 @@ export function VideoPreview({
     }
   }
 
+  function pauseVideo(e: MouseEvent) {
+    e.preventDefault()
+    e.stopPropagation()
+    clearTimeout(hoverTimer.current)
+    setActive(false)
+    videoRef.current?.pause()
+  }
+
   function handleTap(e: MouseEvent) {
     if (!allowTap) return
     if (active) {
-      stopPreview()
+      // Pause in place (keeps position) rather than resetting to the
+      // start — a real pause, not a stop, so a second tap resumes.
+      pauseVideo(e)
     } else {
       // Swallow this tap so it doesn't also trigger a parent <Link> — the
       // first tap's job is just to start playback in place, not navigate.
@@ -170,10 +150,17 @@ export function VideoPreview({
         }}
       />
 
-      {play && !showVideo && (
+      {play && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="flex h-16 w-16 items-center justify-center rounded-full border border-ink/25 bg-canvas/30 backdrop-blur-sm transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/media:scale-105 group-hover/media:border-ink/40 md:h-20 md:w-20">
-            <Play className="ml-1 h-6 w-6 fill-ink text-ink" />
+          <span
+            aria-hidden
+            className="flex h-16 w-16 items-center justify-center rounded-full border border-ink/25 bg-canvas/30 backdrop-blur-sm transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/media:scale-105 group-hover/media:border-ink/40 md:h-20 md:w-20"
+          >
+            {showVideo ? (
+              <Pause className="h-6 w-6 fill-ink text-ink" />
+            ) : (
+              <Play className="ml-1 h-6 w-6 fill-ink text-ink" />
+            )}
           </span>
         </div>
       )}

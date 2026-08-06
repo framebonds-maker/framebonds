@@ -103,6 +103,7 @@ export function ServiceCategories() {
                     src={pillar.video}
                     poster={pillar.poster}
                     play={isMobile}
+                    allowTap={isMobile}
                     soundToggle
                     className={cn(
                       'mx-auto',

@@ -29,7 +29,9 @@ export function Perspective() {
         <VideoPreview
           src="/videos/ratnasar-aria-full.mp4"
           poster="/videos/ratnasar-aria-poster.jpg"
-          autoPlay
+          autoPlay={!isMobile}
+          play={isMobile}
+          allowTap={isMobile}
           soundToggle
           className="aspect-[4/5] md:aspect-[16/9]"
           caption={

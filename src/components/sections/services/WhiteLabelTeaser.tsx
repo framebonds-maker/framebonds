@@ -52,7 +52,6 @@ export function WhiteLabelTeaser() {
               soundToggle
               play={isMobile}
               allowTap={isMobile}
-              autoActivateOnView={isMobile}
               className="mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm"
             />
           </motion.div>
