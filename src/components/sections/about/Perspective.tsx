@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
@@ -23,44 +24,53 @@ const paragraph =
 export function Perspective() {
   const isMobile = useIsMobile()
 
+  const video = (
+    <VideoPreview
+      src="/videos/ratnasar-aria-preview.mp4"
+      poster="/videos/ratnasar-aria-poster.jpg"
+      autoPlay={!isMobile}
+      play={isMobile}
+      soundToggle
+      className="aspect-[4/5] md:aspect-[16/9]"
+      caption={
+        <motion.div
+          variants={staggerContainer(stagger.medium)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="max-w-xl"
+        >
+          <motion.p variants={fadeInUp} className="text-label font-semibold uppercase tracking-[0.18em] text-accent">
+            Our Perspective
+          </motion.p>
+          <motion.h2
+            variants={fadeInUp}
+            className="mt-3 font-display text-heading-l font-medium text-ink md:text-heading-xl"
+          >
+            Craft is not a finishing touch. It's the whole point.
+          </motion.h2>
+          {!isMobile && (
+            <motion.p variants={fadeInUp} className="mt-4 text-body-l leading-relaxed text-ink-secondary">
+              {paragraph}
+            </motion.p>
+          )}
+        </motion.div>
+      }
+    />
+  )
+
   return (
     <Section tone="secondary">
       <Container width="wide">
-        <VideoPreview
-          src="/videos/ratnasar-aria-preview.mp4"
-          poster="/videos/ratnasar-aria-poster.jpg"
-          autoPlay={!isMobile}
-          play={isMobile}
-          soundToggle
-          className="aspect-[4/5] md:aspect-[16/9]"
-          caption={
-            <motion.div
-              variants={staggerContainer(stagger.medium)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              className="max-w-xl"
-            >
-              <motion.p
-                variants={fadeInUp}
-                className="text-label font-semibold uppercase tracking-[0.18em] text-accent"
-              >
-                Our Perspective
-              </motion.p>
-              <motion.h2
-                variants={fadeInUp}
-                className="mt-3 font-display text-heading-l font-medium text-ink md:text-heading-xl"
-              >
-                Craft is not a finishing touch. It's the whole point.
-              </motion.h2>
-              {!isMobile && (
-                <motion.p variants={fadeInUp} className="mt-4 text-body-l leading-relaxed text-ink-secondary">
-                  {paragraph}
-                </motion.p>
-              )}
-            </motion.div>
-          }
-        />
+        {/* Mobile: the icon is the only way to toggle playback — a tap
+            anywhere else on the frame opens the Aria Set case study. */}
+        {isMobile ? (
+          <Link to="/work/ratnasar-aria-set" className="block focus-visible:outline-accent">
+            {video}
+          </Link>
+        ) : (
+          video
+        )}
         {isMobile && (
           <motion.p
             variants={fadeInUp}

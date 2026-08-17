@@ -146,11 +146,18 @@ export function VideoPreview({
 
       {play && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          {/* Visible while paused so it reads as a play affordance; fades
+              out once playback starts so it doesn't sit over the footage —
+              same hit target either way, so a tap in that spot still
+              pauses even though the icon itself has faded away. */}
           <button
             type="button"
             onClick={togglePlay}
             aria-label={showVideo ? 'Pause video' : 'Play video'}
-            className="pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full border border-ink/25 bg-canvas/30 backdrop-blur-sm transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/media:scale-105 group-hover/media:border-ink/40 md:h-20 md:w-20"
+            className={cn(
+              'pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full border border-ink/25 bg-canvas/30 backdrop-blur-sm transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/media:border-ink/40 md:h-20 md:w-20',
+              showVideo ? 'opacity-0' : 'opacity-100 group-hover/media:scale-105',
+            )}
           >
             {showVideo ? (
               <Pause className="h-6 w-6 fill-ink text-ink" />
