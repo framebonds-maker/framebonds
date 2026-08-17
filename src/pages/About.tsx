@@ -23,7 +23,7 @@ export default function About() {
       <CreativePrinciples />
 
       <CinematicBreak
-        video="/videos/automotive-full.mp4"
+        video="/videos/automotive-preview.mp4"
         poster="/videos/automotive-poster.jpg"
         autoPlay={false}
         eyebrow="On Set"

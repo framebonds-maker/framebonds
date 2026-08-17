@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/layout/Container'
 import { Section } from '@/components/layout/Section'
@@ -46,14 +47,27 @@ export function WhiteLabelTeaser() {
             </motion.div>
           </motion.div>
           <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-            <VideoPreview
-              src="/videos/bts.mp4"
-              poster="/videos/bts-poster.jpg"
-              soundToggle
-              play={isMobile}
-              allowTap={isMobile}
-              className="mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm"
-            />
+            {/* Mobile: the icon is the only way to toggle playback — a tap
+                anywhere else on the frame goes to the full partnership page,
+                same as the button below. */}
+            {isMobile ? (
+              <Link to="/agency-partners" className="block focus-visible:outline-accent">
+                <VideoPreview
+                  src="/videos/bts-preview.mp4"
+                  poster="/videos/bts-poster.jpg"
+                  soundToggle
+                  play
+                  className="mx-auto aspect-[9/16] max-w-[92vw]"
+                />
+              </Link>
+            ) : (
+              <VideoPreview
+                src="/videos/bts-preview.mp4"
+                poster="/videos/bts-poster.jpg"
+                soundToggle
+                className="mx-auto aspect-[9/16] md:max-w-sm"
+              />
+            )}
           </motion.div>
         </div>
       </Container>

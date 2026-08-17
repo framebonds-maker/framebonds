@@ -32,7 +32,7 @@ const pillars: Pillar[] = [
     problem: "Your business has a story, but most of what represents it online doesn't tell it.",
     solution:
       "We build a single, considered film around what makes your brand worth choosing — the kind of content that changes how people see you, not just what they see.",
-    video: '/videos/raymond-full.mp4',
+    video: '/videos/raymond-preview.mp4',
     poster: '/videos/raymond-poster.jpg',
     orientation: 'portrait',
     to: '/work/ethnix-by-raymond',
@@ -43,7 +43,7 @@ const pillars: Pillar[] = [
     problem: 'Product and campaign content that looks like everyone else\'s rarely moves anyone.',
     solution:
       'Retail, product and campaign films built to sell without sounding like an advertisement — composed, graded and paced with intention.',
-    video: '/videos/coach-full.mp4',
+    video: '/videos/coach-preview.mp4',
     poster: '/videos/coach-poster.jpg',
     orientation: 'portrait',
     to: '/work/coach-manish',
@@ -54,7 +54,7 @@ const pillars: Pillar[] = [
     problem: 'Consistent, premium social content is hard to sustain without a full-time hire.',
     solution:
       'A planned shoot — scoped to the days your monthly plan includes — generates a full month of on-brand content: reels, cutdowns and stills, so your feed never goes quiet.',
-    video: '/videos/forge-full.mp4',
+    video: '/videos/forge-preview.mp4',
     poster: '/videos/forge-poster.jpg',
     orientation: 'portrait',
     to: '/work/forge-athletics',
@@ -65,7 +65,7 @@ const pillars: Pillar[] = [
     problem: 'Growing agency workload without growing your production overhead.',
     solution:
       "We become your production department — invisible to your clients, reliable to you. Your agency stays the face of every project.",
-    video: '/videos/studio-session-full.mp4',
+    video: '/videos/studio-session-preview.mp4',
     poster: '/videos/studio-session-poster.jpg',
     orientation: 'portrait',
     to: '/agency-partners',
@@ -103,7 +103,6 @@ export function ServiceCategories() {
                     src={pillar.video}
                     poster={pillar.poster}
                     play={isMobile}
-                    allowTap={isMobile}
                     soundToggle
                     className={cn(
                       'mx-auto',

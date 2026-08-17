@@ -79,15 +79,29 @@ export function CinematicBreak({
           </motion.div>
 
           <motion.div variants={fadeInUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-            <VideoPreview
-              src={video}
-              poster={poster}
-              autoPlay={autoPlay && !isMobile}
-              play={isMobile}
-              allowTap={isMobile}
-              soundToggle
-              className={orientation === 'portrait' ? 'mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm' : 'aspect-[16/9]'}
-            />
+            {/* Mobile: the icon is the only way to toggle playback — a tap
+                anywhere else on the frame goes to `to` when one exists,
+                same destination as the text link above. */}
+            {isMobile && to ? (
+              <Link to={to} className="block focus-visible:outline-accent">
+                <VideoPreview
+                  src={video}
+                  poster={poster}
+                  play
+                  soundToggle
+                  className={orientation === 'portrait' ? 'mx-auto aspect-[9/16] max-w-[92vw]' : 'aspect-[16/9]'}
+                />
+              </Link>
+            ) : (
+              <VideoPreview
+                src={video}
+                poster={poster}
+                autoPlay={autoPlay && !isMobile}
+                play={isMobile}
+                soundToggle
+                className={orientation === 'portrait' ? 'mx-auto aspect-[9/16] max-w-[92vw] md:max-w-sm' : 'aspect-[16/9]'}
+              />
+            )}
           </motion.div>
         </div>
       </Container>

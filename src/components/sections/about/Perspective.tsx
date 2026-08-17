@@ -27,11 +27,10 @@ export function Perspective() {
     <Section tone="secondary">
       <Container width="wide">
         <VideoPreview
-          src="/videos/ratnasar-aria-full.mp4"
+          src="/videos/ratnasar-aria-preview.mp4"
           poster="/videos/ratnasar-aria-poster.jpg"
           autoPlay={!isMobile}
           play={isMobile}
-          allowTap={isMobile}
           soundToggle
           className="aspect-[4/5] md:aspect-[16/9]"
           caption={

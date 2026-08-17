@@ -12,10 +12,11 @@ import { cn } from '@/lib/utils'
  * Portfolio card — the most important reusable component (Volume V Ch3).
  * The media dominates; text stays minimal: title, industry, nothing else.
  *
- * Desktop: the whole card is one link — hover previews, click opens the
- * case study. Mobile has no hover, so tapping the media instead plays the
- * clip in place via a dedicated play/pause control (never navigates);
- * tapping the title/caption underneath opens the case study.
+ * The whole card is one link — desktop hovers to preview, click opens the
+ * case study. Mobile has no hover, so a play/pause icon sits over the
+ * frame instead; tapping that icon toggles playback in place, but a tap
+ * anywhere else on the card (including the rest of the video frame) opens
+ * the case study same as desktop.
  */
 type ProjectCardProps = {
   project: Project
@@ -62,11 +63,10 @@ export function ProjectCard({
       <div style={{ height: rowHeightPx, aspectRatio: ratio }} className="relative">
         {project.media ? (
           <VideoPreview
-            src={project.media.heroSrc}
+            src={project.media.previewSrc}
             poster={project.media.heroPoster}
             soundToggle
             play={isMobile}
-            allowTap={isMobile}
             className="h-full w-full"
           />
         ) : (
@@ -76,19 +76,10 @@ export function ProjectCard({
     )
     return (
       <motion.article variants={staggerItem} whileTap={{ scale: 0.98 }} className={cn('group flex flex-col shrink-0', className)}>
-        {isMobile ? (
-          <>
-            {media}
-            <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-              <ProjectCardCaption project={project} />
-            </Link>
-          </>
-        ) : (
-          <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-            {media}
-            <ProjectCardCaption project={project} />
-          </Link>
-        )}
+        <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+          {media}
+          <ProjectCardCaption project={project} />
+        </Link>
       </motion.article>
     )
   }
@@ -103,11 +94,10 @@ export function ProjectCard({
       <div style={{ aspectRatio: ratio }} className={cn('relative w-full md:w-auto', rowHeight)}>
         {project.media ? (
           <VideoPreview
-            src={project.media.heroSrc}
+            src={project.media.previewSrc}
             poster={project.media.heroPoster}
             soundToggle
             play={isMobile}
-            allowTap={isMobile}
             className="h-full w-full"
           />
         ) : (
@@ -121,19 +111,10 @@ export function ProjectCard({
         whileTap={{ scale: 0.98 }}
         className={cn('group flex flex-col', project.media ? 'md:shrink-0' : 'md:flex-1 md:basis-0', className)}
       >
-        {isMobile ? (
-          <>
-            {media}
-            <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-              <ProjectCardCaption project={project} />
-            </Link>
-          </>
-        ) : (
-          <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-            {media}
-            <ProjectCardCaption project={project} />
-          </Link>
-        )}
+        <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+          {media}
+          <ProjectCardCaption project={project} />
+        </Link>
       </motion.article>
     )
   }
@@ -146,11 +127,10 @@ export function ProjectCard({
 
   const media = project.media ? (
     <VideoPreview
-      src={project.media.heroSrc}
+      src={project.media.previewSrc}
       poster={project.media.heroPoster}
       soundToggle
       play={isMobile}
-      allowTap={isMobile}
       className={resolvedAspect}
       fit={mediaFit}
     />
@@ -160,19 +140,10 @@ export function ProjectCard({
 
   return (
     <motion.article variants={staggerItem} whileTap={{ scale: 0.98 }} className={cn('group', className)}>
-      {isMobile ? (
-        <>
-          {media}
-          <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-            <ProjectCardCaption project={project} />
-          </Link>
-        </>
-      ) : (
-        <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
-          {media}
-          <ProjectCardCaption project={project} />
-        </Link>
-      )}
+      <Link to={`/work/${project.slug}`} className="block focus-visible:outline-accent">
+        {media}
+        <ProjectCardCaption project={project} />
+      </Link>
     </motion.article>
   )
 }
@@ -190,7 +161,7 @@ function ProjectCardCaption({ project }: { project: Project }) {
       </div>
       <span
         aria-hidden
-        className="mt-1.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-edge text-ink-secondary opacity-0 transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100"
+        className="mt-1.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-edge text-ink-secondary transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] md:opacity-0 md:group-hover:opacity-100"
       >
         <ArrowUpRight className="h-4 w-4" />
       </span>

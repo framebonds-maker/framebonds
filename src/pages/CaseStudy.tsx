@@ -60,7 +60,6 @@ export default function CaseStudy() {
                   src={project.media.heroSrc}
                   poster={project.media.heroPoster}
                   play={isMobile}
-                  allowTap
                   soundToggle
                   className="mx-auto aspect-[9/16] max-w-sm md:max-w-md"
                 />
@@ -69,7 +68,6 @@ export default function CaseStudy() {
                   src={project.media.heroSrc}
                   poster={project.media.heroPoster}
                   play={isMobile}
-                  allowTap
                   soundToggle
                   className="aspect-[16/9] md:aspect-[21/9]"
                 />

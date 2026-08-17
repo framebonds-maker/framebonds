@@ -44,7 +44,7 @@ export default function AgencyPartners() {
       <WhyAgenciesPartner />
 
       <CinematicBreak
-        video="/videos/bts.mp4"
+        video="/videos/bts-preview.mp4"
         poster="/videos/bts-poster.jpg"
         orientation="portrait"
         autoPlay={false}

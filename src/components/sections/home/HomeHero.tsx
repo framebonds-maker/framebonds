@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Container } from '@/components/layout/Container'
 import { ButtonLink } from '@/components/ui/Button'
@@ -60,14 +61,29 @@ export function HomeHero() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.3, duration: 1, ease: easing.entrance }}
           >
-            <VideoPreview
-              src="/videos/raymond-full.mp4"
-              poster="/videos/raymond-poster.jpg"
-              soundToggle
-              play={isMobile}
-              allowTap={isMobile}
-              className="mx-auto aspect-[9/16] w-full max-w-[92vw] md:max-w-xs"
-            />
+            {/* Mobile: the icon is the only way to toggle playback — a tap
+                anywhere else on the frame opens the full case study. */}
+            {isMobile ? (
+              <Link
+                to="/work/ethnix-by-raymond"
+                className="mx-auto block w-full max-w-[92vw] focus-visible:outline-accent"
+              >
+                <VideoPreview
+                  src="/videos/raymond-preview.mp4"
+                  poster="/videos/raymond-poster.jpg"
+                  soundToggle
+                  play
+                  className="aspect-[9/16] w-full"
+                />
+              </Link>
+            ) : (
+              <VideoPreview
+                src="/videos/raymond-preview.mp4"
+                poster="/videos/raymond-poster.jpg"
+                soundToggle
+                className="mx-auto aspect-[9/16] w-full max-w-xs"
+              />
+            )}
           </motion.div>
         </div>
       </Container>

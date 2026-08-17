@@ -5,18 +5,21 @@ import { cn } from '@/lib/utils'
 /**
  * Real video media — replaces MediaPlaceholder wherever a real clip exists.
  * Desktop: poster shows instantly; hover starts a muted loop ~250ms later
- * (Volume VI Ch5). Mobile: poster only, tap-to-play when `allowTap` is set.
+ * (Volume VI Ch5). Mobile: poster only — the play/pause icon is the only
+ * thing that toggles playback; a tap anywhere else on the frame falls
+ * through untouched, so a parent `<Link>` (the case study, the agency
+ * page, whatever this preview represents) still navigates normally.
  */
 type VideoPreviewProps = {
   src: string
   poster: string
-  /** Show the quiet play affordance over the poster. */
+  /** Show the play/pause affordance over the poster — the icon is the
+   * only interactive part; it stops its own tap from bubbling, everything
+   * else in the frame passes through to a wrapping `<Link>` if present. */
   play?: boolean
   /** Caption pinned bottom-left inside the frame. */
   caption?: ReactNode
   className?: string
-  /** Let mobile taps toggle playback in place (case study heroes, not grid cards). */
-  allowTap?: boolean
   /** Hero usage — plays immediately on mount instead of waiting for hover. */
   autoPlay?: boolean
   /** Full-bleed usage — drops the rounded corners and border. */
@@ -36,14 +39,12 @@ export function VideoPreview({
   play,
   caption,
   className,
-  allowTap,
   autoPlay,
   bare,
   fit = 'cover',
   soundToggle,
 }: VideoPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
   const hoverTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [active, setActive] = useState(Boolean(autoPlay))
   const [muted, setMuted] = useState(true)
@@ -75,25 +76,19 @@ export function VideoPreview({
     }
   }
 
-  function pauseVideo(e: MouseEvent) {
+  // The icon button is the only thing that toggles playback. It stops its
+  // own tap from bubbling so a wrapping <Link> doesn't also navigate; a
+  // tap anywhere else on the frame is left completely alone.
+  function togglePlay(e: MouseEvent) {
     e.preventDefault()
     e.stopPropagation()
-    clearTimeout(hoverTimer.current)
-    setActive(false)
-    videoRef.current?.pause()
-  }
-
-  function handleTap(e: MouseEvent) {
-    if (!allowTap) return
     if (active) {
       // Pause in place (keeps position) rather than resetting to the
       // start — a real pause, not a stop, so a second tap resumes.
-      pauseVideo(e)
+      clearTimeout(hoverTimer.current)
+      setActive(false)
+      videoRef.current?.pause()
     } else {
-      // Swallow this tap so it doesn't also trigger a parent <Link> — the
-      // first tap's job is just to start playback in place, not navigate.
-      e.preventDefault()
-      e.stopPropagation()
       setActive(true)
       videoRef.current?.play().catch(() => {})
     }
@@ -101,15 +96,13 @@ export function VideoPreview({
 
   return (
     <div
-      ref={containerRef}
       className={cn(
         'group/media relative overflow-hidden bg-[#101114]',
         bare ? 'rounded-none border-0' : 'rounded-[1rem] border border-edge',
         className,
       )}
-      onMouseEnter={autoPlay ? undefined : startPreview}
-      onMouseLeave={autoPlay ? undefined : stopPreview}
-      onClick={handleTap}
+      onMouseEnter={autoPlay || play ? undefined : startPreview}
+      onMouseLeave={autoPlay || play ? undefined : stopPreview}
     >
       {/* The container aspect is chosen upstream to match the source footage
           exactly (see Project.media.orientation), so a plain cover fill
@@ -131,8 +124,9 @@ export function VideoPreview({
         loop
         playsInline
         autoPlay={autoPlay}
-        preload={autoPlay ? 'auto' : 'none'}
+        preload={autoPlay ? 'auto' : 'metadata'}
         onLoadedData={() => setReady(true)}
+        onCanPlay={() => setReady(true)}
         className={cn(
           'absolute inset-0 h-full w-full transition-opacity duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
           fit === 'contain' ? 'object-contain' : 'object-cover',
@@ -152,16 +146,18 @@ export function VideoPreview({
 
       {play && (
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span
-            aria-hidden
-            className="flex h-16 w-16 items-center justify-center rounded-full border border-ink/25 bg-canvas/30 backdrop-blur-sm transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/media:scale-105 group-hover/media:border-ink/40 md:h-20 md:w-20"
+          <button
+            type="button"
+            onClick={togglePlay}
+            aria-label={showVideo ? 'Pause video' : 'Play video'}
+            className="pointer-events-auto flex h-16 w-16 items-center justify-center rounded-full border border-ink/25 bg-canvas/30 backdrop-blur-sm transition-all duration-[250ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/media:scale-105 group-hover/media:border-ink/40 md:h-20 md:w-20"
           >
             {showVideo ? (
               <Pause className="h-6 w-6 fill-ink text-ink" />
             ) : (
               <Play className="ml-1 h-6 w-6 fill-ink text-ink" />
             )}
-          </span>
+          </button>
         </div>
       )}
 

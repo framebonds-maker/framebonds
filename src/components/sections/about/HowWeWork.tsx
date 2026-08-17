@@ -8,9 +8,9 @@ import { stagger } from '@/constants/motion'
 import { useIsMobile } from '@/hooks/useIsMobile'
 
 const clips = [
-  { src: '/videos/bts.mp4', poster: '/videos/bts-poster.jpg' },
-  { src: '/videos/coach-full.mp4', poster: '/videos/coach-poster.jpg' },
-  { src: '/videos/studio-session-full.mp4', poster: '/videos/studio-session-poster.jpg' },
+  { src: '/videos/bts-preview.mp4', poster: '/videos/bts-poster.jpg' },
+  { src: '/videos/coach-preview.mp4', poster: '/videos/coach-poster.jpg' },
+  { src: '/videos/studio-session-preview.mp4', poster: '/videos/studio-session-poster.jpg' },
 ]
 
 /**
@@ -41,7 +41,6 @@ export function HowWeWork() {
                 poster={clip.poster}
                 soundToggle
                 play={isMobile}
-                allowTap={isMobile}
                 className="aspect-[9/16]"
               />
             </motion.div>
